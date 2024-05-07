@@ -1,0 +1,5613 @@
+ ECE 610 Machine Learning &
+Artificial Intelligence
+Spring 2024 David Han
+Electrical and Computer Engineering Drexel University
+
+ ECE 610 Machine Learning & AI
+• Instructor: David Han (dkh42@drexel.edu)
+• Lecture Time: Tue. & Thr. 3:30 – 4:50 PM
+• Location:Papadakisroom104
+• Office Hour: Wed. 11:00 AM – 12:00 PM
+• Location:BossoneHallroom513b
+   
+ University Academic Policies
+• Course Change Policy: The instructor reserves the right to modify the course, as necessary, during the term: including policies, evaluations, due dates, course content, schedule, assignments or requirements. All changes will be communicated in lecture and/or via the course DrexelLearn page.
+• Please review the following relevant university policies.
+• Academic Integrity, Plagiarism, Dishonesty and Cheating Policy:
+• http://drexel.edu/provost/policies/absence/
+• Disability Resources: Students requesting accommodations due to a disability at Drexel University need to request a current Accommodations Verification Letter (AVL) in the ClockWork database before accommodations can be made. These requests are received by Disability Resources (DR), who then issues the AVL to the appropriate contacts. For additional information, visit the DR website at http://drexel.edu/oed/disabilityResources/overview/, or contact DR for more information by phone at 215.895.1401, or by email at disability@drexel.edu.
+• Course Add/Drop Policy: http://www.drexel.edu/provost/policies/course-add-drop
+• Course WithdrawalPolicy: http://drexel.edu/provost/policies/course-withdrawal
+     
+ Purpose of this course
+• To gain in depth conceptual understanding of modern machine learning methods
+• To gain hands on knowledge of writing basic python-based machine learning codes for solving some representative problems.
+• To obtain key knowledge in machine learning in preparation for graduate level research
+• Required background: basic concepts in probability, linear algebra, and elementary python
+
+   Course Textbook
+• There is no single source for the course material
+• Earlier part of the course will be from “Pattern Classification” by Duda, Hart, and Stork
+• Not necessary to purchase, mostly will be in lecture notes
+• Some material will be from “Hands-on Machine Learning with Scikit-Learn, Keras & TensorFlow,” by Aurelien Geron
+• Available online from Drexel Library
+• Select material will be from “Deep Learning,” by Ian Goodfellow, Yoshua Gengio, and Aaron Courville
+• Available online from Drexel Library
+• Additionally, each lecture will be accompanied with lecture slides, which serve as the primary resource for the course
+• Lecture slides will be posted on blackboard afterwards
+ 
+ Course Syllabus
+• We will use the BBLearn system to deliver all information regarding the course, including assignment descriptions, links to online materials, and grades as they are calculated.
+• Your assignments are to be submitted through this system in a manner consistent with each assignment description. However, emails should not be sent through this system, but rather directly to the instructor at the email addresses above.
+• Assessment Overview • 5% - Class attendance • 25% - Assignments
+• 20% - Midterm Exam
+• 25% - Final Exam
+• 25% - Paper report presentation
+
+ Course Outline
+ • AI landscape
+• Linear Algebra & Probability review • Naïve Bayes Classifier
+• Learning Loss
+• Artificial Neural Network
+• Multi-layer Perceptron
+• Convolutional Neural Network
+• Sequence Models
+• Attention Mechanism
+• Generative Models
+• Reviews of contemporary ML papers
+
+ Machine Learning is every where!
+• Languagetranslationservices(Google)
+• Speech translation (Google Translate)
+• Songrecognition(Shazam)
+• Facerecognition(Recognizr)
+• Question answering (Google Home, Amazon Alexa, Apple Siri, IBM Watson)
+• Board games (IBM Deep Blue, Google DeepMind AlphaGo)
+• Driverless cars (Uber, Tesla, Google)
+• Deep Fake
+          
+ Semantic Segmentation for Driverless Car Application
+Zhao, et. al, “ICNet for Real-Time Semantic Segmentation on High-Resolution Images” https://hszhao.github.io/projects/icnet/
+
+ Also some filters
+ YouTube, Guardian News, ‘I’m not a cat’: lawyer gets stuck on Zoom kitten filter during court case, https://www.youtube.com/watch?v=lGOofzZOyl8
+
+ Some Exciting New Development
+• ChatGPT: Large Language Model (LLM)
+• Example:
+• User: Explain how a combustion engine works
+• ChatGPT: “A combustion engine works by converting the energy stored in fuel into mechanical energy. This is typically done through a four-stroke process in which fuel is mixed with air and then ignited in the combustion chamber. The resulting explosion drives a piston, which moves the engine’s crankshaft and converts the linear motion of the piston into the rotational motion of the crankshaft. This rotational motion can then be used to power a vehicle or other machinery.”
+• User: Who won the F1 championship in 2021?
+• ChatGPT: “I’m sorry, but I am a large language model trained by OpenAI and I do not have access to current information. My training only goes up until 2021, so I am unable to provide information about events that have occurred after that. My knowledge is limited to what I was trained on and I do not have the ability to browse the internet or access other sources of information. Is there anything else I may be able to help you with?
+
+ ChatGPT
+• ChatGPT task examples:
+• Speech and text analysis
+• Translations
+• Explanations of complex issues • Writing stories and essays
+• Learn coding
+• Debugging code
+
+ What is Machine Learning?
+• Science (and art) of programming computers so they can learn from data.
+• A study that gives computers the ability to learn without being explicitly programmed. —Arthur Samuel, 1959
+• A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E. —Tom Mitchell, 1997
+
+ What is Machine Learning?
+• Science (and art) of programming computers so they can learn from data.
+• A study that gives computers the ability to learn without being explicitly programmed. —Arthur Samuel, 1959
+• A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E. —Tom Mitchell, 1997
+
+ What is Machine Learning?
+• Science (and art) of programming computers so they can learn from data.
+• A study that gives computers the ability to learn without being explicitly programmed. —Arthur Samuel, 1959
+• A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E. —Tom Mitchell, 1997
+
+ AI vs Machine Learning vs Deep Learning
+Atul 2021, AI vs Machine Learning vs Deep Learning, https://www.edureka.co/blog/ai-vs-machine-learning-vs-deep-learning/
+
+ Artificial Intelligence Timeline
+Irina Nik, 2020, “What is artificial intelligence? A simple explanation for designers”
+
+ Good Old Fashioned Artificial Intelligence (GOFAI) vs Machine Learning
+ Rule Based Approach
+
+ Good Old Fashioned Artificial Intelligence (GOFAI) vs Machine Learning
+    Rule Based Approach
+
+ Good Old Fashioned Artificial Intelligence (GOFAI) vs Machine Learning
+     Rule Based Approach
+Learning Based Approach
+
+ Good Old Fashioned Artificial Intelligence (GOFAI) vs Machine Learning
+      Rule Based Approach
+Learning Based Approach
+
+ Rule based approach vs ML approach
+Rule Based Approach (Good Old Fashion AI)
+• Deterministic
+• Can operate with simple basic
+information
+• Hard to scale as problem complexity grows
+• Rules are implemented manually ➔Knowledge Engineering
+Learning Based Approach
+• Probabilistic
+• Constantly evolve, develop and adapt its production in accordance with training information streams
+• Learnsrulesfromdata
+• Easily scaled
+• Requires more data for better performance
+
+ Rule Based AI: Expressing human knowledge in the
+form of rules for problem solving
+• Rule can be defined as an IF-THEN structure that relates given information or facts in the IF part to some action in the THEN part. A rule provides a soluttion to a problem
+• Any rule consists of two parts: the IF part, called the antecedent (premise or condition) and the THEN part called the consequent (conclusion or action).
+
+ Rules as knowledge representation
+IF the ’traffic light’ is green THEN the action is go
+     IF the ’traffic light’ is red THEN the action is stop
+Netflix, Red Light, Green Light Game – Squid Game (2021)
+
+ Learning Based Approach
+Cars
+Motorcycles
+Motordynasty (2020), “Top of the line Cruisers in September 2020,” https://motordynasty.com/2020/10/28/top-of-the-line-cruisers-in- september-2020/
+ How can a machine tell the difference between cars and motocycles?
+   By extracting distinct features of each class
+Motor Trend (2019), “The 15 Most Important Cars of the Decade,” https://www.motortrend.com/features/the-15-most-important-cars-of- the-decade/
+ Traditional ML based Classification
+  Image/Video/ Pixels
+Hand-crafted feature extraction
+Classifier trained on data containing extracted features
+   Object class
+
+ ML Process Before Deep Learning (BDL)
+• Components of a basic machine learning system:
+• Sensor(s)
+• Preprocessor & Feature extraction (manual or automated)
+• Classification algorithm
+• Training set examples already classified or described
+ Role of Machine
+Classification algorithm
+    Role of Human domain expert knowledge
+   Rotation
+Output Estimation
+ 
+ ML Process Before Deep Learning (BDL)
+• Components of a basic machine learning system:
+• Sensor(s)
+• Preprocessor & Feature extraction (manual or automated)
+• Classification algorithm
+• Training set examples already classified or described
+ Role of Machine
+Classification algorithm
+    Role of Human domain expert knowledge
+   Rotation
+Output Estimation
+ 
+ ML Process Before Deep Learning (BDL)
+• Components of a basic machine learning system:
+• Sensor(s)
+• Preprocessor & Feature extraction (manual or automated)
+• Classification algorithm
+• Training set examples already classified or described
+ Role of Machine
+Classification algorithm
+    Role of Human domain expert knowledge
+   Rotation
+Output Estimation
+ 
+ ML Process Before Deep Learning (BDL)
+• Components of a basic machine learning system:
+• Sensor(s)
+• Preprocessor & Feature extraction (manual or automated)
+• Classification algorithm
+• Training set examples already classified or described
+ Role of Machine
+Classification algorithm
+    Role of Human domain expert knowledge
+   Rotation
+Output Estimation
+ 
+  Classical to Modern AI
+• Differences and similarities of AI approaches
+• Note shaded components learn from data
+Goodfellow, et. al. (2016), “Deep Learning,” MIT press
+
+  Classical to Modern AI
+• Differences and similarities of AI approaches
+• Note shaded components learn from data
+Goodfellow, et. al. (2016), “Deep Learning,” MIT press
+
+  Classical to Modern AI
+• Differences and similarities of AI approaches
+• Note shaded components learn from data
+Goodfellow, et. al. (2016), “Deep Learning,” MIT press
+
+ Features
+• Feature is any distinctive aspect, quality or characteristic • Can be categorical (i.e., color) or numeric (i.e., height)
+• Definitions
+• Thecombinationof𝑑featuresisa𝑑-dimcolumnvectorcalledafeature
+vector
+• The𝑑-dimensionalspacedefinedbythefeaturevectoriscalledthefeature space
+• Objectsarerepresentedaspointsinfeaturespace;theresultisascatter plot
+  
+ Features
+• What makes a “good” feature vector?
+• The quality of a feature vector is related to its ability to discriminate
+examples from different classes
+• Examples from the same class should have similar feature values • Examples from different classes have different feature values
+• More feature properties
+  
+ Machine Learning: Classification Task
+ Sorting incoming fish on a conveyor according to species (salmon or sea bass) using optical sensing
+ Salmon or sea bass? (2 categories or classes)
+Duda, et. al. (1973), Pattern Classification, 2nd Ed.
+
+ Binary Classification
+• Use both width and average lightness features for classification. Use a boundary to discriminate given feature space x = (x x )
+  Width
+12
+  Width
+    sea bass
+Duda, et. al. (1973), Pattern Classification, 2nd Ed.
+sea bass
+  salmon
+salmon
+  Lightness
+Lightness
+
+ Binary Classification
+• Decision boundary with good generalization
+  Duda, et. al. (1973), Pattern Classification, 2nd Ed.
+
+  3+1 Types of Machine Learning
+  Supervised learning
+                                    Unsupervised learning
+                                                                                Reinforcement learning
+                                          Semi-supervised learning
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 12
+
+ Credit: Univ. Virginia CS4501
+Classification (Recognition)
+(Supervised Classification)
+Clustering
+(Unsupervised Classification)
+
+ Credit: Univ. Virginia CS4501
+Classification (Recognition)
+(Supervised Classification)
+Clustering
+(Unsupervised Classification)
+
+ Supervised Learning
+apple
+pear
+tomato cow
+dog horse
+f(   ) = “apple” f(   ) = “tomato” f(   ) = “cow”
+ y = f(x) prediction
+   output
+Image function
+Training set
+• Training: given a training set of labeled examples {(x1,y1), ..., (xN,yN)}, estimate the prediction
+function f by minimizing the prediction error on the training set
+• Testing: apply f to a never before seen test example x and output the predicted value y = f(x) • Supervised learning is expensive as it requires both input and the label
+Machine Learning Crash Course Photo CMU Machine Learning, https://slidetodoc.com/machine-learning-crash-course-photo-cmu-machine-learning/
+
+ Supervised Training Steps
+Training
+Training Images
+Training Labels
+Learning model
+       Image Features
+Learned model
+Testing
+    Test Image
+Image Learned Features model
+Prediction
+Machine Learning Crash Course Photo CMU Machine Learning, https://slidetodoc.com/machine-learning-crash-course-photo-cmu-machine-learning/
+
+ Generalization
+  apple
+pear
+tomato cow
+dog horse
+• How well does a learned model generalize from the data it was trained on to a new test set?
+Training set
+Test set (previously unseen)
+Machine Learning Crash Course Photo CMU Machine Learning, https://slidetodoc.com/machine-learning-crash-course-photo-cmu-machine-learning/
+
+  Unsupervised
+“Weakly” supervised Fully supervised
+Definition depends on task
+ Machine Learning Crash Course Photo CMU Machine Learning, https://slidetodoc.com/machine-learning-crash-course-photo-cmu-machine-learning/
+
+ Self Supervised Learning
+• A machine learning process where the model trains itself to learn one part of the input from another part of the input.
+• Also known as predictive or pretext learning.
+• Examples:
+• Grab a text from some existing source
+• Predict any part of the input from any other part
+• Predict the future from the past
+• Predict the future from the recent past
+• Predict the past from the present
+• Predict the top from the bottom
+• Predict the occluded from the visible
+Men in sandals push bicycles overloaded with bags of coal down the highway, while on the back roads close to Hazaribagh, women carry heads. of the stuff on their
+Men in sandals push bicycles overloaded with bags of coal down the highway, while on the back roads close to Hazaribagh, women carry heads. of the stuff on their
+Output: buckets
+ buckets
+  buckets
+  Input
+
+Machine Learning Algorithms
+Naïve Bayes
+Bayesian network
+K-nearest neighbor
+SVM
+Logistic regression
+Neural networks Reinforcement Learning Randomized Forests Boosted Decision TreesRBMs Etc.
+             Suggested reading for entertainment: “The Master Algorithm” by Pedro Domingos
+ Pedro Domingo (2015), “Master Algorithm”
+ 
+ The Five Tribes by Pedro Domingos
+Pedro Domingo (2015), “Master Algorithm”
+
+ Symbolist: Decision Trees
+Should I wait at this restaurant?
+  
+ Analogizer: Nearest Neighbor Approach
+• If it walks like a duck, quacks like a duck, then it’s probably a duck
+Training Records
+Choose k of the “nearest” records
+Compute Distance
+Test Record
+
+ Analogizer: Kth Nearest Neighbor (KNN)
+• Majority vote within the kth Nearest Neighbors (KNN)
+new
+    K= 1: blue K= 3: green
+
+ Analogizer: Kth Nearest Neighbor (KNN)
+1-nearest neighbor
+3-nearest neighbor
+  xx xx
+x oxx x oxx xx
+o+o xx o+o xx oo+ oo+
+oo x2o x2o
+x1 x1
+     
+ Analogizer: Suport Vector Machine (SVM)
+r=wTxi +b • Distance from example xi to the separator is w
+• Examples closest to the hyperplane are support vectors.
+• Margin ρ of the separator is the distance between support vectors.
+ρ r
+         
+ Evolutionaries
+• Algorithm selected by an evolutionary process (Genetic Algorithm)
+  • The process as a whole is typically slow.
+GLOWZYME, , “SELEX Optimization with Machine Learning,” http://2017.igem.org/Team:McMasterU/Genetic
+
+ Evolutionaries
+• Algorithm selected by an evolutionary process (Genetic Algorithm)
+  • The process as a whole is typically slow.
+GLOWZYME, , “SELEX Optimization with Machine Learning,” http://2017.igem.org/Team:McMasterU/Genetic
+
+ Evolutionaries
+• Algorithm selected by an evolutionary process (Genetic Algorithm)
+  • The process as a whole is typically slow.
+GLOWZYME, , “SELEX Optimization with Machine Learning,” http://2017.igem.org/Team:McMasterU/Genetic
+
+ Evolutionaries
+• Algorithm selected by an evolutionary process (Genetic Algorithm)
+  • The process as a whole is typically slow.
+GLOWZYME, , “SELEX Optimization with Machine Learning,” http://2017.igem.org/Team:McMasterU/Genetic
+
+ Bayesian: Probabilistic approach
+• Bayes’ theorem: Outputs the most probable hypothesis w∈W, given the data x and knowledge about prior probabilities of hypotheses in w
+p (w | x ) = p (x |w )p (w ) p(x)
+• p(w|x) : posterior probability of w. probability that w holds given data x; confidence that w holds given x
+• p(w) : prior probability of w. Background knowledge we have about that w is a correct hypothesis
+• p(x) : prior probability that training data x will be observed
+• p(x|w) : likelihood of x. probability of observing x given w holds
+Thomas Bayes 1701 – 7 April 1761
+  Terence O'Donnell, History of Life Insurance in Its Formative Years (Chicago: American Conservation Co:, 1936), p. 335 (caption "Rev. T. Bayes: Improver of the Columnar Method developed by Barrett."
+
+Bayesian
+• Bayes theorem allows converting a priori estimate to posteriori (e.g. measurement conditioned) probability density function (pdf) of state of nature via:
+P(salmon | width) = [ p(width | salmon)P(salmon)] p(width)
+   From the training set, Posterior Probability of salmon for a given width can be generated
+P(salmon | width)
+x
+x
+
+   • A neuron has
+• Branchinginput(dendrites) • Branchingoutput(theaxon)
+• Information moves from the dendrites to the axon via the cell body
+• Axon connects to dendrites via synapses • Synapsesvaryinstrength
+• Synapses may be excitatory or inhibitory
+Neves, et. al. (2018), “A new approach to damage detection in bridges using machine learning”
+Connectionist: Neuronal Network Approach
+
+ Basic Perceptron
+(Frank Rosenblatt, 1950s and early 60s)
+   An Artificial Neuron (AN) is a non-linearparameterized function with restricted output range
+ì æå O=ïí 1:çè
+ö ü wixi÷ø+b>0 ïý
+ï i
+î 0 : otherwise þ
+ï
+
+ Activation Functions – Sigmoid Function
+ Recent successes (e.g., Baidu Deep Speech) use (clipped) Rectifier Linear Units:
+f(x) = max(0,x) -- rectifier f(x) = min(max(0,x), clip)
+ 
+ Neural Network for Classification
+ • Separates different classes
+• Logistic Regression (Perceptron)
+ Linear Regression
+
+ For More Complex Boundaries
+• More complex boundaries can be constructed using multilayer perceptrons
+• Add additional linear boundaries by adding a hidden layer
+  Multi-layer Perceptron
+
+ Deep Learning/Deep Neural Net (DNN)
+• Not Possible Previously Because:
+• Requires a large set of data
+• Involves a large set of weight computation
+• Vanishing Gradient Problem
+  
+ Convolutional Neural Net
+Lecun, et. al. (1998), “Gradient-based learning applied to document recognition”
+
+ Machine Learning Tasks
+Classification
+Regression
+    “Where Deep Learning Meets GIS” by Rohit Singh, June 2019
+“Creating a Model for Weather Forecasting Using Linear Regression” by Ashan Lakmal
+
+  Review of Probability and Statistics
+ECE 610
+David Han Drexel University
+   
+  Probability in our lives
+     StudiousGuy, “8 Real Life Examples of Probability,” https://studiousguy.com/8-real us?” https://www.theguardian.com/us-news/2020/jun/02/restaurants-reopening-eating-out-co -life-examples-of-probability/ ronavirus-safety
+The Guardian (2020), “As restaurants reopen, what will eating out be like in the age of coronavir
+
+  Basic Probability Concepts
+q Definitions (informal)
+q Probabilities are numbers assigned to events that indicate “how likely” it
+is that the event will occur when a random experiment is performed q The sample space S of a random experiment is the set of all possible
+outcomes
+Sample space
+   q Axioms of probability qAxiomI: 0£P[Ai]
+P[S]=1
+q Axiom III :if A ÇA =f,thenP[A ÈA ]=P[A]+P[A ]
+q Axiom II :
+ijijij
+Probability Law
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Joint Probability
+q Assume that there are two events, A and B, on the sample space S. q Joint probability
+■ The probability for two events which intersect in the sample space. (events that occur together)
+■ Example: a deck of cards
+P(AB)= P(A)+P(B)-P(AB)
+Û P(A B) = P(A) + P(B) - P(A B)£ P(A) + P(B)
+  S
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  More Properties of Probability
+qProperty1: q Property 2 : q Property 3 : q Property 4 : q Property 5 : q Property 6 :
+P[AC]=1-P[A] P[A]£1
+P[f]=0
+given{A,A,...,A},if{AÇA=f,"i,j},thenP A = P[A]
+12Nij ê ëk=1
+kúå û k=1
+k
+P[A ÈA ]=P[A]+P[A ]-P[A ÇA ] 121212
+if A Ì A , then P[ A ] £ P[ A ] 1212
+$
+Note:
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+! 𝐴! ≡ 𝐴# ∪ 𝐴% ∪ ⋯ .∪ 𝐴$ !"#
+éNùN
+
+  Probability as a Relative Frequency
+q Probability is defined as a “relative frequency” of occurrence of some event
+q If the “fair” coin is flipped many times (say n) and heads shows up nH times out of the n flips, then
+lim(nH /n)=P(H) n®¥
+q Here, the ratio (nH /n) is the relative frequency (or average number of successes) for this event.
+q statistical regularity
+■ relative frequenciesèa fixed value (a probability) as nè
+large.
+■ Based on observations
+ Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+6
+
+  Basic Probability Concepts
+q An experiment consist of obtaining a number x by spinning the pointer on a “fair” wheel of chance that is labeled from 0 to 100
+points.
+S = {0 < x £ 100}
+q Probability of the pointer falling between any two numbers
+x2≥x1
+q Axiom 1 : Because of x2≥x1 , Ok!
+q Axiom 2 : Applied to x2=100 and x1=0
+q Axiom 3
+■ Break the wheel’s periphery into N contiguous segment An
+ ■
+P(x < x £ x )= x - x 1 2 100
+ æNöNN1
+PçA ÷= P(A )= N =1=P(S)
+å
+èn=1 øn=1 n=1
+n
+n
+å
+21
+ Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Basic Probability Concepts
+q Observe the sum of the number showing up two dice that is thrown.
+q Sample space
+■ Total 36(=62) points.
+q Definition of events
+A={sum=7}, B={8<sum£11}, and C={10<sum} Aij ={sumforoutcome(i,j)=i+j}
+¢
+where i is row location, j is the column location in the table. q Probability
+èi=1 ø i=1 æ1ö 1
+  ¢
+  ¢æ6ö6æ1ö1 P(A)=PçA ÷=åP(A )=6ç ÷=
+i,7-i i,7-i 36 6
+P(B)=9çè36÷ø= 4, P(C)=3çè36÷ø=12
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+è ø æ1ö 1
+8
+
+  Examples
+q There are 80 resistor.
+P(draw 10Ω) = 18 / 80, P(draw 22Ω) = 12 / 80 P(draw 27Ω) = 33 / 80, P(draw 47Ω) = 17 / 80
+q Suppose a 22 Ω resister is drawn from the box at first, what are the probabilities of drawing a second resister of any one of the four values?
+■ P(.| Ω) : The probability on the second drawing are now conditional on the outcome of the first drawing.
+P(draw 10Ω | 22Ω) = 18 / 79, P(draw 22Ω|22Ω) = 11/ 79 P(draw 27Ω|22Ω) = 33 / 79, P(draw 47Ω|22Ω) = 17 / 79
+  Ohm(Ω)
+10 Ω
+22 Ω
+27 Ω
+47 Ω
+Num.
+18
+12
+33
+17
+ ■
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+9
+
+  Conditional Probability
+q If A and B are two events, the probability of event A when we already know that event B has occurred is P[A|B]
+■ the “conditional probability of A conditioned on B”, or simply
+■ the “probability of A given B”
+q Interpretation
+■ The new evidence “B has occurred” has the following effects
+¢ The original sample space S (the square) becomes B (the rightmost circle) ¢ The event A becomes A ∩ B
+■ P[B] simply re-normalizes the probability of events that occur jointly with B
+ Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+P[A | B]= P[A Ç B] for P[B] > 0 P[B]
+  
+  Conditional Probability Example
+q Conditional probability in a card game
+q Event B: hearts
+q Event A: kings
+■ The conditional prob. of drawing a king, given the cards are all
+hearts
+   P(A|B)o P(AB) P(B)
+ S
+   Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+11
+P(A B)P(B)=P(AÇB)
+ 
+  Theorem of Total Probability
+q Let B1, B2, ..., BN be a partition of S (mutually exclusive that totals to S) q Any event A can be represented as
+A=AÇS=AÇ(B ÈB ÈÈB )=(AÇB)È(AÇB )ÈÈ(AÇB ) 12N12N
+q Since Bi are mutually exclusive, then P[A]=P[AÇB]+P[AÇB]++P[AÇB ]
+ 12N
+ P(A
+ B)P(B) = P(AÇB)
+q Recall
+qAnd,therefore P[A]=P[A|B]P[B]++P[A|B ]P[B ]
+11 NN =åN P[A|Bk]P[Bk]
+k =1 Peebles, Jr.(2001), “Probability, Random Variables and Random Signa l Principles,” McGraw Hill
+
+   Bayes Theorem
+q Problem formulation
+■ Assume {B1, B2, ..., BN } is a partition of S.
+■ Given that event A occurs.
+■ What is the probability of event Bj ?
+■ Using the definition of conditional probability and the Theorem of total probability we obtain
+P[B |A]=P[AÇBj]= P[A|Bj]P[Bj]
+j
+q This is known as Bayes Theorem or Bayes Rule, and is (one of) the most useful relations in probability and statistics
+■ Bayes Theorem is definitely the fundamental relation in Statistical Pattern Recognition
+   P[A]
+k=1
+kk
+N
+åP[A|B ]P[B ]
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Bayes Theorem and Statistical Pattern Recognition
+q When used for pattern classification, BT is generally expressed as P[w |x]= P[x|wj]P[wj] =P[x|wj]P[wj]
+   j
+k=1
+N
+P[x]
+■ where ωj is the j-th class (e.g., car, motorcycle, ..) and x is the
+feature/observation vector (e.g., image of a car, motorcycle, ...)
+q A typical decision rule is to choose class ωj with highest P[ωj |x] ■ Intuitively, we choose the class that is more “likely” given observation x
+q Each term in the Bayes Theorem has a special name
+■ P[ωj]
+■ P[ωj | x]
+■ P[x | ωj]
+■ P[x]
+: Prior probability (of class ωj)
+: Posterior probability (of class ωj given the observation x)
+: likelihood (probability of observation x given class ωj) : normalization constant (does not affect the decision)
+åP[x|w ]P[w ] kk
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Exercise
+q Consider a clinical problem where we need to decide if a patient has a particular medical condition on the basis of an imperfect test
+■ Someone with the condition may go undetected (false-negative)
+■ Someone free of the condition may yield a positive result (false-positive)
+q Nomenclature
+■ The true-negative rate P(NEG|~COND) of a test is called its SPECIFICITY
+■ The true-positive rate P(POS|COND) of a test is called its SENSITIVITY
+q Problem
+■ Assume a population of 10,000 with a 1% prevalence for the condition
+■ Assume that we design a test with 98% specificity and 90% sensitivity
+■ Assume you take the test, and the result comes out POSITIVE
+■ What is the probability that you have the condition(having the disease)?
+q Solution
+■ Solution A : Fill in the joint frequency table next slide, or
+■ Solution B : Apply Bayes rule
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Exercise : Solution B
+q Applying Bayes rule
+Assume a population of 10,000 with a 1% prevalence for the condition
+Assume that we design a test with 98% specificity (True Neg) and 90% sensitivity (Tru Pos) Assume you take the test, and the result comes out POSITIVE
+P[COND|POS] = P[POS|COND]P[COND] P[POS]
+= P[POS | COND]P[COND]
+P[POS | COND]P[COND] + P[POS |~ COND]P[~ COND]
+= 0.90  ́ 0.01
+0.90  ́ 0.01+ (1- 0.98)  ́ 0.99
+= 0.3125
+     P[w |x]= P[x|wj]P[wj] =P[x|wj]P[wj]
+  j åN P[x|w]P[w]
+k=1
+P[x]
+kk
+         Test is Positive
+Test is Negative
+Row Total
+Has Condition
+True-positive P(POS|COND) 100×0.90
+False-negative P(NEG|COND) 100×(1-0.90)
+100
+Free of Condition
+False-positive P(POS|~COND) 9,900×(1-0.98)
+True-negative P(NEG|~COND) 9,900×0.98
+9,900
+Column Total
+288
+9,712
+10,000
+    Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Joint And Conditional Probability
+q EXAMPLE: Binary communication system
+q Send one of two possible symbol ( 0 or 1 ) over a channel.
+ q Denote ( for i = 1,2 )
+■ Bi : “the symbol before the channel”
+■ Ai : “the symbol after the channel”
+q Assume
+INPUT
+B1 : 0 B2 :1
+OUTPUT
+A1 : 0 A2 :1
+     ■
+P(B)=0.6, P(A |B)=0.9, 11112
+P(A |B )=0.1 P(B )=0.4, P(A |B)=0.1, P(A |B )=0.9
+22122
+q Calculate rest of probability. P(A)=P(A |B)P(B)+P(A |B )P(B )
+ 1111122 = 0.9(0.6) + 0.1(0.4) = 0.58
+P(A)=P(A |B)P(B)+P(A |B)P(B) 2211222
+= 0.1(0.6) + 0.9(0.4) = 0.42
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+channel
+
+  Joint And Conditional Probability
+q EXAMPLE
+q Conditional Probability
+■ Using the Bayes’ theorem, –
+INPUT
+B1 : 0 B2 : 1
+OUTPUT
+P(B | A ) = P(A | B )P(B ) = 0.9(0.6) = 0.54 » 0.931 111
+1 1 P(A ) 0.58 0.58 1
+P(B |A)=P(A |B)P(B)=0.9(0.4)=0.36»0.857 222
+2 2 P(A ) 0.42 0.42 2
+– P(A | B )P(B ) 0.1(0.6) 0.06 P(B|A)=21 1= =»0.143
+1 2 P(A ) 0.42 0.42 2
+P(B |A)=P(A|B)P(B)=0.1(0.4)=0.04»0.069 122
+2 1 P(A ) 0.58 0.58 1
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+A1 : 0 A2 : 1
+A1 : 0 A2 : 1
+    0.6
+0.9
+0.1
+  0.4
+0.9
+0.1
+             
+  Independent Events
+q Let two events A and B with nonzero probability. q (Statistically) Independent
+q Definition
+■ The probability of occurrence of one event is not affected by the occurrence of the other event.
+q Mathematical representation P(A| B) = P(A)
+Û P(B | A) = P(B)
+Û P(A B) = P(A)P(B)
+qIftwoeventsaremutuallyexclusive,
+■ So, two events cannot be both mutually exclusive and statistically
+independent.
+■ i.e. For two events to be independent, they must have an intersection
+  P(A|B)o P(AB) P(B)
+ 𝑷𝑨∩𝑩 =𝒐≠𝑷𝑨𝑷(𝑩)
+  Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Independent Events
+q EXAMPLE: One card is selected from an ordinary 52-card deck. q Define events
+■ A : “select a king”, B : “select a jack or queen”, C : “select a heart” q Probabilities
+■ P(A) = 4/52, P(B)=8/52, P(C)=13/52 q Check the independence by pairs.
+ ■ P(AB)=01P(A)P(B)= 32 522
+P(AC)= 1 =P(A)P(C)= 1 52 52
+P(BC)= 2 =P(B)P(C)= 2 52 52
+Mutually Exclusive
+ ■ So,AandCareindependentasapair,asareBandC. Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Independent Events
+q EXAMPLE: Draw four cards from an ordinary 52-card deck. q Define events
+■ Ai : “draw an ace consecutively i times” ( for i=1,2,3,4 )
+q Check the independent events in the either replaced trials or not.
+q Assuming that each trial is replaced.
+ ■ They are independent.
+q Assuming that each trial is not replaced.
+=(4/52)4 »3.50(10-5) ■ They are not independent events.
+P(A  A  A  A ) 1234
+≠ 𝑃(𝐴#) 𝑃(𝐴%) 𝑃(𝐴&) 𝑃(𝐴')
+P(A  A  A  A ) = P(A )P(A )P(A )P(A ) 12341234
+=P(A)P(A A A |A) 12341
+=P(A)P(A |A)P(A A |A A ) 1213412
+=P(A)P(A |A)P(A |AA)P(A |AA A) 1213124123
+= 4 × 3 × 2 × 1 »3.69(10-6) 52 51 50 49
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Independent Events
+q EXAMPLE: A pair of fair dice is rolled, the values of their faces are added, and the following events are defined.
+q Define events
+■ A: “roll an odd sum”
+■ B: “roll a sum that is an integer multiple of 3”
+a) Are events A and B statistically independent?
+           Sum of faces
+Probability
+1,1
+2
+1/36
+1,2
+2,1
+3
+2/36
+1,3
+2,2
+3,1
+4
+3/36
+1,4
+2,3
+3,2
+4,1
+5
+4/36
+1,5
+2,4
+3,3
+4,2
+5,1
+6
+5/36
+1,6
+2,5
+3,4
+4,3
+5,2
+6,1
+7
+6/36
+2,6
+3,5
+4,4
+5,3
+6,2
+8
+5/36
+3,6
+4,5
+5,4
+6,3
+9
+4/36
+4,6
+5,5
+6,4
+10
+3/36
+5,6
+6,5
+11
+2/36
+6,6
+12
+1/36
+                                                           b) Note all the events are mutually exclusive. Total probability axiom applies.
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Independent Events
+q Example (cont.)
+q P(A)=2/36+4/36+6/36+4/36+2/36=18/36=1/2 q P(B) = 2/36+5/36+4/36+1/36=12/36=1/3
+q P(A⌒B)=?
+q Find events of A⌒BèSum = odd & multiples of 3
+q P(A⌒B) = 2/36 + 4/36 = 6/36 =1/6 q Is P(A⌒B) = P(A)P(B)?
+■ 1/6 = 1/2·1/3
+q Thus A & B are independent!
+q What is probability of event A È B?
+q P(A È B) = P(A) + P(B) – P(A Ç B)=P(A) + P(B) - P(A)P(B)
+=1/2 + 1/3 - 1/6=2/3
+ Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Random Variables
+ q When we perform a random experiment we are usually interested in some measurement or numerical attribute of the outcome
+■ e.g., weights in a population of subjects, execution times when benchmarking CPUs, shape parameters when performing ATR
+q These examples lead to the concept of random variable
+q A random variable X is a function that assigns a real number X(𝜉)
+to each outcome 𝜉 in the sample space of a random experiment q X(𝜉) maps from all possible outcomes in sample space onto the
+real line
+   Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Random Variables
+q The function that assigns values to each outcome is fixed and deterministic, i.e., as in the rule “count the number of heads in three coin tosses”
+■ Randomness in it is due to the underlying randomness of the outcome 𝜉 of the experiment
+q Random variables can be
+q Discrete, e.g., the resulting number after rolling a dice q Continuous, e.g., the weight of a sampled individual
+ Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Random Variables
+ q EXAMPLE 2.1-1
+■ An experiment consist of rolling a die and flipping a coin.
+■ (1) a coin head (H) outcome corresponds to positive values of X that are equal to numbers that show up on the die.
+■ (2) a coin tail (T) outcome correspond to negative values of X that are equal in magnitude to twice the number that shows on the die.
+FIGURE 2.1-1
+A Random variable mapping of a sample space.
+ Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+26
+
+  Random Variables
+ q EXAMPE 2.1-2
+■ An experiment where the pointer on a wheel of chance is spun.
+■ The possible outcomes are the numbers from 0 to 12 marked on the wheel. (The sample space : {0 < s £ 12} .
+■ a random variable : X=X(s)=s2
+■ Points in S now map onto the real line as the set .
+{0<s£144}
+ Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+27
+FIGURE 2.1-2
+Mapping applicable to Example 2.1-2.
+
+    Cumulative Distribution Function (
+q The cumulative distribution function FX(x) of a random variable X is defined as the probability of the event {X ≤ x}
+FX(x)=P[X£x] for-¥<x<+¥ q Properties of the cdf
+■ ■ ■ ■ ■
+cdf
+)
+  0£FX(x)£1 limFX (x)=1
+ x®¥ limFX(x)=0
+x®-¥
+FX(a)£FX(b) if a£b
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+    Probability Density Function (
+q The probability density function fX(x) of a continuous random variable X, if it exists, is defined as the derivative of FX(x)
+fX (x) = dFX (x) dx
+q For discrete random variables, the equivalent to the pdf is the probability mass function
+fX (x) = DFX (x) Dx
+q Properties of the pdf ■ 𝑓!(𝑥)≥0
+-¥
+pdf
+)
+       ■ P[a<x<b]=òb fX(x)dx òx a
+■ FX(x)=-¥fX(x)dx ■ ò¥ fX(x)dx=1
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Probability Density Function Vs. Probability
+   Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Probability Density Function Vs. Probability
+   Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Probability Density Function Vs. Probability
+   Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Probability Density Function Vs. Probability
+   Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Statistical Characterization of Random Variables
+q The cdf or the pdf are SUFFICIENT to fully characterize a RV
+q However, a RV can be PARTIALLY characterized with other measures q Expectation (center of mass of a density)
+E[X]=μ=ò¥ xfX(x)dx -¥
+q Variance (spread about the mean)
+VAR[X]=s2 =E[(X-E[X])2]=ò¥ (x-μ)2 f (x)dx
+-¥
+q Standard deviation
+STD[X]=s =VAR[X]1/2
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+X
+
+   Random
+q An extension of the concept of a random variable
+q A random vector X is a function that assigns a vector of real
+numbers to each outcome 𝜉 in sample space S
+q Denote a random vector by a column vector
+q The notions of cdf and pdf are replaced by ‘joint cdf’ and ‘joint pdf’
+q Given random vector X = [x1, x2, ..., xN]T we define the joint cdf as
+F(x)=P[{X£x}Ç{X£x}ÇÇ{X £x}] XX1122 NN
+q And the joint pdf as fX(x)= ¶NFX(x)
+¶x ¶x ¶x 12N
+Vectors
+ Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Statistical Characterization of Random Vectors
+q A random vector is also fully characterized by its joint cdf or joint pdf
+q Alternatively, we can (partially) describe a random vector with measures similar to those defined for scalar random variables
+q Mean vector
+E[X]=μ=[E[X],E[X],,E[X ]]=[μ,μ,,μ]
+TT 12N12N
+q Covariance matrix COV[X]= Σ = E[(X-μ)(X-μ)T ]
+é E[(x-μ)2]  E[(x-μ)(x -μ )]ù és2  c ù ê11 11NNúê1 1Nú
+=êú=êú êE[(x-μ)(x-μ)] E[(x-μ)2] ú êc s2ú
+ëNN11 NNûëN1 Nû Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Covariance Matrix
+q The covariance matrix indicates the tendency of each pair of features (dimensions in a random vector) to vary together, i.e., to co-vary*
+q The covariance has several important properties
+■ If xi and xk tend to increase together, then cik > 0
+■ If xi tends to decrease when xk increases, then cik < 0
+■ If xi and xk are uncorrelated, then cik = 0
+■ cii = σi2 = VAR[xi]
+q The covariance terms can be expressed as cii = σi2 and cik = ρikσiσk
+■ where ρik is called the correlation coefficient
+  Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  The Normal or Gaussian Distribution
+q The multivariate Normal distribution N(μ, Σ) is defined as f (x)= 1 expé-1(X-μ)TΣ-1(X-μ)ù
+X (2p)n/2 Σ1/2 êë 2 úû
+q For a single dimension, this expression is reduced to
+   f (x)= 1 expé-1æx-μö2ù X 2ps2 ê 2çè s ÷øú
+   ëû
+ Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Central Limit Theorem
+q The probability distribution function of the sum of a large number of random variables approaches a gaussian distribution.
+q Example: 500 experiments are performed using a uniform distribution ■ 𝑁=1
+¢ One sample is drawn from the distribution and its mean is recorded (500 times)
+¢ The histogram resembles a uniform distribution, as one would expect
+■ 𝑁=4
+¢ Four samples are drawn and the mean of the four
+samples is recorded (500 times)
+¢ The histogram starts to look more Gaussian
+■ As 𝑁 grows, the shape of the histograms resembles a Normal distribution more closely
+ Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Implementation: Central Limit Theorem
+q 100000 experiments are performed using a uniform distribution
+q The number of samples is increased to 10 from 1 (N = 1, 4, 7, 10)
+q As 𝑁 grows, the shape of the histograms resembles a Normal distribution more closely
+ Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+  Independent Events
+q EXAMPLE: A pair of fair dice is rolled, the values of their faces are added, and the following events are defined.
+q Define events
+■ A: “roll an odd sum”
+■ B: “roll a sum that is an integer multiple of 3”
+a) Are events A and B statistically independent?
+           Sum of faces
+Probability
+1,1
+2
+1/36
+1,2
+2,1
+3
+2/36
+1,3
+2,2
+3,1
+4
+3/36
+1,4
+2,3
+3,2
+4,1
+5
+4/36
+1,5
+2,4
+3,3
+4,2
+5,1
+6
+5/36
+1,6
+2,5
+3,4
+4,3
+5,2
+6,1
+7
+6/36
+2,6
+3,5
+4,4
+5,3
+6,2
+8
+5/36
+3,6
+4,5
+5,4
+6,3
+9
+4/36
+4,6
+5,5
+6,4
+10
+3/36
+5,6
+6,5
+11
+2/36
+6,6
+12
+1/36
+                                                           b) Note all the events are mutually exclusive. Total probability axiom applies.
+Peebles, Jr.(2001), “Probability, Random Variables and Random Signal Principles,” McGraw Hill
+
+ Bayesian Classifier
+ECE 610 David K. Han
+
+ Bayesian Decision Theory
+• A fundamental statistical approach to ML classification.
+• Allows us to combine observed data and prior knowledge
+• Provides practical learning algorithms
+• It is a generative (model based) approach, which offers a useful conceptual framework
+–Any kind of objects (e.g. time series, trees, etc.) can be classified, based on a probabilistic model specification
+• Based on tradeoffs between
+• decisions using probability and the costs
+• Assumes relevant probability values are known.
+    
+ Bayesian Decision Theory
+• Example:
+• Designing a classifier to separate two kinds of fish:
+ sea bass and salmon
+• Let ω denote the state of nature
+• ω = ω1 for sea bass
+• ω = ω2 for salmon
+• Thus, ω needs to be described probabilistically
+• A priori probability: Representative of existing knowledge on the problem
+• P(ω1) is the probability that next fish is sea bass • P(ω2) is the probability that that it is salmon
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Bayesian Decision Theory
+• If forced to make a decision without observing the fish.
+• Use the following decision rule
+• Decide ω1 if P(ω1) > P(ω2); otherwise decide ω2.
+• End up deciding the fish to be one type always unless the probabilities are the same.
+• This strategy may be acceptable so long as • P(ω1) >> P(ω2) or P(ω1) << P(ω2)
+• Probability of error by this strategy: • P(E) = min(P(w1),P( w2)).
+• An alternative: Utilize observationèdata
+• Consider x (lightness of the fish) to be a continuous random variable whose distribution depends on the state of nature (salmon or sea bass)
+• Expressedasp(x|ω1)èclass-conditionalprobabilitydensity function for state of nature being ω1
+ Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Bayesian Decision Theory
+• Difference between p(x|ω1) and p(x|ω2): difference in lightness between sea bass and salmon
+• Suppose both the prior probabilities P(ωj) and the conditional densities p(x|ωj) known. The joint probability density can be written as
+p(wj,x)=P(wj     x)p(x)=p(x wj)P(wj)
+   P(wj   x) =
+p(x wj )P(wj ) p(x)
+ • Rearranging terms lead to Bayes Theorem 2
+• Where
+• In plain English:
+jj
+p(x)=åp(xw )P(w )
+j=1
+posterior = likelihood  ́ prior
+evidence
+  Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+  Bayesian Decision Theory
+• By measuring x, we can convert the prior probability, P(wj), into a posterior probability, P(wj|x).
+• More specifically, for ω1
+ P(w x)= p(xw)P(w)= p(xw)P(w) = 11 11
+1 p(x) 2
+p(x
+p(x w )P(w )+ p(x w )P(w ) 1 1 2 2
+        åp(xw )P(w )
+ j=1
+jj
+w )P(w ) 11
+  P(w x)=p(xw2)P(w2)= p(x
+w2)P(w2)
+    2
+p(x) p(x
+w )P(w ) + p(x 11
+w2)P(w2)
+  • For ω2
+• Evidence p(x), viewed as a scale factor, is identical for both ω1 and ω2 , it is often ignored.
+ Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+  Bayesian Decision Theory: Caution
+• By measuring x, we can convert the prior probability, P(wj), into a posterior probability, P(wj|x).
+• Note however that P(wj|x) is an estimate of the state being wj given the observation x.
+• Recall
+“I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character.”
+• The observation used to estimate the state is not the actual content of the state
+ Photo from https://diversity.ncsu.edu/news/2021/01/15/the-history-of-mlk-at-nc-state
+
+ Bayesian Decision Theory
+• Let’s plot likelihood and posterior for a given prior probability: P(w1) = 2/3 and P(w2) = 1/3
+p 𝑥 𝑤! P 𝑤! 𝑥
+• For every value of x, the posteriors sum to 1.0. è P(ω1|x) + P(ω2 |x) = 1
+• At x=14, the probability it is in category w2 is 0.08, and for category w1 is 0.92.
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+     P(wj   x) = p(x wj )P(wj ) p(x)
+   
+ Implementing a Bayesian classifier
+• Sorting Fish: incoming fish are sorted according to species using optical sensing (sea bass 𝜔! or salmon 𝜔"?)
+• Collect data on sea bass and salmon according to their distinctive features
+• Feature : 𝑥 (length or lightness)
+Optical Sensor
+ • Step
+• Estimate likelihood 𝑝(𝑥|𝜔#) and 𝑝 𝑥|𝜔$
+• Feature extraction using optical sensing.(length and lightness of fish)
+• Compare
+• If𝑝 𝑥|𝜔! 𝑃 𝜔! >𝑝 𝑥|𝜔" 𝑃 𝜔" , fish=Seabass •If𝑝𝑥|𝜔!𝑃𝜔! <𝑝𝑥|𝜔" 𝑃𝜔",fish=Salmon
+from observation data.
+(a) Salmon
+(b) Sea bass
+     Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Maximum A Prosteriori (MAP) Inference
+P(ω1|x)
+ • Bayes’ Decision Rule
+• If P(ω1|x) > P(ω2 |x), choose ω1 • If P(ω2 |x) > P(ω1 |x), choose ω2
+• This is called Maximum A Prosteriori (MAP) inference • More compactly:
+• To justify this, let’s compute probability of error for such decisions
+P(ω |x) 2
+ • P(error|x) = P(ω1|x) if we decide ω2 • P(error|x) = P(ω2 |x) if we decide ω1
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Maximum A Prosteriori (MAP) Inference
+• Again
+• P(error|x) = P(ω1|x) if we decide ω2 • P(error|x) = P(ω2 |x) if we decide ω1
+• Will this rule minimize the average probability of error?
+• Average probability of error
+• By choosing ω as
+• When P(ω1|x) > P(ω2 |x), choose ω1 • When P(ω2 |x) > P(ω1 |x), choose ω2
+• errorisminimizedeverywhereinx.Thus,the average error is minimized by Bayes’ decision rule.
+P(ω1|x)
+  P(ω2|x)
+  decision in error
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Bayesian Decision in Multidimensions
+• Let’s consider more general cases
+• Cases with more than one feature
+• Replacethescalarxwiththefeaturevectorxwherex isinad-dimensionalEuclideanspace Rd , called feature space.
+• A feature vector x is a d-component vector-valued random variable
+• Let p(x|ωj) be the probability density function for x conditioned on ωj being the
+true state of nature.
+• P(ωj ) describes the prior probability that nature is in state ωj.
+• The posterior probability P(ωj |x) can be computed from p(x|ωj) by Bayes’ rule: 𝑃𝜔#𝒙 =𝑝𝒙𝜔# 𝑃𝜔#
+   • where
+𝑪𝑝𝒙
+𝑝 𝒙 = * 𝑝 𝒙 𝜔# 𝑃 𝜔#
+𝒋%! Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+ 
+ Multivariate Gaussian Distribution for Classification
+• Let’s model the likelihood functions using multivariate Gaussian distribution
+   
+1 é 1    -1   ù exp- (x-μ)TéSù (x-μ)
+p(xw)= j
+• d = dimensions of x
+• N = number of data points
+• For a single dimension, this expression is reduced to
+d 12 ê2 ëû ú ()2ë û
+ 2pS w • The parameters can be estimated as
+j
+μ = N åxn n=1
+
+
+x=[x,x,....,x ] 12N
+    1N
+1NT S=N-1 xn -μ xn -μ
+ å( )( ) n=1
+   p(xw )= 1 expé-1æx-μö2ù j ê2çs÷ú
+   2ps ê è øú ëû
+ 1N
+μ = N åxn n=1
+ 1NT
+s2 = å(x -μ)(x -μ)
+ N -1 n=1
+nn
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Multivariate Gaussian Distribution for Classification
+• Mean vector TT
+E [ x ] = μˆ = [ E [ x ] , E [ x ] ,  , E [ x ] ] = [ μ , μ ,  , μ ] 12d12d
+• Covariance matrix 
+C O V [ x ] = Σ = E é ( x - μˆ ) ( x - μˆ ) T ù ëû
+é E[(x-μ)2]  E[(x-μ)(x-μ)]ù és2 ê11 11ddúê1 1dú
+=êú=êú
+êE[(x-μ)(x-μ)] E[(x-μ)2] ú êc s2ú ëdd11 ddûëd1 dû
+ cù
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+Multivariate Gaussian Distribution for Classification
+• For 2-D Gaussian density function
+   ìé2 2ùü p(x,x )= 1 expï -1 ê(x1 -X1) -2r(x1 -X1)(x2 -X2)+(x2 -X2) úï
+12 2pss1-r2 í2(1-r2)ês2 ss s2 úý
+      ïï
+ëû
+îxxxxþ
+xx1122
+12
+ • where
+X2 =E[X2]
+X1 =E[X1]
+s2 =E[(X -X )2]
+x11 1
+s2 =E[(X -X )2] x2 22
+r = E[(X1 - X1)(X2 - X2 )]
+sx sx 12
+éxù x=ê 1ú
+ëx2 û
+ 
+ Maximum Likelihood (ML) Inference
+• Ignoring p(x) as stated previously, Bayes’ decision rule can also be rewritten as:
+• Decide ω1 if p(x| ω1)P(ω1) > p(x| ω2)P(ω2); otherwise decide ω2. • If P(ω1) =P(ω2) then,
+• Choose ω1 if p(x| ω1) > p(x| ω2); otherwise decide ω2. • This is called Maximum Likelihood (ML) inference
+• More compactly
+ Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Implementation: ML Bayesian classifier
+• Step1
+• Collect data 𝜔! and 𝜔" (= Sample observation)
+  𝜔"
+ Distribution of species ω1 and ω2 in a 2-D feature space
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+𝜔#
+
+ Implementation: ML Bayesian classifier
+• Step2
+• Compute likelihood 𝑝 𝒙|𝜔# 𝑎𝑛𝑑 𝑝 𝒙|𝜔$ assuming multivariate Gaussian distribution from observation data.
+• To obtain 𝑝 𝒙|𝜔# 𝑎𝑛𝑑 𝑝 𝒙|𝜔$ , compute mean and covariance from each data.(Assume Gaussian distribution)
+𝝎𝟏
+        1 é1 -1 ù p(x,q)= exp (x-μˆ)T éSù (x-μˆ)
+1/2 ê2 ëû ú (2p)n/2 S ë û
+     𝝎𝟐
+1N
+μˆ = N å x n n=1
+1NT S = N - 1 x n - μˆ x n - μˆ
+ å( )( ) n=1
+ Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Implementation: ML Bayesian classifier
+• Step 3
+• For a given observation x* •
+ 1 é1 -1 ù p(xw)= exp (x-μˆ)TéSù (x-μˆ)
+ * 1 1/2 ê2* 1 ëû * 1ú
+ (2p)n/2 S ë û 1
+   1 é1 -1 ù p(xw)= exp (x-μˆ)TéSù (x-μˆ)
+ *2 1/2 ê2*2ëû*2ú
+ (2p)n/2 S
+2
+ë û
+   𝝎𝟏
+Observation (x*)
+  Compare 𝑝 x∗|𝜔" 𝑎𝑛𝑑 𝑝 x∗|𝜔#
+If𝑝 x∗|𝜔" >𝑝 x∗|𝜔# , fish=Seabass(𝜔") If 𝑝 x∗|𝜔" < 𝑝 x∗|𝜔# , fish = Salmon (𝜔#)
+      𝝎𝟐
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Likelihood Ratio Test (LRT)
+• Decision Rule for binary classification if the priors are the same • Decide ω1 if p(x|ω1) P(ω1) > p(x|ω2) P(ω2); otherwise decide ω2
+• Rearrange the expression as • Choose ω1 if
+• And
+• The decision rule based on the Likelihood Test (LRT)
+  Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+   Likelihood Ratio Test (LRT)
+Likelihood Ratio Test: an example
+  􏰀 Given a classification problem with the following class conditional densities, derive a decision rule based on the Likelihood Ratio Test (assume equal priors)
+p(x|􏰅1 )􏰃 1 e􏰂21(x􏰂4)2 p(x|􏰅2 )􏰃 1 e􏰂21(x􏰂10)2 2􏰄 2􏰄
+􏰀 Solution
+􏰁 Substituting the given likelihoods and priors into the LRT expression:
+    􏰅1
+􏰈(x)􏰃 p(x|􏰅1 )􏰇P(􏰅2 )􏰊􏰈(x)􏰃
+p(x|􏰅2 )􏰆 P(􏰅1 ) 􏰅2
+1 e􏰂21(x􏰂4)2 􏰅1 2􏰄 􏰇1
+1 􏰂1(x􏰂10)2 􏰆 2􏰄 e 2 􏰅2
+      􏰁 Simplifying the LRT expression:
+􏰂1(x􏰂4)2 􏰉1(x􏰂10)2
+􏰅􏰇 􏰈(x)􏰃e 2 2 􏰆1
+􏰅2
+1
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 22
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+ 
+   Likelihood Ratio Test (LRT)
+Likelihood Ratio Test: an example
+  􏰀 Given a classification problem with the following class conditional densities, derive a decision rule based on the Likelihood Ratio Test (assume equal priors)
+p(x|􏰅1 )􏰃 1 e􏰂21(x􏰂4)2 p(x|􏰅2 )􏰃 1 e􏰂21(x􏰂10)2 2􏰄 2􏰄
+􏰀 Solution
+􏰁 Substituting the given likelihoods and priors into the LRT expression:
+     􏰅1
+􏰈(x)􏰃 p(x|􏰅1 )􏰇P(􏰅2 )􏰊􏰈(x)􏰃
+p(x|􏰅2 )􏰆 P(􏰅1 ) 􏰅2
+1 e􏰂21(x􏰂4)2 􏰅1 2􏰄 􏰇1
+1 􏰂1(x􏰂10)2 􏰆 2􏰄 e 2 􏰅2
+      􏰁 Simplifying the LRT expression:
+􏰂1(x􏰂4)2 􏰉1(x􏰂10)2
+􏰅􏰇 􏰈(x)􏰃e 2 2 􏰆1
+􏰅2
+1
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 22
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+ 
+   Likelihood Ratio Test (LRT)
+Likelihood Ratio Test: an example
+  􏰀 Given a classification problem with the following class conditional densities, derive a decision rule based on the Likelihood Ratio Test (assume equal priors)
+p(x|􏰅1 )􏰃 1 e􏰂21(x􏰂4)2 p(x|􏰅2 )􏰃 1 e􏰂21(x􏰂10)2 2􏰄 2􏰄
+􏰀 Solution
+􏰁 Substituting the given likelihoods and priors into the LRT expression:
+   􏰅1
+􏰈(x)􏰃 p(x|􏰅1 )􏰇P(􏰅2 )􏰊􏰈(x)􏰃
+p(x|􏰅2 )􏰆 P(􏰅1 ) 􏰅2
+1 e􏰂21(x􏰂4)2 􏰅1 2􏰄 􏰇1
+1 􏰂1(x􏰂10)2 􏰆 2􏰄 e 2 􏰅2
+      􏰁 Simplifying the LRT expression:
+􏰂1(x􏰂4)2 􏰉1(x􏰂10)2
+􏰅􏰇 􏰈(x)􏰃e 2 2 􏰆1
+􏰅2
+1
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 22
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+ 
+   Likelihood Ratio Test (LRT)
+Likelihood Ratio Test: an example
+Note
+   􏰁 Changing signs and taking logs (x􏰂4)2 􏰂(x􏰂10)2 􏰇0
+􏰁 Which yields 􏰅2
+􏰅1
+􏰅2 􏰆
+ x 􏰆􏰇 7 􏰅1
+􏰁 This LRT result makes sense from an intuitive point of view since the likelihoods are identical and differ only in their mean value
+Thus, the decision boundary is determined by the LRT at x = 7 􏰀 How would the LRT decision rule change if, say, the priors were
+such that P(􏰋1 ) = 2P(􏰋2 ) ?
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 23
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+x2 -8x+16-x2 +20x-100 =12x-84
+=12(x-7)
+ 
+   Likelihood Ratio Test (LRT)
+Likelihood Ratio Test: an example
+Note
+   􏰁 Changing signs and taking logs (x􏰂4)2 􏰂(x􏰂10)2 􏰇0
+􏰁 Which yields 􏰅2
+􏰅1
+􏰅2 􏰆
+ x 􏰆􏰇 7 􏰅1
+􏰁 This LRT result makes sense from an intuitive point of view since the likelihoods are identical and differ only in their mean value
+Thus, the decision boundary is determined by the LRT at x = 7 􏰀 How would the LRT decision rule change if, say, the priors were
+such that P(􏰋1 ) = 2P(􏰋2 ) ?
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 23
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+x2 -8x+16-x2 +20x-100 =12x-84
+=12(x-7)
+ 
+   Likelihood Ratio Test (LRT)
+Likelihood Ratio Test: an example
+Note
+   􏰁 Changing signs and taking logs (x􏰂4)2 􏰂(x􏰂10)2 􏰇0
+􏰁 Which yields 􏰅2
+􏰅1
+􏰅2 􏰆
+ x 􏰆􏰇 7 􏰅1
+􏰁 This LRT result makes sense from an intuitive point of view since the likelihoods are identical and differ only in their mean value
+Thus, the decision boundary is determined by the LRT at x = 7 􏰀 How would the LRT decision rule change if, say, the priors were
+such that P(􏰋1 ) = 2P(􏰋2 ) ?
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 23
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+x2 -8x+16-x2 +20x-100 =12x-84
+=12(x-7)
+ 
+ Risk
+• A teenager knows that she will be grounded if she chooses to invite friends over after school instead of doing her homework, but also knows that the likelihood of her parents finding out she did so is slight. If the teenager chooses to invite her friends over, she is taking a risk of getting in trouble with her parents.
+• A gambler decides to take all of his winnings from the night and attempt a bet of "double or nothing." The gambler's choice is a risk in that he could lose all that he won in one bet.
+• A woman gets into her car in the morning and notices that the gas level is low. She chooses to drive to work, regardless, without stopping at a gas station. By making this choice she is risking that she will run out of gas in her car on the way to work.
+• A person taking a new Covid-19 vaccine. What risk?
+Risk = Probability x Consequence (Loss) Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+Consequence
+ Probability
+
+ Bayesian Decision Theory (Bayesian Risk)
+• Suppose we have an observation of x and take action αi.
+• The loss function λ(α i|ωj) describes the loss incurred (consequence) for
+taking action α i when the state of nature is ωj.
+• Since P(ωj |x ) is the probability that the true state of nature is ωj, the
+expected total loss associated with taking action αi is
+• R(αi |x) is defined as conditional risk
+• A point value function for x and 𝛼+
+• Thus, with an observation x, select an action that minimizes the conditional risk.èBayes Decision Procedureèoptimal performance on overall risk
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Bayesian Decision Theory (Bayesian Risk)
+• Suppose we have an observation of x and take action αi.
+• The loss function λ(α i|ωj) describes the loss incurred (consequence) for
+taking action α i when the state of nature is ωj.
+• Since P(ωj |x ) is the probability that the true state of nature is ωj, the
+expected total loss associated with taking action αi is xx
+• R(αi |x) is defined as conditional risk
+• A point value function for x and 𝛼+
+• Thus, with an observation x, select an action that minimizes the conditional risk.èBayes Decision Procedureèoptimal performance on overall risk
+ Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Bayesian Decision Theory (Bayesian Risk)
+• Suppose we have an observation of x and take action αi.
+• The loss function λ(α i|ωj) describes the loss incurred (consequence) for
+taking action α i when the state of nature is ωj.
+• Since P(ωj |x ) is the probability that the true state of nature is ωj, the
+expected total loss associated with taking action αi is xx
+• R(αi |x) is defined as conditional risk
+• A point value function for x and 𝛼+
+• Thus, with an observation x, select an action that minimizes the conditional risk.èBayes Decision Procedureèoptimal performance on overall risk
+ Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Bayesian Decision Theory (Bayesian Risk)
+• Our goal is to find a decision rule that minimizes the overall risk.
+• The decision function α(x): assumes one of the α values α1, ..., αa for
+every x.
+• The overall risk R: expected loss associated with a given decision rule.
+• Since R(αi|x) is the conditional risk associated with action αi, and since the decision rule specifies the action, the overall risk is given by
+• where dx is a d-dimensional volume element and the integral extends over the entire feature space.
+ Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Bayesian Decision Theory (Bayesian Risk)
+• Clearly, if α(x) is chosen so that R(αi|x) is as small as possible for every x, then the overall risk will be minimized.
+• To minimize the overall risk, compute the conditional risk • for i=1, ... , a and select αi for which R(αi|x) is minimum.
+ Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Two Category Classification by Bayesian Risk
+• For two-category classification problems.
+• Action α1 corresponds to deciding that the true state of nature is ω1 • Action α2 corresponds to deciding that it is ω2.
+• Recall the loss function λ(α i|ωj) describes the loss incurred for taking action αi when the state of nature is ωj.
+• The conditional risk
+• R(α1|x) = λ11P(ω1|x) + λ12P(ω2|x) • R(α2|x) = λ21P(ω1|x) + λ22P(ω2|x)
+• Decide ω1
+• if R(α1|x) < R(α2|x)
+• Decide ω2 otherwise
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Two Category Classification by Bayesian Risk
+• R(α1|x) = λ11P(ω1|x) + λ12P(ω2|x) • R(α2|x) = λ21P(ω1|x) + λ22P(ω2|x)
+• Decide ω1
+• if R(α1|x) < R(α2|x)
+λ11P(ω1|x) + λ12P(ω2|x) < λ21P(ω1|x) + λ22P(ω2|x) • Collect like terms
+λ12P(ω2|x) - λ22P(ω2|x) < λ21P(ω1|x) - λ11P(ω1|x) (λ12 - λ22)P(ω2|x) < (λ21 - λ11) P(ω1|x)
+(λ21 - λ11) P(ω1|x) > (λ12 - λ22)P(ω2|x)
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Two Category Classification by Bayesian Risk
+• Recall λ21 = Loss incurred by choosing ω2 when it was actually ω1
+• and λ11 = Loss incurred by choosing ω1 when it was actually ω1
+• Loss incurred when choosing correctly should be less than the loss when incorrect choice was made.
+• Thus (λ21 - λ11) > 0 and (λ12 – λ22) > 0
+• Again, decide ω1 if (λ21 - λ11) P(ω1|x) > (λ12 - λ22)P(ω2|x)
+• Substitute P(ω1|x) by Bayes rule
+(λ21 - λ11) p(x| ω1)P(ω1) > (λ12 – λ22) p(x| ω2)P(ω2)
+• Alternatively, decide ω1 if
+ • Choose ω2 otherwise
+Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+T
+   he Bayes Risk Example
+• •
+Assume P(ω ) = P(ω ) = 0.5, λ = λ = 0, λ = 1, λ
+1 2 11 22 12 21
+The Bayes Risk: an example
+ 􏰀 Consider a classification problem with two classes defined by the following likelihood functions
+ 23 p􏰌x|􏰅 􏰍􏰃 1 e􏰂1 x2
+1 2􏰄31 2 p􏰌x|􏰅2􏰍􏰃 1 e􏰂2􏰌x􏰂2􏰍
+   2􏰄
+􏰁 Sketch the two densities
+􏰁 What is the likelihood ratio?
+ =
+􏰂1x2􏰉1􏰌x􏰂2􏰍2􏰇0 2 3 2 􏰆 􏰅2
+􏰅1 2 􏰇
+= 0, C Determdineeciasdioencisriounlerutlhe athtamt mininiimizeessthteherispkrobability of error
+= 3
+Determine a
+􏰁 Assume P(􏰋 ) = P(􏰋 ) = 0.5, C = C
+1 2 11 22 12 21
+1
+2􏰄 3
+􏰅
+= 1 and C
+1⁄2
+ e􏰂1 x2
+2 3 􏰅1
+􏰅2
+􏰂1􏰌x􏰂2􏰍2 􏰆 e2 􏰅2
+ 􏰇1 1 􏰂1􏰌x􏰂2􏰍2 􏰆 3
+1
+ 􏰈􏰌x􏰍􏰃
+􏰃 e23 􏰇1
+ 2􏰄 e 2 􏰂1x2 􏰅1
+2x􏰂12x􏰉12􏰆0􏰎x􏰃4.73,1.27 􏰅2
+      Intelligent Information & Signal Processing Lab.
+School of EE, Korea University
+31
+Duda, et. al. (2001), “Pattern Classification,” Wiley Inte
+rscience
+ 
+T
+   he Bayes Risk Example
+The Bayes Risk: an example
+ 􏰀 Consider a classification problem with two classes defined by the following likelihood functions
+Determine a
+ 23 p􏰌x|􏰅 􏰍􏰃 1 e􏰂1 x2
+1 2􏰄31 2 p􏰌x|􏰅2􏰍􏰃 1 e􏰂2􏰌x􏰂2􏰍
+   2􏰄
+􏰁 Sketch the two densities
+􏰁 What is the likelihood ratio?
+􏰁 Assume P(􏰋1) = P(􏰋2) = 0.5, C11 = C22 = 0, C12 = 1 and C21 = 31⁄2
+decision rule that minimizes the probability of error
+ e􏰂1 x2
+2 3 􏰅1
+􏰅2
+􏰂1􏰌x􏰂2􏰍2 􏰆 e2 􏰅2
+1
+2􏰄 3
+􏰅
+􏰂1x2􏰉1􏰌x􏰂2􏰍2􏰇0 2 3 2 􏰆 􏰅2
+􏰅1 2 􏰇
+ 􏰇1 1 􏰂1􏰌x􏰂2􏰍2 􏰆 3
+1
+ 􏰈􏰌x􏰍􏰃
+􏰃 e23 􏰇1
+ 2􏰄 e 2 􏰂1x2 􏰅1
+2x􏰂12x􏰉12􏰆0􏰎x􏰃4.73,1.27 􏰅2
+      Intelligent Information & Signal Processing Lab.
+School of EE, Korea University
+31
+Duda, et. al. (2001), “Pattern Classification,” Wiley Inte
+rscience
+ 
+T
+   he Bayes Risk Example
+The Bayes Risk: an example
+ 􏰀 Consider a classification problem with two classes defined by the following likelihood functions
+Determine a
+ 23 p􏰌x|􏰅 􏰍􏰃 1 e􏰂1 x2
+1 2􏰄31 2 p􏰌x|􏰅2􏰍􏰃 1 e􏰂2􏰌x􏰂2􏰍
+   2􏰄
+􏰁 Sketch the two densities
+􏰁 What is the likelihood ratio?
+􏰁 Assume P(􏰋1) = P(􏰋2) = 0.5, C11 = C22 = 0, C12 = 1 and C21 = 31⁄2
+decision rule that minimizes the probability of error
+ e􏰂1 x2
+2 3 􏰅1
+􏰅2
+􏰂1􏰌x􏰂2􏰍2 􏰆 e2 􏰅2
+1
+2􏰄 3
+􏰅
+􏰂1x2􏰉1􏰌x􏰂2􏰍2􏰇0 2 3 2 􏰆 􏰅2
+􏰅1 2 􏰇
+ 􏰇1 1 􏰂1􏰌x􏰂2􏰍2 􏰆 3
+1
+ 􏰈􏰌x􏰍􏰃
+􏰃 e23 􏰇1
+ 2􏰄 e 2 􏰂1x2 􏰅1
+2x􏰂12x􏰉12􏰆0􏰎x􏰃4.73,1.27 􏰅2
+      Intelligent Information & Signal Processing Lab.
+School of EE, Korea University
+31
+Duda, et. al. (2001), “Pattern Classification,” Wiley Inte
+rscience
+ 
+T
+   he Bayes Risk Example
+The Bayes Risk: an example
+ 􏰀 Consider a classification problem with two classes defined by the following likelihood functions
+Determine a
+ 23 p􏰌x|􏰅 􏰍􏰃 1 e􏰂1 x2
+1 2􏰄31 2 p􏰌x|􏰅2􏰍􏰃 1 e􏰂2􏰌x􏰂2􏰍
+   2􏰄
+􏰁 Sketch the two densities
+􏰁 What is the likelihood ratio?
+􏰁 Assume P(􏰋1) = P(􏰋2) = 0.5, C11 = C22 = 0, C12 = 1 and C21 = 31⁄2
+decision rule that minimizes the probability of error
+ e􏰂1 x2
+2 3 􏰅1
+􏰅2
+􏰂1􏰌x􏰂2􏰍2 􏰆 e2 􏰅2
+1
+2􏰄 3
+􏰅
+􏰂1x2􏰉1􏰌x􏰂2􏰍2􏰇0 2 3 2 􏰆 􏰅2
+􏰅1 2 􏰇
+ 􏰇1 1 􏰂1􏰌x􏰂2􏰍2 􏰆 3
+1
+ 􏰈􏰌x􏰍􏰃
+􏰃 e23 􏰇1
+ 2􏰄 e 2 􏰂1x2 􏰅1
+2x􏰂12x􏰉12􏰆0􏰎x􏰃4.73,1.27 􏰅2
+      Intelligent Information & Signal Processing Lab.
+School of EE, Korea University
+31
+Duda, et. al. (2001), “Pattern Classification,” Wiley Inte
+rscience
+ 
+T
+   he Bayes Risk Example
+The Bayes Risk: an example
+ 􏰀 Consider a classification problem with two classes defined by the following likelihood functions
+Determine a
+ 23 p􏰌x|􏰅 􏰍􏰃 1 e􏰂1 x2
+1 2􏰄31 2 p􏰌x|􏰅2􏰍􏰃 1 e􏰂2􏰌x􏰂2􏰍
+   2􏰄
+􏰁 Sketch the two densities
+􏰁 What is the likelihood ratio?
+􏰁 Assume P(􏰋1) = P(􏰋2) = 0.5, C11 = C22 = 0, C12 = 1 and C21 = 31⁄2
+decision rule that minimizes the probability of error
+ e􏰂1 x2
+2 3 􏰅1
+􏰅2
+􏰂1􏰌x􏰂2􏰍2 􏰆 e2 􏰅2
+1
+2􏰄 3
+􏰅
+􏰂1x2􏰉1􏰌x􏰂2􏰍2􏰇0 2 3 2 􏰆 􏰅2
+􏰅1 2 􏰇
+ 􏰇1 1 􏰂1􏰌x􏰂2􏰍2 􏰆 3
+1
+ 􏰈􏰌x􏰍􏰃
+􏰃 e23 􏰇1
+ 2􏰄 e 2 􏰂1x2 􏰅1
+2x􏰂12x􏰉12􏰆0􏰎x􏰃4.73,1.27 􏰅2
+      Intelligent Information & Signal Processing Lab.
+School of EE, Korea University
+31
+Duda, et. al. (2001), “Pattern Classification,” Wiley Inte
+rscience
+ 
+ Discriminant Function
+• Allthedecisionrulessofarhavethesamestructure • Ateachpointxinfeaturespacechooseclassωiwhich
+maximizes (or minimizes) some measure gi(x)
+• Thisstructurecanbeformalizedwithasetofdiscriminat functions gi(x), i=1,....., C, and the following decision rule:
+• ”assignxtoclassωiifgi(x)>gi(x)foreveryj≠i”
+• Therefore,wecanvisualizethedecisionruleasa network or machine that computes C discriminat functions and selects the category corresponding to the largest discriminant. Such network is depicted as
+• Summarizethethreedecisionrules:BayesRisk,MAP, and ML
+      Decision Rule
+Discriminant Function
+Bayes Risk
+gi(x) = R(αi |x)
+MAP
+gi(x) = P(ωi |x)
+ML
+gi(x) = p(x| ωi)
+        Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+ Bayesian Decision Theory
+• In summary
+• MAP
+• Maximum A Posteriori determined by • P(ωj |x ) directly if possible
+• Or by using Bayes rule
+• Maximum Likelihood (ML)
+• Determined by the maximum likelihood: P(x | ωj ) • Bayes Risk Based choosing the minimum of
+   Duda, et. al. (2001), “Pattern Classification,” Wiley Interscience
+
+   Bayes classifiers for Gaussian distributed classes
+Bayes classifiers for Gaussian distributed classes
+ 􏰀 General expression for Gaussian densities
+􏰁 The multivariate Normal density function was defined as
+f (x)􏰃 1 exp􏰕􏰂1(x􏰂μ)T Σ􏰂1(x􏰂μ)􏰒 x ( 2 􏰄 ) n 2 Σ 1 2 􏰓􏰔 2 􏰐􏰑
+   􏰁 Using Bayes rule, the MAP discriminant function becomes
+g(x)􏰃P(􏰅 |x)􏰃p(x|􏰅i )P(􏰅i )􏰃 1 exp􏰕􏰂1(x􏰂μ )TΣ􏰂1(x􏰂μ )􏰒P(􏰅 ) 1
+i i p(x) (2􏰄)n2Σ12 􏰓􏰔2 i i i􏰐􏰑ip(x)
+     􏰁 Eliminating constant terms
+Sine the MAP picks the largest of gis let’s eliminate common terms
+g(x)􏰃Σ 􏰂12exp􏰕􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰒P(􏰅) i i 􏰓􏰔2ii i􏰐􏰑i
+i
+  A􏰁gaiWn,easttahkeeMnAaPtupircaklsltohegslasrginescteofthgesleot’gsatarkitehnmatuirsalalomgsosninocteolnogicaariltlhyminiscareasing
+monfoutoncictaiollyn increasing function
+i
+g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅)) i2iii2ii
+    􏰏 This expression is called a quadratic discriminant function
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 35
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+   Bayes classifiers for Gaussian distributed classes
+Bayes classifiers for Gaussian distributed classes
+ 􏰀 General expression for Gaussian densities
+􏰁 The multivariate Normal density function was defined as
+f (x)􏰃 1 exp􏰕􏰂1(x􏰂μ)T Σ􏰂1(x􏰂μ)􏰒 x ( 2 􏰄 ) n 2 Σ 1 2 􏰓􏰔 2 􏰐􏰑
+   􏰁 Using Bayes rule, the MAP discriminant function becomes
+g(x)􏰃P(􏰅 |x)􏰃p(x|􏰅i )P(􏰅i )􏰃 1 exp􏰕􏰂1(x􏰂μ )TΣ􏰂1(x􏰂μ )􏰒P(􏰅 ) 1
+i i p(x) (2􏰄)n2Σ12 􏰓􏰔2 i i i􏰐􏰑ip(x)
+     􏰁 Eliminating constant terms
+Sine the MAP picks the largest of gis let’s eliminate common terms
+g(x)􏰃Σ 􏰂12exp􏰕􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰒P(􏰅) i i 􏰓􏰔2ii i􏰐􏰑i
+g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅)) i2iii2ii
+i
+  A􏰁gaiWn,easttahkeeMnAaPtupircaklsltohegslasrginescteofthgesleot’gsatarkitehnmatuirsalalomgsosninocteolnogicaariltlhyminiscareasing
+monfoutoncictaiollyn increasing function
+i
+    􏰏 This expression is called a quadratic discriminant function
+Duda,et.al.I(n2t0e0ll1ig)e,n“tPIanttfoermnaCtliaosnsi&ficSaitgionanl,”PWrocilesysiIngteLrascbi.ence SchoolofEE, KoreaUniversity 35 From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+     
+   Bayes classifiers for Gaussian distributed classes
+Bayes classifiers for Gaussian distributed classes
+ 􏰀 General expression for Gaussian densities
+􏰁 The multivariate Normal density function was defined as
+f (x)􏰃 1 exp􏰕􏰂1(x􏰂μ)T Σ􏰂1(x􏰂μ)􏰒 x ( 2 􏰄 ) n 2 Σ 1 2 􏰓􏰔 2 􏰐􏰑
+􏰁 Using Bayes rule, the MAP discriminant function becomes
+g(x)􏰃P(􏰅 |x)􏰃p(x|􏰅i )P(􏰅i )􏰃 1 exp􏰕􏰂1(x􏰂μ )TΣ􏰂1(x􏰂μ )􏰒P(􏰅 ) 1
+   i i p(x) (2􏰄)n2Σ12 􏰓􏰔2 i i i􏰐􏰑ip(x)
+     􏰁 Eliminating constant terms
+Sine the MAP picks the largest of gis let’s eliminate common terms
+g(x)􏰃Σ 􏰂12exp􏰕􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰒P(􏰅) i i 􏰓􏰔2ii i􏰐􏰑i
+i
+  A􏰁gaiWn,easttahkeeMnAaPtupircaklsltohegslasrginescteofthgesleot’gsatarkitehnmatuirsalalomgsosninocteolnogicaariltlhyminiscareasing
+monfoutoncictaiollyn increasing function
+i
+g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅)) i2iii2ii
+    􏰏 This expression is called a quadratic discriminant function
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+35
+ 
+   Bayes classifiers for Gaussian distributed classes
+Bayes classifiers for Gaussian distributed classes
+ 􏰀 General expression for Gaussian densities
+􏰁 The multivariate Normal density function was defined as
+f (x)􏰃 1 exp􏰕􏰂1(x􏰂μ)T Σ􏰂1(x􏰂μ)􏰒 x ( 2 􏰄 ) n 2 Σ 1 2 􏰓􏰔 2 􏰐􏰑
+   􏰁 Using Bayes rule, the MAP discriminant function becomes
+g(x)􏰃P(􏰅 |x)􏰃p(x|􏰅i )P(􏰅i )􏰃 1 exp􏰕􏰂1(x􏰂μ )TΣ􏰂1(x􏰂μ )􏰒P(􏰅 ) 1
+i i p(x) (2􏰄)n2Σ12 􏰓􏰔2 i i i􏰐􏰑ip(x)
+     􏰁 Eliminating constant terms
+Sine the MAP picks the largest of gis let’s eliminate common terms
+g(x)􏰃Σ 􏰂12exp􏰕􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰒P(􏰅) i i 􏰓􏰔2ii i􏰐􏰑i
+i
+  A􏰁gaiWn,easttahkeeMnAaPtupircaklsltohegslasrginescteofthgesleot’gsatarkitehnmatuirsalalomgsosninocteolnogicaariltlhyminiscareasing
+monfoutoncictaiollyn increasing function
+i
+g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅)) i2iii2ii
+    􏰏 This expression is called a quadratic discriminant function
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 35
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+  Case 1: Σ𝑖 = 𝜎2I Case 􏰖 : 􏰗i=􏰘2I
+􏰀 This situation occurs when the features are statistically independent with the same variance for all classes*
+  􏰁 In this case, the quadratic discriminant function becomes g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅))
+  i2iii2ii
+gi (x) 􏰃 􏰂 12 (x 􏰂 μi )T (􏰙 2I)􏰂1 (x 􏰂 μi ) 􏰂 12 log(􏰙 2I ) 􏰉 log(P(􏰅i ))
+  􏰃􏰂 1 (x􏰂μ)T(x􏰂μ)􏰂1Nlog(􏰙2)􏰉log(P(􏰅)) 2􏰙2ii2 i
+Expanding this expression
+  􏰁
+dropping the second term
+1
+􏰃 􏰂2􏰙2 (x􏰂μi)T(x􏰂μi)􏰉log(P(􏰅i))
+ 1 𝐶𝑎𝑠𝑒 1: ∑$ = 𝜎#𝐼 gi(x)􏰃􏰂2􏰙2 (x􏰂μi)T(x􏰂μi)􏰉log(P(􏰅i))
+􏰃􏰂 1 (xTx􏰂2μTx􏰉μTμ)􏰉log(P(􏰅)) 2􏰙2 iii i
+      Intelligent Information & Signal Processing Lab. School of EE, Korea University 36
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+μ1 􏰃[3 2]T μ2 􏰃[7 4]T μ3 􏰃[2 5]T
+Σ􏰃􏰕2 0􏰒 Σ􏰃􏰕2 0􏰒 Σ􏰃􏰕2 0􏰒 1 􏰓􏰔0 2􏰐􏰑 2 􏰓􏰔0 2􏰐􏰑 3 􏰓􏰔0 2􏰐􏰑
+  
+  Case 1: Σ𝑖 = 𝜎2I Case 􏰖 : 􏰗i=􏰘2I
+􏰀 This situation occurs when the features are statistically independent with the same variance for all classes*
+  􏰁 In this case, the quadratic discriminant function becomes g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅))
+  i2iii2ii
+gi (x) 􏰃 􏰂 12 (x 􏰂 μi )T (􏰙 2I)􏰂1 (x 􏰂 μi ) 􏰂 12 log(􏰙 2I ) 􏰉 log(P(􏰅i ))
+  􏰃􏰂 1 (x􏰂μ)T(x􏰂μ)􏰂1Nlog(􏰙2)􏰉log(P(􏰅)) 2􏰙2ii2 i
+Expanding this expression
+  􏰁
+dropping the second term
+1
+􏰃 􏰂2􏰙2 (x􏰂μi)T(x􏰂μi)􏰉log(P(􏰅i))
+ g(x)􏰃􏰂 1 (x􏰂μ)T(x􏰂μ)􏰉log(P(􏰅)) i 2􏰙2 i i i
+􏰃􏰂 1 (xTx􏰂2μTx􏰉μTμ)􏰉log(P(􏰅)) 2􏰙2 iii i
+      Intelligent Information & Signal Processing Lab. School of EE, Korea University 36
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+μ1 􏰃[3 2]T μ2 􏰃[7 4]T μ3 􏰃[2 5]T
+Σ􏰃􏰕2 0􏰒 Σ􏰃􏰕2 0􏰒 Σ􏰃􏰕2 0􏰒 1 􏰓􏰔0 2􏰐􏰑 2 􏰓􏰔0 2􏰐􏰑 3 􏰓􏰔0 2􏰐􏰑
+  
+  Case 1: Σ𝑖 = 𝜎2I Case 􏰖 : 􏰗i=􏰘2I
+􏰀 This situation occurs when the features are statistically independent with the same variance for all classes*
+  􏰁 In this case, the quadratic discriminant function becomes g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅))
+  i2iii2ii
+gi (x) 􏰃 􏰂 12 (x 􏰂 μi )T (􏰙 2I)􏰂1 (x 􏰂 μi ) 􏰂 12 log(􏰙 2I ) 􏰉 log(P(􏰅i ))
+  􏰃􏰂 1 (x􏰂μ)T(x􏰂μ)􏰂1Nlog(􏰙2)􏰉log(P(􏰅)) 2􏰙2ii2 i
+Expanding this expression
+  􏰁
+dropping the second term
+1
+􏰃 􏰂2􏰙2 (x􏰂μi)T(x􏰂μi)􏰉log(P(􏰅i))
+ g(x)􏰃􏰂 1 (x􏰂μ)T(x􏰂μ)􏰉log(P(􏰅)) i 2􏰙2 i i i
+􏰃􏰂 1 (xTx􏰂2μTx􏰉μTμ)􏰉log(P(􏰅)) 2􏰙2 iii i
+      Intelligent Information & Signal Processing Lab. School of EE, Korea University 36
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+μ1 􏰃[3 2]T μ2 􏰃[7 4]T μ3 􏰃[2 5]T
+Σ􏰃􏰕2 0􏰒 Σ􏰃􏰕2 0􏰒 Σ􏰃􏰕2 0􏰒 1 􏰓􏰔0 2􏰐􏰑 2 􏰓􏰔0 2􏰐􏰑 3 􏰓􏰔0 2􏰐􏰑
+  
+  Case1:Σ =𝜎2I
+ Case 1 : 􏰚
+i
+σ
+2
+𝑖
+=
+I
+   􏰁
+Eliminating the term xTx, which is constant for all classes g(x)􏰃􏰂 1 (􏰂2μTx􏰉μTμ )􏰉log(P(􏰅 ))􏰃􏰅Tx􏰉􏰅
+where􏰛􏰝 !i 􏰙2 􏰛𝑤
+􏰏
+If we assume equal priors
+􏰏 This is called a minimum-distance or nearest mean classifier
+􏰏 The loci of constant probability for each class are hyper-spheres
+􏰏 For unit variance (􏰘2=1), the distance becomes the Euclidean distance
+From [schalkoff, 1992]
+i 2􏰙2 i ii i i i0 􏰞 􏰅𝑤 # 􏰃 μ i
+  1
+􏰜􏰅!"􏰃􏰂2􏰙 μTμ􏰉log(P(􏰅)) i0 2ii i
+  􏰁
+Since the discriminant is linear, the decision boundaries gi(x)=gj(x), will be hyper-planes
+  g (x)􏰃􏰂 1 (x􏰂μ )T(x􏰂μ ) i 2􏰙2 i i
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 37
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 𝑤$% 𝑎𝑛𝑑 𝑤$& are constants
+ 
+  Case1:Σ =𝜎2I
+Case1:Σ =𝜎2I
+ Case 1 : 􏰚
+σ
+2
+I
+𝑖= i
+𝑖
+   􏰁
+Eliminating the term xTx, which is constant for all classes
+1
+i2􏰙2iii ii$i0$&
+g(x)􏰃􏰂
+where􏰛􏰝 !i 􏰙2
+TTT% (􏰂2μ x􏰉μ μ )􏰉log(P(􏰅 ))􏰃􏰅 x𝑤􏰉𝑥􏰅+𝑤
+  􏰞􏰅𝑤# 􏰃 μi 􏰛𝑤
+1
+􏰜􏰅!" 􏰃􏰂2􏰙 μTμ 􏰉log(P(􏰅 )) i0 2ii i
+𝑤$% 𝑎𝑛𝑑 𝑤$& are const
+ants
+ 􏰁
+􏰏 Since the discriminant is linear, the decision boundaries gi(x)=gj(x), will be hyper-planes
+If we assume equal priors
+􏰏 This is called a minimum-distance or nearest mean classifier
+􏰏 The loci of constant probability for each class are hyper-spheres
+􏰏 For unit variance (􏰘2=1), the distance becomes the Euclidean distance
+From [schalkoff, 1992]
+  g (x)􏰃􏰂 1 (x􏰂μ )T(x􏰂μ ) i 2􏰙2 i i
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 37
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+Depends on how far away x is from the mean
+   
+  Case1:Σ =𝜎2I
+Case1:Σ =𝜎2I
+ Case 1 : 􏰚𝑖 = 𝑖
+i σ2I, example
+ 􏰀 To illustrate the previous result, we will compute the decision boundaries for a 3-class, 2-dimensional problem with the following class mean vectors and
+covariance matrices and equal
+priors
+ μ1 􏰃[3 2]T μ2 􏰃[7 4]T μ3 􏰃[2 5]T Σ􏰃􏰕2 0􏰒 Σ􏰃􏰕2 0􏰒 Σ􏰃􏰕2 0􏰒
+1 􏰓􏰔0 2􏰐􏰑 2 􏰓􏰔0 2􏰐􏰑 3 􏰓􏰔0 2􏰐􏰑
+      Intelligent Information & Signal Processing Lab.
+School of EE, Korea University 38
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+C
+  ase 1: Σ𝑖 = 𝜎2I Case 1 : 􏰚i=σ2I, example
+􏰀 To illustrate the previous result, we will compute the decision boundaries for a 3-class, 2-dimensional problem with the following class mean vectors and
+covariance matrices and equal
+priors
+μ1 􏰃[3 2]T μ2 􏰃[7 4]T μ3 􏰃[2 5]T
+Σ􏰃􏰕2 0􏰒 Σ􏰃􏰕2 0􏰒 Σ􏰃􏰕2 0􏰒 1 􏰓􏰔0 2􏰐􏰑 2 􏰓􏰔0 2􏰐􏰑 3 􏰓􏰔0 2􏰐􏰑
+          Intelligent Information & Signal Processing Lab. School of EE, Korea University
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+38
+ 
+  Case 2: S = S (S diagonal)
+Case 􏰟 : 􏰗 􏰠􏰗 􏰡􏰗 diagonal􏰢 i
+i
+ 􏰀 The classes still have the same covariance matrix, but the features are allowed to have different variances
+􏰁 In this case, the quadratic discriminant function becomes g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅))
+  i2iii2ii
+􏰂2 􏰦􏰂2􏰣
+􏰕􏰙 􏰒 􏰨􏰙2 􏰥 1􏰓1􏰐11
+  􏰃􏰂2(x􏰂μi)T􏰓􏰓 􏰫 􏰔
+1N (x[k]􏰂μ[k])2 􏰃􏰂 􏰪 i
+􏰐􏰐(x􏰂μi)􏰂2log􏰦􏰦􏰦 􏰫 2 􏰣􏰣􏰣􏰉log(P(􏰅i)) 􏰙􏰂2􏰑 􏰧 􏰙􏰂2 􏰤
+ 2k􏰃1 􏰙k2 2k􏰃1
+ki 1 N
+NN 1 N
+􏰂 log􏰩􏰙2􏰉log(P(􏰅))
+ 1 N
+x[k]2 􏰂2x[k]μ[k]􏰉μ[k]2
+􏰃􏰂 􏰪 2k􏰃1
+􏰙k2
+i i
+􏰂 log􏰩􏰙2􏰉log(P(􏰅))
+ 2 k􏰃1
+ki
+    Intelligent Information & Signal Processing Lab.
+School of EE, Korea University 39
+μ1 􏰃[3 2]T μ2 􏰃[5 4]T μ3 􏰃[2 5]T
+Σ􏰃􏰕1 0􏰒 Σ􏰃􏰕1 0􏰒 Σ􏰃􏰕1 0􏰒 1 􏰓􏰔0 2􏰐􏰑 2 􏰓􏰔0 2􏰐􏰑 3 􏰓􏰔0 2􏰐􏰑
+ From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+  
+  Case 2: S = S (S diagonal)
+Case 􏰟 : 􏰗 􏰠􏰗 􏰡􏰗 diagonal􏰢 i
+i
+ 􏰀 The classes still have the same covariance matrix, but the features are allowed to have different variances
+􏰁 In this case, the quadratic discriminant function becomes g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅))
+  i2iii2ii
+􏰂2 􏰦􏰂2􏰣
+􏰕􏰙 􏰒 􏰨􏰙2 􏰥 1􏰓1􏰐11
+  􏰃􏰂2(x􏰂μi)T􏰓􏰓 􏰫 􏰔
+1N (x[k]􏰂μ[k])2 􏰃􏰂 􏰪 i
+􏰐􏰐(x􏰂μi)􏰂2log􏰦􏰦􏰦 􏰫 2 􏰣􏰣􏰣􏰉log(P(􏰅i)) 􏰙􏰂2􏰑 􏰧 􏰙􏰂2 􏰤
+ 2k􏰃1 􏰙k2 2k􏰃1
+ki 1 N
+NN 1 N
+  􏰂 log􏰩􏰙2􏰉log(P(􏰅))
+ 1 N
+x[k]2 􏰂2x[k]μ[k]􏰉μ[k]2
+􏰃􏰂 􏰪 2k􏰃1
+􏰙k2
+i i
+􏰂 log􏰩􏰙2􏰉log(P(􏰅))
+ 2 k􏰃1
+ki
+    Intelligent Information & Signal Processing Lab.
+School of EE, Korea University 39
+μ1 􏰃[3 2]T μ2 􏰃[5 4]T μ3 􏰃[2 5]T
+Σ􏰃􏰕1 0􏰒 Σ􏰃􏰕1 0􏰒 Σ􏰃􏰕1 0􏰒 1 􏰓􏰔0 2􏰐􏰑 2 􏰓􏰔0 2􏰐􏰑 3 􏰓􏰔0 2􏰐􏰑
+ From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+  
+  Case 2: S = S (S diagonal)
+Case 􏰟 : 􏰗 􏰠􏰗 􏰡􏰗 diagonal􏰢 i
+i
+ 􏰀 The classes still have the same covariance matrix, but the features are allowed to have different variances
+􏰁 In this case, the quadratic discriminant function becomes g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅))
+  i2iii2ii
+􏰂2 􏰦􏰂2􏰣
+􏰕􏰙 􏰒 􏰨􏰙2 􏰥 1􏰓1􏰐11
+  􏰃􏰂2(x􏰂μi)T􏰓􏰓 􏰫 􏰔
+1N (x[k]􏰂μ[k])2 􏰃􏰂 􏰪 i
+􏰐􏰐(x􏰂μi)􏰂2log􏰦􏰦􏰦 􏰫 2 􏰣􏰣􏰣􏰉log(P(􏰅i)) 􏰙􏰂2􏰑 􏰧 􏰙􏰂2 􏰤
+ 2k􏰃1 􏰙k2 2k􏰃1
+ki 1 N
+NN 1 N
+ 􏰂 log􏰩􏰙2􏰉log(P(􏰅))
+ 1 N
+x[k]2 􏰂2x[k]μ[k]􏰉μ[k]2
+􏰃􏰂 􏰪 2k􏰃1
+􏰙k2
+i i
+􏰂 log􏰩􏰙2􏰉log(P(􏰅))
+ 2 k􏰃1
+ki
+    Intelligent Information & Signal Processing Lab.
+School of EE, Korea University 39
+μ1 􏰃[3 2]T μ2 􏰃[5 4]T μ3 􏰃[2 5]T
+Σ􏰃􏰕1 0􏰒 Σ􏰃􏰕1 0􏰒 Σ􏰃􏰕1 0􏰒 1 􏰓􏰔0 2􏰐􏰑 2 􏰓􏰔0 2􏰐􏰑 3 􏰓􏰔0 2􏰐􏰑
+ From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+  
+ Case 2: S = S (S diagonal) Case1:Σ =𝜎2I
+ Case 2 :i􏰚i􏰬􏰚 (􏰚 diagonal) 𝑖
+ 􏰁 Eliminating the term x[k]2, which is constant for all classes
+􏰁
+􏰁 The loci of constant probability are hyper-ellipses aligned with feature
+axes
+􏰁 Note that only difference with the previous classifier is that the distance of each axis is normalized by the variance of the axis
+  1 N 􏰂2x[k]μ[k]􏰉μ[k]2 1
+N
+gi(x)􏰃􏰂 i i 􏰂 log 􏰙2􏰉log(P(􏰅))
+􏰪􏰩 2k􏰃1 􏰙k2 2 k􏰃1
+ki
+ This discriminant is linear, so the decision boundaries gi(x)=gj(x), will also be hyper-planes
+  From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+  Case1:Σ =𝜎2I i𝑖
+ Case 2: S = S (S diagonal)
+Case 2 : 􏰚i􏰬􏰚 (􏰚 diagonal)
+ 􏰁 Eliminating the term x[k]2, which is constant for all classes
+􏰁
+􏰁 The loci of constant probability are hyper-ellipses aligned with feature
+axes
+􏰁 Note that only with the previous classifier is that the distance of each axis is
+  1 N 􏰂2x[k]μ[k]􏰉μ[k]2 1
+N
+gi(x)􏰃􏰂 i i 􏰂 log 􏰙2􏰉log(P(􏰅))
+􏰪􏰩 2k􏰃1 􏰙k2 2 k􏰃1
+ki
+  This discriminant is linear, so the decision boundaries gi(x)=gj(x), will also be hyper-planes
+difference
+ normalized by the variance of the axis
+ From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+  Case1:Σ =𝜎2I
+ Case 2: S = S (𝑖S diagonal), Example Case 2i : 􏰚i􏰬􏰚 (􏰚 diagonal), example
+ 􏰀 To illustrate the previous result, we will compute the decision boundaries for a 3-class, 2-dimensional problem with the following class mean vectors and
+covariance matrices and equal
+ priors
+μ1 􏰃[3 2]T μ2 􏰃[5 4]T μ3 􏰃[2 5]T Σ􏰃􏰕1 0􏰒 Σ􏰃􏰕1 0􏰒 Σ􏰃􏰕1 0􏰒
+1 􏰓􏰔0 2􏰐􏰑 2 􏰓􏰔0 2􏰐􏰑 3 􏰓􏰔0 2􏰐􏰑
+       Intelligent Information & Signal Processing Lab.
+School of EE, Korea University 41
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+  Case1:Σ =𝜎2I
+ Case 2: S = S (𝑖S diagonal), Example Case 2i : 􏰚i􏰬􏰚 (􏰚 diagonal), example
+ 􏰀 To illustrate the previous result, we will compute the decision boundaries for a 3-class, 2-dimensional problem with the following class mean vectors and
+covariance matrices and equal
+ priors
+μ1 􏰃[3 2]T μ2 􏰃[5 4]T μ3 􏰃[2 5]T Σ􏰃􏰕1 0􏰒 Σ􏰃􏰕1 0􏰒 Σ􏰃􏰕1 0􏰒
+1 􏰓􏰔0 2􏰐􏰑 2 􏰓􏰔0 2􏰐􏰑 3 􏰓􏰔0 2􏰐􏰑
+        Intelligent Information & Signal Processing Lab.
+School of EE, Korea University 41
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+  Case 1: Σ𝑖 = 𝜎2I
+Case 3 : 􏰚 􏰬􏰚 (􏰚 non-diagonal)
+ Case 3: S = S (S non-diagonal)
+i
+i
+  􏰀 In this case, all the classes have the same covariance matrix, but this is no longer diagonal
+ 􏰀 The quadratic discriminant becomes g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅))
+  i2iii2ii 􏰃􏰂12(x􏰂μi)T Σ􏰂1(x􏰂μi)􏰂12log(Σ)􏰉log(P(􏰅i))
+  􏰀 Eliminating the term log􏰭􏰗􏰭, which is constant for all classes g (x)􏰃􏰂1(x􏰂μ )T Σ􏰂1(x􏰂μ )􏰉log(P(􏰅 ))
+i2iiii
+􏰁 The quadratic term is called the Mahalanobis distance, a very important
+ distance in Statistical PR
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 42
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+  Case 1: Σ𝑖 = 𝜎2I
+Case 3 : 􏰚 􏰬􏰚 (􏰚 non-diagonal)
+ Case 3: S = S (S non-diagonal)
+i
+i
+  􏰀 In this case, all the classes have the same covariance matrix, but this is no longer diagonal
+ 􏰀 The quadratic discriminant becomes g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅))
+  i2iii2ii 􏰃􏰂12(x􏰂μi)T Σ􏰂1(x􏰂μi)􏰂12log(Σ)􏰉log(P(􏰅i))
+  􏰀 Eliminating the term log􏰭􏰗􏰭, which is constant for all classes g (x)􏰃􏰂1(x􏰂μ )T Σ􏰂1(x􏰂μ )􏰉log(P(􏰅 ))
+i2iiii
+􏰁 The quadratic term is called the Mahalanobis distance, a very important
+  distance in Statistical PR
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 42
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+  Case1:Σ =𝜎2I Case 3 : 􏰚 􏰬􏰚 (􏰚 non-diagonal)
+ Case 3: S = S (S non-diagonal)
+𝑖
+􏰀 The Mahalanobis distance is a vector distance that uses a 􏰗-1 norm
+􏰁 􏰗-1 can be thought of as a stretching factor on the space
+􏰁 Note that for an identit􏰮 covariance matri􏰯􏰡􏰗􏰠I􏰢􏰰 the Mahalanobis distance
+becomes the familiar Euclidean distance
+i
+i
+    Mahalanobis Distance
+x􏰂y 2 􏰃(x􏰂y)T Σ􏰂1(x􏰂y) Σ􏰂1
+        Intelligent Information & Signal Processing Lab. School of EE, Korea University 43
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+  Case 3: S = S (S non-diagonal) Case 1: Σ𝑖 = 𝜎2I
+ Case 3 :i􏰚i􏰬􏰚 (􏰚 non-diagonal)
+􏰁 Expansion of the quadratic term in the discriminant yields
+ gi(x)􏰃􏰂12(x􏰂μi)T Σ􏰂1(x􏰂μi)􏰉log(P(􏰅i)) 􏰃􏰂1􏰌xTΣ􏰂1x􏰂2μTΣ􏰂1x􏰉μTΣ􏰂1μ 􏰍􏰉log(P(􏰅 ))
+2
+iiii
+􏰁 Removing the term xT 􏰗-1 x, which is constant for all classes g (x)􏰃􏰂1􏰌􏰂2μTΣ􏰂1x􏰉μTΣ􏰂1μ 􏰍􏰉log(P(􏰅 ))
+i2iiii 􏰁 Reorganizing terms we obtain
+ g (x)􏰃􏰅Tx􏰉􏰅 iii0
+􏰞􏰅 􏰃Σ􏰂1μ where 􏰛􏰝 i 1 i
+􏰛􏰜􏰅 􏰃􏰂2μTΣ􏰂1μ 􏰉log(P(􏰅)) i0iii
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 44
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+μ1 􏰃[3 2]T μ2 􏰃[5 4]T μ3 􏰃[2 5]T
+Σ􏰃􏰕1 0.7􏰒Σ􏰃􏰕1 0.7􏰒Σ􏰃􏰕1 0.7􏰒 1 􏰓􏰔0.7 2 􏰐􏰑 2 􏰓􏰔0.7 2 􏰐􏰑 3 􏰓􏰔0.7 2 􏰐􏰑
+  
+  Case 3: S = S (S non-diagonal) Case 1: Σ𝑖 = 𝜎2I
+ Case 3 :i􏰚i􏰬􏰚 (􏰚 non-diagonal)
+􏰁 Expansion of the quadratic term in the discriminant yields
+ gi(x)􏰃􏰂12(x􏰂μi)T Σ􏰂1(x􏰂μi)􏰉log(P(􏰅i)) 􏰃􏰂1􏰌xTΣ􏰂1x􏰂2μTΣ􏰂1x􏰉μTΣ􏰂1μ 􏰍􏰉log(P(􏰅 ))
+2
+iiii
+􏰁 Removing the term   which is constant for all classes g (x)􏰃􏰂1􏰌􏰂2μTΣ􏰂1x􏰉μTΣ􏰂1μ 􏰍􏰉log(P(􏰅 ))
+i2iiii 􏰁 Reorganizing terms we obtain
+ g (x)􏰃􏰅Tx􏰉􏰅 𝒈 (𝒙) = 𝑤%𝑥 + 𝑤
+$i $i $&i0
+􏰞 􏰅𝑤 # 􏰃 Σ 􏰂 1 μ
+xT 􏰗-1 x,
+where 􏰛􏰝 i! 1 i
+􏰛􏰜􏰅𝑤!" 􏰃􏰂2μTΣ􏰂1μ 􏰉log(P(􏰅))
+i0iii
+μ1 􏰃[3 2]T μ2 􏰃[5 4]T μ3 􏰃[2 5]T
+Σ􏰃􏰕1 0.7􏰒Σ􏰃􏰕1 0.7􏰒Σ􏰃􏰕1 0.7􏰒 1 􏰓􏰔0.7 2 􏰐􏰑 2 􏰓􏰔0.7 2 􏰐􏰑 3 􏰓􏰔0.7 2 􏰐􏰑
+     Intelligent Information & Signal Processing Lab. School of EE, Korea University 44
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+  Case1:Σ =𝜎2I Case 3 : 􏰚 􏰬􏰚 (􏰚 non-diagonal)
+ Case 3: S = S (𝑖S non-diagonal)
+i
+i
+  This discriminant is linear, so the decision boundaries will also be hyper- planes
+􏰁
+􏰁 The constant probability loci are hyper-ellipses aligned with the
+eigenvectors of 􏰗
+􏰁 If we can assume equal prior
+g i ( x ) 􏰃 􏰂 12 ( x 􏰂 μ i ) T Σ 􏰂 1 ( x 􏰂 μ i )
+􏰁 The classifier becomes a minimum (Mahalanobis) distance classifier
+       Intelligent Information & Signal Processing Lab. School of EE, Korea University 45
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+  Case1:Σ =𝜎2I Case 3 : 􏰚 􏰬􏰚 (􏰚 non-diagonal)
+ Case 3: S = S (𝑖S non-diagonal)
+i
+i
+  This discriminant is linear, so the decision boundaries will also be hyper- planes
+􏰁
+􏰁 The constant probability loci are hyper-ellipses aligned with the
+eigenvectors of 􏰗
+􏰁 If we can assume equal prior
+g i ( x ) 􏰃 􏰂 12 ( x 􏰂 μ i ) T Σ 􏰂 1 ( x 􏰂 μ i )
+􏰁 The classifier becomes a minimum (Mahalanobis) distance classifier
+       Intelligent Information & Signal Processing Lab. School of EE, Korea University 45
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+   Case 3 : 􏰚i􏰬􏰚 (􏰚 non-diagonal), example
+􏰀 To illustrate the previous result, we will compute the decision boundaries for a 3-class, 2-dimensional problem with the following class mean vectors and
+covariance matrices and equal
+priors
+  μ1 􏰃[3 2]T μ2 􏰃[5 4]T μ3 􏰃[2 5]T Σ􏰃􏰕1 0.7􏰒Σ􏰃􏰕1 0.7􏰒Σ􏰃􏰕1 0.7􏰒
+1 􏰓􏰔0.7 2 􏰐􏰑 2 􏰓􏰔0.7 2 􏰐􏰑 3 􏰓􏰔0.7 2 􏰐􏰑
+      Intelligent Information & Signal Processing Lab.
+School of EE, Korea University 46
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+  
+   Case 4 : 􏰱i=􏰲i2I
+􏰀 In this case, each class has a different covariance matrix, which is proportional to the identity matrix
+ 􏰁 The quadratic discriminant becomes g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅))
+    i2iii2ii
+􏰃 􏰂 1 (x 􏰂 μ )T 􏰙 􏰂2 (x 􏰂 μ ) 􏰂 1 N log(􏰙 2 ) 􏰉 log(P(􏰅 ))
+2iii2ii
+􏰁 This expression cannot be reduced further so
+􏰏 The decision boundaries are quadratic: hyper-ellipses
+􏰏 The loci of constant probability are hyper-spheres aligned with the feature axis
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 47
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+  
+  Case 4 : 􏰱i=􏰲i2I
+􏰀 In this case, each class has a different covariance matrix, which is proportional to the identity matrix
+ 􏰁 The quadratic discriminant becomes g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅))
+    i2iii2ii
+􏰃 􏰂 1 (x 􏰂 μ )T 􏰙 􏰂2 (x 􏰂 μ ) 􏰂 1 N log(􏰙 2 ) 􏰉 log(P(􏰅 ))
+2iii2ii 􏰁
+ This expression cannot be reduced further so
+􏰏 The decision boundaries are quadratic: hyper-ellipses
+􏰏 The loci of constant probability are hyper-spheres aligned with the feature axis
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+47
+  
+   Case 4: 􏰳i=􏰘i2I, example
+􏰀 To illustrate the previous result, we will compute the decision boundaries for a 3-class, 2-dimensional problem with the following class mean vectors and
+covariance matrices and equal
+  priors
+  Zoom out
+       Intelligent Information & Signal Processing Lab.
+School of EE, Korea University 48
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+  
+  Case5: Si 1Sj
+Case 5 : 􏰱i􏰴􏰱j general case
+  􏰀 We already derived the expression for the general case at the beginning of this discussion
+g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅)) i2iii2ii
+  Case5: Si 1Sj
+􏰁 Reorganizing terms in a quadratic form yields
+ TT
+𝑔g ( 𝒙x ) =􏰃 x𝑥 % 𝑤W 𝒙x +􏰉 𝑤􏰅 % 𝒙x +􏰉 𝑤􏰅
+$i
+$ i $i $i&0 􏰞W 􏰃􏰂1Σ􏰂1
+􏰛􏰛i 2i where 􏰝􏰅𝑤# 􏰃 Σ􏰂1 μ
+􏰛 !i i 1 i 1
+􏰅 􏰃􏰂 μTΣ􏰂1μ􏰂 log(Σ)􏰉log(P(􏰅)) 􏰛𝑤!i"0 2i i i 2 i i
+  􏰜
+􏰁 The decision boundaries are again quadratic : hyper-ellipses or hyper-parabolloids
+􏰁 Notice that the quadratic expression in the discriminant is proportional to the Mahalanobis distance using the class-conditional covariance 􏰗i
+􏰁 The loci of constant probability for each class are hyper-ellipses, oriented with the eigenvectors of 􏰗i for that class
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 49
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+μ1 􏰃[3 2]T μ2 􏰃[5 4]T μ3 􏰃[2 5]T
+Σ 􏰃􏰕1 􏰂1􏰒 Σ 􏰃􏰕1 􏰂1􏰒 Σ 􏰃􏰕0.5 0.5􏰒 1 􏰓􏰔 􏰂 1 2 􏰐􏰑 2 􏰓􏰔 􏰂 1 7 􏰐􏰑 3 􏰓􏰔 0 . 5 3 􏰐􏰑
+  
+  Case5: Si 1Sj
+Case 5 : 􏰱i􏰴􏰱j general case
+   􏰀 We already derived the expression for the general case at the beginning of this discussion
+g(x)􏰃􏰂1(x􏰂μ)TΣ􏰂1(x􏰂μ)􏰂1log(Σ )􏰉log(P(􏰅)) i2iii2ii
+  􏰁 Reorganizing terms in a quadratic form yields
+ TT
+𝑔g ( 𝒙x ) =􏰃 x𝑥 % 𝑤W 𝒙x +􏰉 𝑤􏰅 % 𝒙x +􏰉 𝑤􏰅
+$i
+$ i $i $i&0 􏰞W 􏰃􏰂1Σ􏰂1
+􏰛􏰛i 2i where 􏰝􏰅𝑤# 􏰃 Σ􏰂1 μ
+􏰛 !i i 1 i 1
+􏰅 􏰃􏰂 μTΣ􏰂1μ􏰂 log(Σ)􏰉log(P(􏰅)) 􏰛𝑤!i"0 2i i i 2 i i
+  􏰜
+􏰁 The decision boundaries are again quadratic : hyper-ellipses or hyper-parabolloids
+􏰁 Notice that the quadratic expression in the discriminant is proportional to the Mahalanobis distance using the class-conditional covariance 􏰗i
+􏰁 The loci of constant probability for each class are hyper-ellipses, oriented with the eigenvectors of 􏰗i for that class
+     Intelligent Information & Signal Processing Lab. School of EE, Korea University 49
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+μ1 􏰃[3 2]T μ2 􏰃[5 4]T μ3 􏰃[2 5]T
+Σ 􏰃􏰕1 􏰂1􏰒 Σ 􏰃􏰕1 􏰂1􏰒 Σ 􏰃􏰕0.5 0.5􏰒 1 􏰓􏰔 􏰂 1 2 􏰐􏰑 2 􏰓􏰔 􏰂 1 7 􏰐􏰑 3 􏰓􏰔 0 . 5 3 􏰐􏰑
+  
+  Case5: Si 1Sj
+Case 􏰵 : 􏰚i􏰶􏰚j general case, example
+􏰀 To illustrate the previous result, we will compute the decision boundaries for a 3-class, 2-dimensional problem with the following class mean vectors and
+covariance matrices and equal
+    priors
+μ1 􏰃[3 2]T μ2 􏰃[5 4]T μ3 􏰃[2 5]T
+Σ 􏰃􏰕1 􏰂1􏰒 Σ 􏰃􏰕1 􏰂1􏰒 Σ 􏰃􏰕0.5 0.5􏰒
+1 􏰓􏰔 􏰂 1 2 􏰐􏰑 2 􏰓􏰔 􏰂 1 7 􏰐􏰑 3 􏰓􏰔 0 . 5 3 􏰐􏰑
+   Zoom out
+     Intelligent Information & Signal Processing Lab.
+School of EE, Korea University 50
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+Case5: Si 1Sj
+Case 􏰵 : 􏰚i􏰶􏰚j general case, example
+􏰀 To illustrate the previous result, we will compute the decision boundaries for a 3-class, 2-dimensional problem with the following class mean vectors and
+covariance matrices and equal
+      priors
+μ1 􏰃[3 2]T μ2 􏰃[5 4]T μ3 􏰃[2 5]T
+Σ 􏰃􏰕1 􏰂1􏰒 Σ 􏰃􏰕1 􏰂1􏰒 Σ 􏰃􏰕0.5 0.5􏰒
+1 􏰓􏰔 􏰂 1 2 􏰐􏰑 2 􏰓􏰔 􏰂 1 7 􏰐􏰑 3 􏰓􏰔 0 . 5 3 􏰐􏰑
+   Zoom out
+     Intelligent Information & Signal Processing Lab.
+School of EE, Korea University 50
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+  
+ Numerical Example Case 1: Σ𝑖 = 𝜎2I
+• Derive a linear discriminant function for a two class 3D classification problem
+defined by the following Gaussian Likelihoods
+ TT
+μ1=[0 0 0];μ2=[1 1 1];S1=S2=ê0 4 0ú;P(w2)=2P(w1)
+é14 0 0ù êú
+ ê1ú ê001ú
+  ë 1 4û2 Since P(w1)+P(w2)=1, P(w1)+2P(w1)=1, thus P(w1)=3 ,P(w2)=3
+•Solution
+éx -μ ùT éx -μ ù 1 T 1 ê1 1úê1 1ú
+gi (x)=-2s2 (x-μi ) (x-μi )+log(P(wi ))= æ1öêx2 -μ2ú êx2 -μ2ú+log(P(wi )) 2ç ÷êx -μ ú êx -μ ú
+  𝑥"−0% 𝑥"−0 " 𝑔" 𝐱 = −2 𝑥# − 0 𝑥# − 0 + 𝑙𝑜𝑔 '
+𝑥' − 0 𝑥' − 0
+𝑥"−1% 𝑥"−1 # 𝑔# 𝐱 = −2 𝑥# − 1 𝑥# − 1 + 𝑙𝑜𝑔 '
+𝑥' − 1 𝑥' − 1
+è4øë3 3ûë3 3û
+      
+ Numerical Example
+w1
+2
+1>(222)2 g (x)=-2(x2 +x2 +x2)+log g (x)=-2 (x -1) +(x -1) +(x -1) +log
+1 1233w<2 3
+w2
+x+x+x > 6-log2=1.32
+123<4 w1
+123
+ • Classify a test example: xu=[0.1 0.7 0.8]T w2
+> 0.1+0.7+0.8=1.6 < 1.32 => xu Îw2
+w1
+
+ Can you predict if they will play?
+• What is the probability of a couple playing tennis on a sunny and cold day given the past history of them playing at various conditions?
+• Notethattherearetwoinput features(x): Outlook and Temperature
+• Outlookcanhave3values: • Sunny
+• Overcast • Rain
+• Temperaturecanhave3values: • High
+• Mild • Cold
+       Outlook
+Temperatur e
+Play=Yes
+Play=No
+ Sunny
+High
+0
+2
+ Sunny
+Mild
+2
+1
+ Sunny
+Cold
+2
+0
+ Overcast
+High
+1
+1
+ Overcast
+Mild
+2
+0
+ Overcast
+Cold
+1
+1
+ Rain
+High
+1
+2
+ Rain
+Mild
+0
+1
+ Rain
+Cold
+0
+1
+ 9
+9
+                      
+ Can you predict if they will play?
+• Apply Bayesian classification
+P(Play Sunny,Cold) = p(Sunny,Cold Play)P(Play) p(Sunny,Cold)
+           Outlook
+Sunny
+Sunny
+Sunny
+Overcast
+Temperatur e
+High
+Mild
+Cold
+High
+Play=Yes
+2
+2
+Play=No
+ 0
+2
+ 1
+ 0
+ 1
+1
+ Overcast
+Overcast
+Rain
+Rain
+Mild
+Cold
+Mild
+Cold
+2
+1
+1
+0
+ 1
+ Rain
+High
+2
+ 0
+0
+1
+ 1
+  9
+9
+        By MAP
+Is p(Sunny, Cold | Play)P(Play) > p(Sunny, Cold | No)P(Not Play) ? (2/9)x(1/2) > (0/9)x((1/2)
+Thus they will play!
+                           Note each of these are a unique combination of features
+
+ Can you predict if they will play?
+Can you predict if the person will play when: • Outlook = Sunny
+• Temperature = Cool • Humidity = High
+• Wind = Strong
+  59
+ More complicated past history of playing tennis
+Naïve Bayes classifier (example)
+     PlayTennis: Trainingexamples
+ Day
+Outlook
+𝑎11 𝑠𝑢𝑛𝑛𝑦 𝒙1 􏰷 𝑎12 􏰷 𝑜𝑣𝑒𝑟𝑐𝑎𝑠𝑡
+𝑎13 𝑟𝑎𝑖𝑛
+  Temperature
+𝑎21 𝐻𝑜𝑡 𝒙2 􏰷 𝑎22 􏰷 𝑀𝑖𝑙𝑑 𝑎23 𝐶𝑜𝑜𝑙
+  Humidity
+𝒙3 􏰷 𝑎31 􏰷 𝐻𝑖𝑔h 𝑎32 𝑁𝑜𝑟𝑚𝑎𝑙
+Wind
+𝒙4 􏰷 𝑎41 􏰷 𝑆𝑡𝑟𝑜𝑛𝑔 𝑎42 𝑊𝑒𝑎𝑘
+Play Tennis
+D1
+Sunny
+Hot
+High
+Weak
+No
+D2
+Sunny
+Cool
+High
+Strong
+No
+D3
+Overcast
+Hot
+High
+Weak
+Yes
+D4
+Rain
+Mild
+High
+Weak
+Yes
+D5
+Rain
+Cool
+Normal
+Weak
+Yes
+D6
+Rain
+Cool
+Normal
+Strong
+No
+D7
+Overcast
+Cool
+Normal
+Strong
+Yes
+D8
+Sunny
+Mild
+High
+Weak
+No
+D9
+Sunny
+Cool
+Normal
+Weak
+Yes
+D10
+Rain
+Mild
+Normal
+Weak
+Yes
+D11
+Sunny
+Mild
+Normal
+Strong
+Yes
+D12
+Overcast
+Mild
+High
+Strong
+Yes
+D13
+Overcast
+Hot
+Normal
+Weak
+Yes
+D14
+Rain
+Mild
+High
+Strong
+No
+                          Intelligent Information & Signal Processing Lab. School of EE, Korea University 59
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+
+  60
+Can you predict if they will play?
+ Naïve Bayes classifier
+ • There are now a total of 4 features
+• Outlook:3possiblevalues
+• Temperature:3possiblevalues • Humidity:2possiblevalues
+• Wind:2possiblevalues
+• Total possible feature combinations • 3x3x2x2=36
+• Number of data points: 14
+• Insufficient data to fully cover the
+feature space!
+• Apply Naïve Bayes
+• Learning Phase: Play=Yes 9 times, Play=No 5 times
+  Outlook
+ Play=Yes
+ Play=No
+Sunny
+2/9
+3/5
+Overcast
+4/9
+0/5
+Rain
+3/9
+2/5
+Temperature
+Play=Yes
+Play=No
+Hot
+3/9
+1/5
+Mild
+4/9
+2/5
+Cool
+2/9
+2/5
+   Humidity
+ Play=Yes
+ Play=No
+High
+3/9
+4/5
+Normal
+6/9
+1/5
+ Wind
+Play=Yes
+Play=No
+Strong
+3/9
+3/5
+Weak
+6/9
+2/5
+  P(Play=Yes) = 9/14
+P(Play=No) = 5/14
+Prior
+     Intelligent Information & Signal Processing Lab. School of EE, Korea University 60
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+  
+ Naïve Bayes Classifier
+• Naïve Bayes: a simple probabilistic classifer based on applying Bayes’ rule with strong (naïve) independence assumptions between the features
+12dkk
+P(C x,x ,.....,x ,)= p(x,x ,...,x C )P(C ) for1£k£K
+   k12 d
+p(x,x ,...,x ) 12d
+• Applying independence assumption
+• Then Bayes rule becomes
+ p(x,x,...,x C)P(C)=p(x C)p(x C)....p(x C)P(C) for1£k£K 12dkk 1k2k dkk
+     P(C x,x,.....,x,)=p(x C)P(C) for1£k£K
+Ck ) p(x2
+Ck )....p(xd
+   1kk
+  k12 d
+p(x1,x2,...,xd )
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+
+ Naïve Bayes Classifier Example
+• Assuming priors are the same, let’s apply ML
+• Develop likelihoods for each feature • p(Outlook=Sunny|Play=Yes)=2/9
+• p(Temperature=Cool|Play=Yes)=2/9 • p(Humidity=High|Play=Yes)=3/9
+p(Outlook=Sunny|Play=No)=3/5 p(Temperature=Cool|Play=No)=2/5 p(Humidity=High|Play=No)=4/5 p(Wind=Strong|Play=No)=3/5
+• Assumingpriorsfromthegivendatamaynotalwaysbethebestoptioniftherearepriorknowledgessuch as the couple has been observed on the average playing tennis in equal proportion
+• Decision by the MAP rule with an assumption of equal prior
+• P(Yes|x) ~ p(Sunny|Yes) p(Cool|Yes) p(High|Yes) p(Strong|Yes) P(Yes) = (2/9)(2/9)(3/9)(3/9)(9/14) = 0.003527 • P(No|x) ~ p(Sunny|No) p(Cool|No) p(High|No) p(Strong|No) P(No) = (3/5)(2/5)(4/5)(3/5)(5/14) = 0.041142
+• Therefore, the prediction is No
+From: J. Huang, I. H. Witten’s and E. Frank’s “Data Mining,” and Jeremy Wyatt
+• p(Wind=Strong|Play=Yes)=3/9
+• Prior probabilities: P(Play=Yes) = 9/14, P(Play=No) = 5/14
+
+ Numerical Stability in Naïve Bayes Classifier
+• Note the numbers calculated in the previous example
+• (2/9)(2/9)(3/9)(3/9)(9/14) = 0.003527
+• Naïve Bayes calculation involves multiplying numbers that are < 1 with other numbers < 1 many times over
+• The example considered only involve 4 input features, but in general there are far more number of features included in the calculation
+• Multiplying lots of probabilities è floating-point underflow.
+• So how do you deal with calculating small numbers?
+• In Naïve Bayes classification, we are only interested in comparing numbers rather than computing the exact values
+• Recall: log(xy) = log(x) + log(y)
+• Take logs of probabilities
+• Comparing log values of probabilities is still valid for classification.
+
+ Numerical Stability in Naïve Bayes Classifier
+• Class with highest final un-normalized log probability score is still the most probable.
+• Instead of comparing P(Yes|X1,...,Xn) with P(No|X1,...,Xn), • Compare their logarithms
+ From: J. Huang, I. H. Witten’s and E. Frank’s “Data Mining,” and Jeremy Wyatt
+
+ 60
+ Zero Frequency Problem in Naïve Bayes Classifier
+ • Another prediction: • Outlook = Overcast • Temperature = Cool • Humidity = High
+Naïve Bayes classifier
+• Learning Phase: Play=Yes 9 times, Play=No 5 times
+   Outlook
+ Play=Yes
+ Play=No
+Sunny
+2/9
+3/5
+Overcast
+4/9
+0/5
+Rain
+3/9
+2/5
+Temperature
+Play=Yes
+Play=No
+Hot
+3/9
+1/5
+Mild
+4/9
+2/5
+Cool
+2/9
+2/5
+ • Wind = Strong
+• But there is no data on not
+playing when Outlook = Overcast! • Solution:
+• Laplace Smoothing by adding a small value to the zero event category and add the same to each of the rest of categories
+P(Play=Yes) = 9/14
+P(Play=No) = 5/14
+ Humidity
+ Play=Yes
+ Play=No
+High
+3/9
+4/5
+Normal
+6/9
+1/5
+ Wind
+Play=Yes
+Play=No
+Strong
+3/9
+3/5
+Weak
+6/9
+2/5
+      Intelligent Information & Signal Processing Lab. School of EE, Korea University 60
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+ 60
+ Zero Frequency Problem in Naïve Bayes Classifier
+Naïve Bayes classifier
+ • Adding the values is limited to the data
+relevanttotheOutlookfeature• LearningPhase: Play=Yes 9times, Play=No 5times
+     Outlook
+ Play=Yes
+ Play=No
+Sunny
+2/9
+3/5
+Overcast
+4/9
+0/5
+Rain
+3/9
+2/5
+ • Changes to the probabilities
+ Temperature
+ Play=Yes
+ Play=No
+Hot
+3/9
+1/5
+Mild
+4/9
+2/5
+Cool
+2/9
+2/5
+  Humidity
+ Play=Yes
+ Play=No
+High
+3/9
+4/5
+Normal
+6/9
+1/5
+ Wind
+Play=Yes
+Play=No
+Strong
+3/9
+3/5
+Weak
+6/9
+2/5
+ P(Play=Yes) = 9/14 P(Play=No) = 5/14
+     Intelligent Information & Signal Processing Lab. School of EE, Korea University 60
+From H. Ko, “Bayesian Learning, Naïve Bayes Classifier
+ 
+ Zero Frequency Problem in Naïve Bayes Classifier
+• Decision making with the MAP rule
+• Given that P(Yes|x’ ) < P(No|x’ ), we label x’ to be “No”
+ 
+ Reviews of Linear Algebra
+ECE 610, spring 2024 David Han Drexel University
+
+ Outline
+• Scalars, Vectors, Matrices, and Tensors • Multiplying Matrices and Vectors
+• Identity and Inverse Matrices
+• Linear Dependence and Span
+• Norms
+• Special Kinds of Matrices and Vectors • Eigendecomposition
+• Principal Component Analysis
+
+ Linear Algebra Review
+• Why Linear Algebra?
+• Essential for understanding machine learning algorithms
+• Input to ML algorithms, (x1, x2, ..., xn) are converted to outputs via a series of linear transformations
+• Recall a linear discriminant function 𝒈!(𝒙) = 𝑤!"𝒙 + 𝑤!#
+ 
+ Linear Algebra Review • Remember Naïve Bayes
+ P(C x,x,.....,x,)=p(x C)P(C) for1£k£K
+Ck ) p(x2
+Ck )....p(xd
+   1kk
+  k12 d
+p(x1,x2,...,xd )
+ 𝒈!(𝒙) = 𝑤!"𝒙 + 𝑤!#
+
+ Linear Algebra Review
+• Scalars: a scalar is just a single number, used to define a magnitude
+• Ex. volume, density, speed, energy, mass, and time
+• Vectors: x vector is an array of numbers.
+• numbers are arranged in order.
+• First element of x is x1, the second element is x2, etc.
+• d-dimensional vector: the vector has d elements, if real valuesèit resides in Rd.
+é x1 ù
+x=êx2úandxT=[x x x]
+êú êx ú ëdû
+12d
+• Vectors can be interpreted as identifying points in space, with each element giving the coordinate along a different axis.
+
+ Linear Algebra Review • Matrices: a 2-D array of numbers
+• For a real valued matrix A with a height of n and a width of d • A∈Rnxd
+• A1,1 is the upper left entry of A and An,d is the bottom right entry • An n × d (rectangular) matrix can be written as
+éa a  a ù
+11 12 1d êaaú
+ê úTê12 n2ú A=ê úandA=êú
+êa a  a ú ê ú ën1 n2 ndû aa
+éa  a ù 11 n1
+ë 1d nd û
+
+ Linear Algebra Review
+• Matrix-valued expressions can be defined by index.
+• For example, f(A)i,j gives element (i, j) of the matrix computed by applying the function f to A.
+
+ Linear Algebra Review
+ • Tensor: An array of numbers arranged on a regular grid with variable number of axes.
+• For a 3-D tensor A, the element of A at coordinates (i, j, k) can be by written as Ai,j,k.
+• Thus:
+• A scalar is a tensor with zero axis
+• A vector is a tensor with only one axis • A matrix is a tensor with 2 axes
+• A tensor can be in higher than 3D
+• Matrix Transpose: mirror image of the matrix across its diagonal
+• Transpose of a matrix A written as AT
+scalar
+vector
+matrix
+3D tensor
+  éa a  a ù 11 12 1d
+éa 11
+
+a ù n1
+êaaú ê úTê12 n2ú
+A = ê     ú êa a  a ú
+and
+A
+= ê    ú
+ën1 n2 ndû
+aa
+ú
+ê
+ë 1d nd û
+
+ Linear Algebra Review • Transpose of a vector is a matrix of only one row.
+é x1 ù
+x=êx2úandxT=[x x x]
+êú êx ú ëdû
+12d
+• Transpose of a scaler is the same: a = a⊤
+• Matrix addition: C = A + B where Ci,j = Ai,j + Bi,j
+• Scalar addition and multiplication of a matrix • D = a·B + c where Di,j =a·Bi,j +c.
+• Adding a vector to a matrix
+• C = A + b, where Ci,j = Ai,j + bj • called broadcasting
+
+ Linear Algebra Review • Matrix multiplication
+• C = AB, for this to work, number of columns in A must match number of rows in B
+• IF A is of shape m × d and B is of shape d × n, then C is of shape m × n.
+éb  b ù éc c  c ù 11 1n 11 12 1n
+éa a  a ù
+11 12 1d êb  b ú êc c  c ú úê21 2nú ê21 22 2nú
+ ê
+AB=ê   úê  ú=ê   ú
+êaaaúê úê ú ëm1 m2 mdûbb ccc
+ë d1 dn û ë m1 m2 mn û • It can be also written out as
+where, cij = åd aik bkj k=1
+
+ Linear Algebra review
+• Hadamard product: element-wise product of two matrices
+• Denoted as A⊙ B
+• WithC=A⊙B, ci,j =(ai,j)(bi,j)
+• Matrix multiplication is distributive • A(B+C)=AB+AC
+• Matrix multiplication is associative • A(BC) = (AB)C
+• Matrix multiplication is Not commutative • AB ≠ BA
+
+ Linear Algebra review
+• Dot product between two vectors is commutative
+• xTy = yTx
+• Additional identities
+ (A+B)T =AT + BT
+(AB)T = BTAT
+(AB)-1 = B-1A-1 if individual inverses exist (A-1)T = (AT) -1
+
+ Linear Algebra Review • Identity and Inverse Matrices
+• Identity matrix, In , preserves n- dimensional vectors as,
+• In ∈ Rnxn such that ⍱ x ∈ Rn , In x = x é1 0 ... 0 0ù
+ê0 1 ... 0 0ú êú
+In =ê. 0 ... 0 .ú ê. 0 ... 1 .ú
+• Matrix Inverse • A-1A=I
+êú
+ê0 0 ... 0 1ú ëû
+
+ Linear Algebra Review • Consider a system of linear equations
+• This can be written in a matrix equation as A x = b
+• where A ∈ Rm×n is a known matrix, b ∈ Rm is a known vector, and x ∈ Rn is a vector of unknown variables to be solved
+• If we know the inverse of A, we can solve the equation by premultiplying A-1 to the matrix equation as
+ A -1A x = A -1b è I x = A -1b è x = A -1b
+
+ Linear Algebra Review
+• The following are equivalent: • A is invertible, i. e. A-1 exists
+• Ax = b has a unique solution
+• Columns of A are linearly independent
+• det (A) ≠ 0
+• Ax = 0 has a unique, trivial solution: x = 0
+
+ Machine learning application
+• A linear Classifier
+• An input image: picture
+• Output y predicts the class category: cat, dog, ship.
+• Input converted to vector x
+• y = WxT + b
+ Srihari, “Linear Algebra for Machine Learning,” https://cedar.buffalo.edu/~srihari/CSE676/2%20LinearAlgebra.pdf
+
+ Linear Algebra Review
+• Norm: used to measure magnitude of a vector
+• Lp norm defined as
+• which measures the distance between vector x
+x =æåxpö1p pçi÷
+      from the origin
+• Norm, f(x), satisfies the following properties:
+• f(x)=0 if x = 0
+• f(x+y) ≤ f(x) + f(y) from triangular inequality
+• ⍱𝛂∈R,f(𝛂x)=∣𝛂∣f(x)
+èiø
+
+ Linear Algebra Review • L1 norm also known as Manhattan distance
+• L2 norm also called Euclidean norm • L2 of x = (xT x) 1⁄2
+• SquarenormofL2=xT x
+• Unit vector is a vector with unit L2 norm:
+• L2 inefficient when x near origin as it increases slowly • L1 norm more effective in this case.
+• L∞ Norm: max norm defined as
+x ¥ = max xi i
+        
+ Linear Algebra Review
+• Frobenius Norm: size of a matrix
+• Similar to L2 norm for vectors
+æ 2 ö12 A =çåA ÷
+• Defined as
+• Measure the size of matrix in terms of
+      F
+è i,j ø i, j
+Euclidean distance
+• Sum of magnitude of all columns (vectors) in the matrix
+• May be used for regularization
+• Minimize Frobenius norm of weight matrices over layers
+
+Linear Algebra Review • Symmetric Matrix:
+• A = AT
+• Orthogonal Matrix
+• AT A=AT A=I andA-1 =AT • Angle Between Vectors
+• Dot product of two vectors can be written in terms of L2 norms and the angle 𝜃 between them
+• aTb = ∣∣a∣∣2 ∣∣b∣∣ 2 cos(𝜃)
+  
+ Linear Algebra Review • Cosine Similarity
+• Cosine between two vectors is a measure of their similarity:
+• cos(𝜃)= 𝒂&𝒃 ∣∣a∣∣ ∣∣b∣∣
+• Orthogonal Vectors: two vectors a and b are orthogonal to each other if 𝒂 # 𝒃 = 0.
+ • Vector Projection
+• Given two vectors a and b, let
+b b =     b
+be the unit • Then a = a×b is the projection of a onto a
+ˆ
+   vector in the direction of b
+ ˆ 1
+straight loine parallel to b, where
+()ˆ
+b b
+a = a cos q =a×b=a×
+     1
+    
+￼Linear Algebra Review
+• Determinants
+• Determinant of a square matrix is a mapping to a scalar
+׀A׀ det(A) or •
+• Measures how much multiplicaton by the
+matrix expands or contracts the space
+• Determinant of product is the product of determinants:
+• det(AB) = det(A)det(B)
+A=a b=ad-bc cd
+￼￼￼￼
+ Linear Algebra Review • Matrix Decomposition
+• Matrices can be decomposed into factors, as in integers
+• Ex. 12 = 2 x 2 x 3
+• Decomposition of Matrix A as
+• A = V diag(𝛌) V-1
+• Where V is composed of eigenvectors and 𝛌 are eigenvalues
+Wkikpedia
+
+ Linear Algebra Review
+• What are eigenvectors and eigenvalues?
+• For a square matrix A, we can find a vector v such that the following is true.
+• A v = 𝛌 v where 𝛌 is a scalar called eigenvalue
+ 
+ Linear Algebra Review
+• If v is an eigenvalue of A, so is any rescaled vector sv. Additionally, sv still has the same eigenvalue.
+• For more convenience, normalize eigenvector so that you have a unit eigenvector.
+𝒙 𝒙!
+𝒙# =
+• We can solve for eigenvectors and
+eigenvalues as follows: •Av-𝛌v=0
+• (A-𝛌)v=0
+• For the equation to have non-trivial solution, det(A - 𝛌) = 0
+
+ Linear Algebra Review
+• Example eigenvector calculation
+for l=6
+é4-6 2 ùév(1)ù é0ù
+A=é4 2ù ê2 4ú
+ê2 4-6úê1(1)ú=ê0ú ë ûëv2ûëû
+ëû
+Av=lv 1212
+(A-l)v = 0
+For non-trivial solution, det(A - l ) = 0
+4-l 2 2 4-l
+(4-l)2 -4=0
+l2 -8l +12 = 0, l=6 and l=2
+v(1) = 1 , and similarly v(2) = 1 êú êú
+-2v(1) + 2v(1) = 0, v(1) = v(1)
+éù éù
+1 -1 ëû ëû
+  =0
+
+ Linear Algebra Review
+• Eigen Decomposition of Matrix
+• Every real symmetric matrix A can be decomposed into real-valued eigenvectors and eigenvalues
+• A = V 𝚲 VT
+• where V is an orthogonal matrix
+composed of unit eigenvectors of A 𝑣!!
+ 𝑣 ! = 𝑣#! 𝑣 ! " = 𝑣!! 𝑣#! 𝑣$! 𝑣$!
+• with 𝚲 being a diagonal matrix of eigenvalues {𝛌1, ...., 𝛌n}
+• Thus, v(1)Tv(1) = 1 while v(i)Tv(j) = 0 when i ≠ j as eigenvectors are orthogonal
+ 
+ Linear Algebra Review
+• Recall A v = 𝛌 v
+• For an eigenvector, v(i), matrix A scales the eigenvector by 𝛌i in the direction of v(i)
+• An example of 2x2 matrix
+• Two orthonormal eigenvectors v(1) and v(2)
+  
+     Linear Algebra Review • Principal Component Analysis (PCA)
+• A method of reducing dimensionality of a dataset
+• Process
+• Compute covariance matrix A of the
+dataset
+• Compute eigenvalues of A !
+• Compute associated eigenvectors 𝑣
+• Sort eigenvalues and eigenvectors in order of sizes of eigenvalues
+• Determine the reduction of data dimensions
+• Form a matrix composed of eigenvectors according to the new dimensions
+• Transform the data into a new feature space with reduced dimensions
+     Programmathically, (2022), “Principal Components Analysis Explained for Dummies,” https://programmathically.com/principal-components-analysis-explained-for-dummies/
+
+ Linear Algebra Review • Get the data
+      Student ID
+Math
+English
+Arts
+1
+90
+60
+90
+2
+90
+90
+30
+3
+60
+60
+60
+4
+60
+60
+90
+5
+30
+30
+30
+                  • Compute covariance matrix A of the dataset
+504 360 180 360 360 0 180 0 720
+ • Compute eigenvalues of A
+𝜆 ≈ 44.81966..... 𝜆 ≈ 629.11039.... 𝜆 ≈ 910.06995....
+
+ Linear Algebra Review
+• Compute associated eigenvectors 𝒗 4
+• Sort eigenvalues and eigenvectors in descending order of eigenvalues
+• Determine the reduction of data dimensions: keep 2 D
+• Form a matrix V composed of eigenvectors according to the new dimensions
+𝒗 =
+−3.75100 ... −0.50494 ... 1.05594 ... 4.28441... 𝒗 = −0.67548... 𝒗 = 0.69108...
+111
+   910.06995 ... 629.11039 ... 44.81966 ...
+   𝑽 =
+1.05594 ... 0.69108 ...
+−0.50494 ...
+−0.67548 ... 11
+
+ Linear Algebra Review
+• Transform the data into a new feature space with reduced dimensions
+• 1st data point
+(#) 90
+•𝑥 =60 90
+ • Transform the data
+𝑻 𝟏 1.05594 0.69108 1 90
+  𝒚 = 𝑽 𝒙 = −0.50494 −0.675481 1 60 90
+
+ Learning Loss and Gradient Descent
+ECE 610 David Han Drexel University
+
+Linear Regression
+• Simplest machine learning problem: Linear Regression • Fit a straight line for a bunch of data points
+Example: Housing Prices = 𝑐𝑜𝑛𝑠𝑡𝑎𝑛𝑡 + 𝑠𝑙𝑜𝑝𝑒 × 𝐻𝑜𝑢𝑠𝑒 𝑆𝑞𝑢𝑎𝑟𝑒 𝑓𝑜𝑜𝑡𝑎𝑔𝑒
+• Housing Price is a linear function of the input feature 𝑠𝑞𝑢𝑎𝑟𝑒 𝑓𝑜𝑜𝑡𝑎𝑔𝑒
+Housing Prices (Portland, OR)
+Price (in 1000 $)
+  Size (feet2)
+
+ Linear Regression: a machine learning problem
+ Size in feet2 (x)
+Price ($) in 1000's (y)
+2104 1416 1534 852 ...
+460 232 315 178 ...
+   Training set of housing prices
+    Notation:
+m = Number of training examples
+x’s = “input” variable / features
+y’s = “output” variable / “target” variable
+Training Set
+Learning Algorithm
+  Size of house
+Estimated price
+h
+Question : How do we describe h ?
+  
+ Linear Regression
+• Housing Price is a linear function of the input feature 𝑠𝑞𝑢𝑎𝑟𝑒 𝑓𝑜𝑜𝑡𝑎𝑔𝑒 Housing Prices = 𝜃! + 𝜃"× 𝐻𝑜𝑢𝑠𝑒 𝑆𝑞𝑢𝑎𝑟𝑒 𝑓𝑜𝑜𝑡𝑎𝑔𝑒
+• Model Parameters to be found: 𝜃!, 𝜃" for 1-D case
+• More generally for more than one input feature: 𝑥# where 𝑛 > 1
+𝑦5 = 𝜃 ! + 𝜃 " 𝑥 " + 𝜃 # 𝑥 # + ⋯ ... 𝜃 $ 𝑥 $
+• where
+• 𝑦! is predicted value of the linear model • n is the number of features
+• 𝑥! is the 𝑖"# feature value
+• 𝜃% is the 𝑗"# model parameter with 𝜃& as the bias term and 𝜃', 𝜃(,......𝜃) as the feature weights
+
+ Linear Regression
+• O r 𝑦7 = h Ɵ ( X ) = 𝛉 · 𝑿
+• Where hƟ is the hypothesis function with model parameters 𝛉
+• With 𝛉 = [𝜃", 𝜃#, 𝜃$,......., 𝜃%] and 𝑿 = [𝑥", 𝑥#, 𝑥$,......, 𝑥%] and 𝑥"=1.
+𝑦7 = 𝜃 " + 𝜃 # 𝑥 # + 𝜃 $ 𝑥 $ + ⋯ ... 𝜃 % 𝑥 %
+
+ Linear Regression
+• For 1D feature case
+• How do you determine the model parameters: 𝜃!, 𝜃"?
+• How do you make the machine find them for us?
+       𝜃! = 290 𝜃! = 0 𝜃" = 0 𝜃" = 0.2
+𝜃! = 100 𝜃" = 0.2
+
+ Linear Regression
+• Find the parameters that minimizes an error.
+ • (This is what most of ML is all about!)
+• Define errors or loss function For the 𝑖th data point (X("), y ("))
+Error = hƟ (X(")) - y (")
+= 𝑦' ( X ( " ) ) - y ( " ) = 𝛉 · X ( " ) − y ( " )
+Housing Prices (Portland, OR)
+• Many different terms for the same meaning in ML: • lossfunction,costfunction,objectivefunction,etc.
+• ML performance: how well the loss function is defined • Loss function notation includes (hƟ (X(,)),y (,))
+m
+Sumofsquareerrors= qX(i) -y(i) ,𝑤h𝑒𝑟𝑒𝑚𝑖𝑠𝑡h𝑒𝑡𝑜𝑡𝑎𝑙𝑛𝑢𝑚𝑏𝑒𝑟𝑜𝑓𝑑𝑎𝑡𝑎𝑝𝑜𝑖𝑛𝑡𝑠
+å( )2 i=1
+Size (feet2)
+
+ Some Distance Measures used as loss functions
+ • Root Mean Square Error (RMSE) =
+m i=1
+qX (i) - y(i) ()
+• Manhattan Distance: 𝐿 #
+𝑛𝑜𝑟𝑚= ∑C AB#
+1m å
+Ɵ · X(A) − y (A)
+2
+ æm ö1n
+å è i=1
+n
+ç qX(i) -y(i) ÷
+ø
+•𝐿𝑛𝑜𝑟𝑚=( )
+%
+
+ Linear Regression
+    Price ($) in 1000’s
+Size in feet2 (x)
+1m 1m å2å
+2 J(q0,q1)=m (h (X(i) -y(i)) =m (qX(i) -y(i))
+i=1
+q
+i=1
+  • By minimizing the error, the best fitting line can be found
+
+ The Normal Equation
+• How do you find 𝛉 that fits all the data points with the least amount of total error orRMSE? % & (") (") (
+MinimumofMSE(𝛉)=𝑎𝑟𝑔𝑚𝑖𝑛𝛉&∑"'% Ɵ·X −y
+For m data points with n dimensional features, error between the prediction
+ vectorƟ · X(") and data y can be expressed in matrices as x (1) x (1) ... x (1) é ù y (1)
+ é ùqéù ê0 1 núê0úêú
+êx(2) x(2) ... x(2) úêq1ú-êy(2) ú=Xq-Y 01n
+ê  ... úêúêú ê úêúêú
+êx(m) x(m) ... x(m)ú q y(m)
+ë0
+1 n ûënûë û Note𝑚≠𝑛 with x0 = 1 to be multiplied to q0
+Note i è data index
+  
+ The Normal Equation
+• A closed form solution to the linear regression exists. Let MSE(𝛉) = J(𝛉)
+T sumofthesquareerror=J(q)=(Xq-Y) (Xq-Y)
+(T)TT
+RewriteJ(q)= (Xq) -YT (Xq-Y)=(Xq) Xq-(Xq) Y-YT (Xq)+YTY
+•
+ TT
+Note (Xq) =qT XT and since Xq and Y are vectors (Xq) Y =YT (Xq)
+T
+J (q ) = q T X T X q - 2 ( X q ) Y + Y T Y
+ Minimize the sum by finding its partial derivatives and set them to zero ¶J ¶(T T T T ) T T
+Derivative orGradient
+  ¶q=¶q q X Xq-2(Xq)Y+Y Y =2X Xq-2X Y=0 ˆ ˆ -1
+    XT Xq =2XTY or q =(XT X) XTY Þ theNormalEquation
+ˆ
+where q is the value of q that minimizes the cost function
+
+ The Normal Equation
+• A closed form solution to the linear regression exists. Let MSE(𝛉) = J(𝛉)
+T sumofthesquareerror=J(q)=(Xq-Y) (Xq-Y)
+(T)TT
+RewriteJ(q)= (Xq) -YT (Xq-Y)=(Xq) Xq-(Xq) Y-YT (Xq)+YTY
+TT
+Note (Xq) =qT XT and since Xq and Y are vectors (Xq) Y =YT (Xq)
+T
+J (q ) = q T X T X q - 2 ( X q ) Y + Y T Y
+•
+Minimize the sum by finding its partial derivatives and set them to zero ¶J¶( T )
+  Derivative or Gradient
+ = qTXTXq-2(Xq)Y+YTY =2XTXq-2XTY=0 ¶q ¶q
+    ˆ -1
+q=(XTX)XTY ÞtheNormalEquation
+ˆ
+XT Xq =2XTY or
+ˆ
+where q is the value of q that minimizes the cost function
+
+ The Normal Equation
+• A closed form solution to the linear regression exists. Let MSE(𝛉) = J(𝛉)
+T sumofthesquareerror=J(q)=(Xq-Y) (Xq-Y)
+(T)TT
+RewriteJ(q)= (Xq) -YT (Xq-Y)=(Xq) Xq-(Xq) Y-YT (Xq)+YTY
+TT
+Note (Xq) =qT XT and since Xq and Y are vectors (Xq) Y =YT (Xq)
+T
+J (q ) = q T X T X q - 2 ( X q ) Y + Y T Y
+•
+Minimize the sum by finding its partial derivatives and set them to zero ¶J¶( T )
+ Derivative or Gradient
+ = qTXTXq-2(Xq)Y+YTY =2XTXq-2XTY=0 ¶q ¶q
+    ˆ -1
+q=(XTX)XTY ÞtheNormalEquation
+ˆ
+XT Xq =2XTY or
+ˆ
+where q is the value of q that minimizes the cost function
+
+ The Normal Equation
+• A closed form solution to the linear regression exists. Let MSE(𝛉) = J(𝛉)
+T sumofthesquareerror=J(q)=(Xq-Y) (Xq-Y)
+(T)TT
+RewriteJ(q)= (Xq) -YT (Xq-Y)=(Xq) Xq-(Xq) Y-YT (Xq)+YTY
+TT
+Note (Xq) =qT XT and since Xq and Y are vectors (Xq) Y =YT (Xq)
+T
+J (q ) = q T X T X q - 2 ( X q ) Y + Y T Y
+•
+Minimize the sum by finding its partial derivatives and set them to zero ¶J¶( T )
+ Derivative or Gradient
+ = qTXTXq-2(Xq)Y+YTY =2XTXq-2XTY=0 ¶q ¶q
+    ˆ -1
+q=(XTX)XTY ÞtheNormalEquation
+ˆ
+XT Xq =2XTY or
+ˆ
+where q is the value of q that minimizes the cost function
+
+Gradient Descent
+  • In most cases, closed form solution doesn’t exist. •Recall ". (,)(,)
+# • How do you find 𝑎𝑟𝑔 𝑚𝑖𝑛𝛉? What are 𝜃" 𝑎𝑛𝑑 𝜃#?
+MinimumofMSE(𝛉)=𝑎𝑟𝑔𝑚𝑖𝑛𝛉.∑,/" Ɵ·X −y
+• If you began anywhere on this surface, the strategy is to
+ walk down hill
+• 𝜃%GHI = 𝜃JKLLG%I + ∆𝜃MIGN IO POQGL RST
+• Fast way to reach the minimum is with the steepest descent (gradient descent).
+• 𝜃$012 = 𝜃34550$2 − ∇6𝐽 where ∇ denotes gradient
+• Unlike someone climbing down the slope, you don’t see the landscape other than the parts immediately near (like being in the dark).
+
+Gradient Descent Algorithm
+How to get to the bottom?
+ Which Way?
+
+ Gradient Descent
+Krzyk, “Coding Deep Learning for Beginners — Linear Regression (Part 3): Training with Gradient Descent,” (2018), https://towardsdatascience.com/coding-deep-learning-for-beginners-linear-regression-gradient-descent-fcd5e0fc077d
+
+ Gradient Descent
+ Krzyk, “Coding Deep Learning for Beginners — Linear Regression (Part 3): Training with Gradient Descent,” (2018), https://towardsdatascience.com/coding-deep-learning-for-beginners-linear-regression-gradient-descent-fcd5e0fc077d
+
+ Gradient Descent
+ Krzyk, “Coding Deep Learning for Beginners — Linear Regression (Part 3): Training with Gradient Descent,” (2018), https://towardsdatascience.com/coding-deep-learning-for-beginners-linear-regression-gradient-descent-fcd5e0fc077d
+
+ Gradient Descent
+ Krzyk, “Coding Deep Learning for Beginners — Linear Regression (Part 3): Training with Gradient Descent,” (2018), https://towardsdatascience.com/coding-deep-learning-for-beginners-linear-regression-gradient-descent-fcd5e0fc077d
+
+ Gradient Descent
+ Krzyk, “Coding Deep Learning for Beginners — Linear Regression (Part 3): Training with Gradient Descent,” (2018), https://towardsdatascience.com/coding-deep-learning-for-beginners-linear-regression-gradient-descent-fcd5e0fc077d
+
+ Gradient Descent
+ Krzyk, “Coding Deep Learning for Beginners — Linear Regression (Part 3): Training with Gradient Descent,” (2018), https://towardsdatascience.com/coding-deep-learning-for-beginners-linear-regression-gradient-descent-fcd5e0fc077d
+
+ Gradient Descent
+ Krzyk, “Coding Deep Learning for Beginners — Linear Regression (Part 3): Training with Gradient Descent,” (2018), https://towardsdatascience.com/coding-deep-learning-for-beginners-linear-regression-gradient-descent-fcd5e0fc077d
+
+ Gradient Descent
+ Krzyk, “Coding Deep Learning for Beginners — Linear Regression (Part 3): Training with Gradient Descent,” (2018), https://towardsdatascience.com/coding-deep-learning-for-beginners-linear-regression-gradient-descent-fcd5e0fc077d
+
+Gradient Descent
+• You see the error going up and down depending on the step you take.
+• Observe the slope and follow the lowest downhill.
+• Being able to calculate the slope is crucial here! è calculate derivatives
+  
+ Gradient Descent
+• Some conditions for this to work • Convex
+  • Differentiable
+ R. Kwiatkowski (2021)m :Gradient Descent Algorithm – a deep dive,” toward data science, https://towardsdatascience.com/gradient-descent-algorithm-a-deep-dive-cf04e8115f21
+
+Batch Gradient Descent
+ • Computing partial derivatives
+¶qj
+å( ) m i=1
+j
+• Gradient of MSE is computed by taking the average of the
+derivatives over the entire training batch. Thus, it is called batch gradient method.
+q(nextstep) =q-hÑqMSE(q) where h is the learning rate
+¶2
+m
+MSE(q)= qTx(i)-y(i) x(i)
+ • Calculation involves the full training set
+éù (x(1) , y(1) ),(x(2) , y(2) ),....,(x(m) , y(m) )
+ëû
+     Ñq (MSE)=2XTXq-2XTY=2XT(Xq-Y)
+
+ Gradient Descent
+• In 1-D search
+• How fast to the minimum is how large are the
+steps
+• Gradient only tells you the direction and magnitude
+• Step size controlèlearning rate
+Small learning rate
+   Large learning rate
+
+Batch Gradient Descent
+• Learning rate
+  • Setting a proper learning rate is crucial in machine learning. Often it is not clear what would be the most appropriate.
+• Consider grid search (chap. 2 of Aurelien Geron)
+
+ Gradient Descent Algorithm
+• Repeat until convergence
+Correct: Simultaneous update
+Incorrect:
+         
+   (for fixed   , this is a function of x) (function of the parameters   )
+  
+   (for fixed   , this is a function of x) (function of the parameters   )
+  
+   (for fixed   , this is a function of x) (function of the parameters   )
+  
+   (for fixed   , this is a function of x) (function of the parameters   )
+  
+   (for fixed   , this is a function of x) (function of the parameters   )
+  
+   (for fixed   , this is a function of x) (function of the parameters   )
+  
+   (for fixed   , this is a function of x) (function of the parameters   )
+  
+   (for fixed   , this is a function of x) (function of the parameters   )
+  
+   (for fixed   , this is a function of x) (function of the parameters   )
+  
+ Stochastic Gradient Descent
+• Computing gradient by taking a random single instance (single data point) and update the solution value immediately.
+• Takes less time to compute gradient
+• Approach to the solution becomes stochastic as a random sample from the data is taken at each step.
+• More efficient in approaching to optimal solution when the data set is large
+Batch vs Stochastic Gradient Descent
+ • Even when the algorithm approaches near an optimal solution, loss function value may
+fluctuate, and may not reach the optimal values although the solution will be very close to it.
+q
+=q -hÑq MSE(q)
+• Gradual reduction of learning rate may help.
+• May work better than batch gradient when the cost function is not convex.
+(next step)
+where h is the learning rate
+
+ Batch, Stochastic, & Mini-Batch
+ 
+Gradient Descent
+• Convex function: no local minimum and only one global minimum • For convex functions, gradient descent is guaranteed to work.
+• Feature scaling and gradient descent
+Features scaled Features not scaled • Scaled featuresèMore rapid descent
+  
+Gradient Descent
+   Not so lucky
+You need some luck to be in Machine Learning!
+   Being lucky here!
+ • Some cost functions (in fact most of the cost functions for interesting problems) are not shaped like bowls (not convex).
+• Thus, there may be local minima on the path to the global minimum.
+• Nonlinear problems such as neural network often results such local minima.
+• Gradient descent may not work well in such cases.
+
+ Gradient Descent
+• Therefore, the path to the minimum can be quite an adventure!
+     J(􏰸0,􏰸1)
+􏰸0
+􏰸1
+    Intelligent Information & Signal Processing Lab. School of EE, Korea University 15
+
+ Logistic Regression
+ECE 610 David Han Drexel University
+
+ Probabilistic Interpretation of Linear Regression
+• Let’s consider the linear regression problem in terms of probability and see why the cost function J is a reasonable choice.
+• Let’s assume that the target variables and the inputs are related via the equation • y(i) = θT x (i) + ɛ(i)
+• where ɛ(i)is an error term that captures either unmodeled effects or random noise.
+• Let’s also assume that ɛ(i)s are distributed IID (Independently and Identically Distributed) according to a Gaussian distribution with zero mean and variance of
+𝜎!
+p(e(i))=
+• Therefore,
+• Also by substitution p(y(i) x(i);q) =
+æ()ö 1 expç- e(i) ÷
+2ps ç 2s2 ÷ èø
+2
+   1 2ps
+æ2ö ç (y(i)-qTx(i))÷
+exp -
+ç 2s2 ÷
+   èø
+
+ Probabilistic Interpretation of Linear Regresstion
+• “p(y(i) |x(i) ; θ)” indicates that this is the probability distribution of y(i) given x(i) and parameterized by θ.
+• In other words, it describes the distribution of the y(i)’s, given X (the design matrix, which contains all the x(i)’s) and θ.
+• We can also call it the likelihood function:
+x
+• as the probability will change as a function of the choice of θ
+• L(θ)=L(θ;X,y)=p(y|X;θ)
+• Now, by assuming that each ɛ(i) is independent, consider the entire
+dataset pair and the likelihood of the dataset occurring
+(y(i) -qTx(i)) æ2ö
+m  m 1
+L(q)=Õp(y(i) x(i);q)=Õ i=1 i=1
+÷
+   2ps
+expç-
+ç 2s2 ÷ èø
+
+Probabilistic Interpretation of Linear Regresstion
+• Now, given this probabilistic model relating the y(i)‘s and the x(i)‘s, what is a reasonable way of choosing our best guess of the parameters θ?
+• Maximum likelihood: choose θ to make the data as high probability as possible. • ChooseθtomaximizeL(θ)
+ • Maximing L(θ) may be a bit messy. So let’s maximize its log or max the log likelihood: æ2ö
+m 1 (y(i) -qTx(i)) (q)=logL(q)=logÕ expç-
+÷
+æ2ö =åm log 1 expç-(y(i)-qTx(i))÷
+i=1 2ps ç 2s2 ÷ èø
+i=1 2ps ç 2s2 ÷ èø
+    =mlog
+2 - (y(i) -qTx(i))
+111åm 
+ 2ps
+s2 2i=1
+
+ Probabilistic Interpretation of Linear Regresstion
+• Discarding the constants, maximizing l (θ) then becomes maximizing é1m ù
+argmaxê-2å(y(i) -qTx(i))2ú q ë i=1 û
+• which is the same as minimizing the negative of the summation term. It is the same term to be minimized as in the linear regression!
+q
+éå  ù argmin m (y(i) -qTx(i))2
+êú ëi=1 û
+• Under the probabilistic assumptions on the data, least-squares regression corresponds to finding the maximum likelihood estimate of θ.
+• Thus, the least-squares regression can be justified as a method for maximum likelihood estimation.
+
+ Logistic Regression
+• Binary Classification Problems
+• Email: Spam or Ham?
+• ATM machine currency check: Fradulent (yes or no)?
+• Tumor: Malignant or Benign? • y∈ {0, 1}
+• 0: Negative Class (e.g. benign tumor)
+• 1: Positive Class (e.g. malignant tumor)
+   
+ Logistic Regression
+• Consider a hypothesis function for 1D feature case of
+predicting cancer:
+h (x)=qTx=w x+b q1
+  • A threshold based classifier output hθ(x) at 0.5:
+• If hθ(x) ≥ 0.5, predict “y=1” • If hθ(x) < 0.5, predict “y=0”
+
+ Logistic Regression
+• Linear regression model is not the most suitable one for classification • Hypothesis function now needs to predict values y∈ {0, 1}.
+• Logistic regression: binary prediction of {0, 1}.
+• Thus, it is the right choice for a binary classification.
+h(x)=gqTx = ()1
+
+ q 1+e-qT x where g(z)= 1
+  1+e-z
+• is called logistic function or the sigmoid function
+
+ Logistic Regression
+• An alternative way to fit the data
+       Decision Boundary
+
+ Logistic Regression
+• Notice that g(z) tends towards 1 as z → ∞, and g(z) tends towards 0 as z → −∞.
+• Moreover, g(z), and hence also h(x), is always bounded between 0 and 1. As before, we are keeping the convention of letting x0 = 1, so that
+as g
+g'(z)= d 1 = 1 (e-z)
+=
+n qTx=q +åq x
+0
+j=1
+jj
+• Some useful property of the derivative of the sigmoid function written
+  dz 1+e-z
+2
+1+e
+( -z)
+1æ1ö
+ç1- ÷ = g(z)(1- g(z))
+( -z)ç ( -z)÷ 1+e è 1+e ø
+  
+ Logistic Regression
+• Recall for N-dimensional features (x)
+• θTx = [θ0, θ1, θ2, ...., θN]T[x0, x1, x2, ...., xN] • where x0= 1
+• Let’s make a slight notational adjustment:
+• θTx = [b, w1, w2, ...., wN]T[x0, x1, x2, ...., xN] •hθ(x)= h(θTx)=h(b+w1 x1 +w2 x2+....+wNxN)
+• Thus, for 1-D feature •hθ(x) = h(w1 x1 + b)
+
+ Logistic Regression
+• How do we set θ to best fit the data? This is now logistic regression, not linear regression.
+• Using the same probabilistic assumption on the data, fit the parameters via Maximum Likelihood.
+• Let’s assume
+• P(y = 1 | x; w,b) = hw,b(x)
+• P(y = 0 | x; w,b)=1 − hw,b(x)
+• More compactly
+• P(y | x; w,b)=(hw,b(x))y(1-hw,b(x))1-y
+
+ Logistic Regression
+• With m training examples assumed to be generated independently, we can then write down the likelihood of the parameters as
+m L(w,b)= p(y X;w,b)=Õp(y(i) x(i);w,b)
+i=1
+The objective here is to
+  maximize the likelihood by w and m  y(i)  1-y(i) b to match the occurrence of
+= h x(i) 1-h x(i) Õ(())( ())
+data composed of (x, y) pairs. • As before, it is easier to maximize the log likelihood
+$
+𝑙 𝑤,𝑏 =log𝐿 𝑤,𝑏 = + 𝑦(!)logh',) 𝐱(!) + 1−𝑦(!) log 1−h',) 𝐱(!) !"#
+w,b w,b i=1
+   
+ Logistic Regression
+• How do we maximize the likelihood?
+• As in linear regression, use gradient ascent.
+• Written in vectorial notation, our updates will be given by
+w(next step) = w+hÑ (w,b) w
+b(next step) =b+hÑ (w,b) b
+where h is the learning rate
+• Note the positive rather than negative sign in the update formula, since we’re maximizing, rather than minimizing, a function now.
+
+ Logistic Regression
+• Forbatchgradientascent,weneedtosumupforallthedatapointsas $
+𝑙 𝑤,𝑏 =log𝐿 𝑤,𝑏 = + 𝑦(!)logh',) 𝐱(!) + 1−𝑦(!) log 1−h',) 𝐱(!) !"#
+• Alternatively, taking one training example (x, y) and immediately take derivatives to update w and b is called stochastic gradient ascent rule:
+• Forstochasticgradientascent,thesummationgoesawayasweonlyhavetodealwithonedatapoint 𝑙 𝑤,𝑏 =𝑦(3)logh5,6 𝐱(3) + 1−𝑦(3) log 1−h5,6 𝐱(3)
+• Let’ssubstitutesigmoidfunction
+𝑙 𝑤,𝑏 =𝑦(3)log 1 + 1−𝑦(3) log 1− 1 1+𝑒7 5!𝐱86 1+𝑒7 5!𝐱86
+               
+ Logistic Regression
+• For compactness
+• where g(wTx+b)=
+é ù é ù (w,b)=y(i)log g(wTx+b)+(1-y(i))log 1-g(wTx+b)
+1
+1+ e-(wT x+b)
+ëûëû
+ •Computinggradient ¶()æ 1 () 1 ö¶( )
+oftheloglikelihood  w,b =çy - 1-y ÷ g wTx+b
+   w.r.t. wj j
+() () èø
+j
+• But recall the derivative of g
+• Thus
+¶w ç g wTx+b 1-g wTx+b ÷¶q
+ g ' ( z ) = g ( z ) (1 - g ( z ) ) ¶æ11ö()¶
+(wT x+b )
+ ( w, b ) = ç y - (1 - y ) ÷ g (wT x+b ) 1 - g (wT x+b )
+¶w ç g(wTx+b) 1-g(wTx+b)÷ ¶w jèøj
+    
+ Logistic Regression
+¶ ¶wj
+=(y-h (x))x w,b j
+ w,b =çy - 1-y ÷ g wTx+b ¶()æ1()1ö¶()
+• Continue calculating the gradient
+• Similarly for b
+(w,b)= y1-g(wTx+b)-(1-y)g(wTx+b)x (())
+j
+ ¶b ç g(wTx+b) 1-g(wTx+b)÷¶q èøj
+   æ1 1ö
+()
+= ç y - (1 - y ) ÷ g (wT x+b ) 1 - g (wT x+b )
+ç g(wTx+b) 1-g(wTx+b)÷ èø
+  =y1-gwTx+b -1-ygwTx+b (( ( ))( )( ))
+=(y-hw,b(x))
+
+ Logistic Regression
+• Therefore
+• And
+• Thus the update rules according to stochastic gradient ascent for wj and b are
+w =w +h(y-h (x))x j j w,b j
+b=b+h(y-h (x)) w,b
+¶w¶ (w,b)=(y-hw,b(x))xj j
+  ¶ ¶b
+(w,b)=(y-h (x)) w,b
+ 
+ Logistic Regression
+• For 1D case
+w =w +h(y-h (wx+b))x=w +hæy- 1 öx 1 1 w,b 1 1 ç -(wx+b)÷
+ b = b +h (y - h (x))= b +h æ y - w,b ç
+è1+e1 ø 1 ö
+• Applying stochastic gradient ascent with updating the gradient at the ith
+data
+w =w +hæy(i) - 1 öx(i) ç÷
+1 1 ç -wx(i)+b ÷ è 1+e ( 1 ) ø
+-(w x+b) ÷ è1+e1 ø
+  b=b+hæy(i) - 1 ö ç÷
+ç -wx +b ÷ è 1+e(1(i) )ø
+ 
+ Logistic Regression
+• Compared to the update rule of the linear regression, it looks identical. However this is not the same since hθ(x(i) ) is a non-linear function of θTx(i)
+• Now consider a logistic regression problem of multidimensional input features 
+h (x)=g(b+wx+wx+...+wx) w,b 1122NN
+• The multidimensional logistic regression in pictorial representation
+  b
+hθ(wTx(i)+b)
+Now, this looks like a neural network!
+
+ Logistic Regression
+
+• Not all the input feature vector may contribute equally to the target value
+• Forcing the algorithm to fit the data to N-dimensional model may result in overfitting
+h (x)=g(b+wx+wx+...+wx) w,b 1122NN
+   
+ Regularization
+• Regularization: to constrain overfitting of a model • Ridge Regression (Tikhonov regularization)
+n •Aregularizationtermaåw2 subtractedfromthe
+likelihood function.
+• Note that the bias term b is not regularized. It can be added but its influence is typically small, so it is not considered in regularization
+• The terms are subtracted during training only. The hyperparameter 𝛼 controls how much to regularize.
+• For 𝛼=0 the model becomes logistic regression
+ i i=1
+J(q)=(q)-a åw2
+1n
+2 i=1
+i
+
+ Regularization
+• Thus the regularized log likelihood is m
+ a2
+2
+(w,b)=åy(i) logh
+i=1
+• with the regularization term, update rule for the gradient ascent is
+(x(i))+(1-y(i))log(1-h (x(i)))- w,b
+w
+    • Turning into Batch Gradient Ascent of J(wTx+b)
+• Usesentiretrainingsettotakean iteration
+å
+ëi=1 û
+w,b
+w=w+hy(i)-h (x(i))x(i)-aw ()
+j j w,b j j ( (i) (i) )
+b=b+h y -h (x ) w,b
+émù wj=wj-hê (h (x(i))-y(i))x(i)+awú
+w,b jj éå ù
+b=b-h m (h (x(i))-y(i)) êw,b ú
+ëi=1 û
+
+Standard Pre-processing
+• Mostregularizedmodelsaresensitivetoinputfeaturescales.Thus,itis important to scale the data (e.g., using a StandardScaler) before performing Ridge Regression.
+ • Rescaleeachfeaturextohavezeromeanandunitvariance 1m1m2
+μ= åx(i) ands2= åéx(i)-μù jmjjmëjiû
+i=1 i=1
+x(i) -μ X(i) = j i
+• Rescalingandzeromean
+• Mayomitpreprocessingifthefeaturesareoncomparablescales.
+ jsj x Î[-5,5], x Î[-3,3]
+• e.g.
+• However, if x Î[0,1000], x Î[0,1]
+12
+ 12
+• Gradientdescentwillbeveryslow
+
+ Introduction to Artificial Neural Networks (ANN)
+ECE 610 David Han Drexel University
+
+ Artificial Neural Networks (ANN)
+• Origins: Algorithms that try to mimic the brain.
+• Was very widely used in 80s and early 90s; popularity diminished in
+late 90s.
+• Huge Comeback in 2010s: State-of-the-art technique for many applications
+  Biological Neuron
+Artificial Neuron
+
+ Perceptron
+• The simplest of Artificial Neural Network (ANN) architectures • Invented in 1957 by Frank Rosenblatt
+• Also called Threshold Logic Unit (TLU)
+• TLU takes weighted inputs and sums them
+• Produces a binary output as a Heaviside step function (threshold function): z=wx+wx +.......+wx +b=xTw+b
+ 1122nn
+ b
+("%, O = *) 1 : $# ∑ w i x i '& + b > 0 *-
+*i*
++ 0 : otherwise . 0: otherwise
+
+ Perceptron
+• Can be used for a simple linear binary classification
+• Composed of a single layer of TLUs
+• Multiclass classification possible by input
+connected to multiple TLUs
+• Each TLU connected to all the inputs
+• “Fully connected layer” or a “dense layer” means when all the neurons in a layer are connected to every neuron in the previous layer.
+Class 1
+Class 2
+Class 3
+    
+ Perceptron
+• Can be used for a simple linear binary classification
+• Composed of a single layer of TLUs
+• Multiclass classification possible by input
+connected to multiple TLUs
+• Each TLU connected to all the inputs
+• “Fully connected layer” or a “dense layer” means when all the neurons in a layer are connected to every neuron in the previous layer.
+Class 1
+Class 2
+Class 3
+ 
+ Perceptron
+• Can be used for a simple linear binary classification
+• Composed of a single layer of TLUs
+• Multiclass classification possible by input
+connected to multiple TLUs
+• Each TLU connected to all the inputs
+• “Fully connected layer” or a “dense layer” means when all the neurons in a layer are connected to every neuron in the previous layer.
+Class 1
+Class 2
+Class 3
+ 
+ Perceptron
+• Can be used for a simple linear binary classification
+• Composed of a single layer of TLUs
+• Multiclass classification possible by input
+connected to multiple TLUs
+• Each TLU connected to all the inputs
+• “Fully connected layer” or a “dense layer” means when all the neurons in a layer are connected to every neuron in the previous layer.
+Class 1
+Class 2
+Class 3
+ 
+ Perceptron
+z=wx+wx +b 11 22
+b
+• Recall an equation of line in 2D space from linear algebra.
+• Thus, z=0 forms a decision boundary.
+ì0 if z<0
+íh! 𝑧 =0𝑖𝑓𝑧<0
+h 𝑧=1𝑖𝑓𝑧≥0
+î
+!
+1 if z30
+       x2
+or
+    x1
+ 
+  Perceptron
+• Consideralineralyseparable dataset
+• Aproperlydrawnlineof equation would serve as the classification decision boundary.
+• Theclassifierhastoprovidea binary output while taking the input value of z.
+• Thus an activation function h needs to behave as.
+• Heavisidestepfunctionwas chosen
+        h(z)=ì0 if wx+b<0 í
+1 if wx+b30 î
+ heaviside(z)=ì0 if z<0 í
+ 1 if z30 î
+Decision Boundary
+
+ Perceptron
+• Perceptron can also do some logical computations • Let x1 and x2 be booleans
+• Consider a perceptron with the following weights
+x1
+4 4
+-7 1
+x1
+01 00
+hw,b(x)
+ x2
+        x1
+x2
+z
+h(z)
+ 0
+0
+-7
+0
+ 0
+1
+-3
+0
+ 1
+0
+-3
+0
+ 1
+1
+1
+1
+            This is an “AND” operation
+x2
+
+ Perceptron
+• More logical computations by perceptron
+x1
+4 4
+-3 1
+x1
+11 01
+  x2
+hw,b(x)
+      x1
+x2
+z
+h(z)
+0
+0
+-3
+0
+0
+1
+1
+1
+1
+0
+1
+1
+1
+1
+5
+1
+           An “OR” operation
+x2
+
+ Perceptron
+• More logical computations by perceptron
+x1
+-4 -4
+2 1
+x1
+00 10
+ x2
+hw,b(x)
+       x1
+x2
+z
+h(z)
+0
+0
+2
+1
+0
+1
+-2
+0
+1
+0
+-2
+0
+1
+1
+-6
+0
+           A “NOR” operation
+x2
+
+ Perceptron Training
+• But,howdowefindtherightwandb? Howdowetrain perceptron?
+• BasedonHebbianlearning
+• Originated from Hebb’s rule in The Organization of Behavior:
+w(nextstep) = w(current) +h(y - yˆ)x iii
+• Thelearningrulereinforcesconnectionsbetweenconnected neurons that help reduce the error.
+x1
+w
+ x2
+b
+1
+w
+yˆ (x) w,b
+1
+2
+ Logistic Regression Update Rule
+ wj =wj +h(y-hw,b(x))xj bj =bj +h(y-hw,b (x))
+where
+w is the connection weight between the ith input neuron and the output neuron.
+i
+xi is the ith input value of the current training instance.
+yˆ is the output of the output neuron for the current training instance.
+y is the target output of the output neuron for the current training instance. h is the learning rate.
+
+ Perceptron
+• The decision boundary is linear, so perceptron can’t be applied to complex problems
+• If the training instances are linearly separable, Rosenblatt demonstrated that this algorithm would converge to a solution. This is called the Perceptron convergence theorem.
+• Though it looks similar, perceptron is different compared to logistic regression and least square linear regression.
+• It is hard to relate its predictions with meaningful probabilistic interpretations
+• Can’t show it as a maximum likelihood estimation algorithm.
+
+Perceptron
+• Death of perceptron: “Perceptron” by Marvin Minsky and Seymour Papert
+• Highlighted major weaknesses • Incapable of XOR (Exclusive OR)
+• Minsky and Papert’s work froze any further advancement of neural network for decades!
+    Images from: https://aiws.net/the-history-of-ai/aiws-house/this-week-in-the-history-of-ai-at-aiws-net-marvin-minsky-and-seymour-papert-published-an-expanded-edition-of-perceptrons/
+
+ Perceptron
+• It turned out a simple addition to perceptron wouldsolveXOR problem.
+• Let’s combine three of the perceptrons used for logical computations previously
+x14 x1
+4 4
+x1 -4 x2 -4
+2
+   x2 4 1 -7
+x2
+   1 -3 1
+ x1 -4 a1
+x2 -4 4     a2 4 hw,b(x)
+2 -7 4
+1 -3
+1
+ 4
+     
+ Perceptron
+• XORcanbedonebya stacked 2 layer perceptron!
+ x1 -4 a1
+x2 -4 4     a2 4 hw,b(x)
+2 -7 4
+1 -3
+1
+ 4
+     x2
+01
+10 x1
+         x1
+x2
+a1
+a2
+hw,b(x)
+ 0
+0
+1
+0
+1
+ 0
+1
+0
+0
+0
+ 1
+0
+0
+0
+0
+ 1
+1
+0
+1
+1
+          
+  Multi-Layer Perceptron
+• Thus, by adding more layers, it is possible to draw more complex decision boundaries.
+• Addingahiddenlayer
+• Multi-Layer Perceptron (MLP)
+   From: https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788295758/6/ch06lvl1sec59/introduction-to-deep-learning
+ hidden layer
+
+ Perceptron Computation
+  x1
+w (1) 1,2
+x2
+w (1) 1,3
+x3
++1
+Layer 1
+A two step process
+w (1) 1,1
+   (2) z1
+(2) 1
+Layer 2
+a
+z(2) =w(1)x +w(1)x +w(1)x +b(1)
+1 111 122 133
+1
+ a(2) = f (z(2) ) 11
+Where f is an activation function
+
+ Neural Network Notations
+• Multilayer Perceptrons
+x (2) ..... z(D)
+     1z1 1 ..... z(D)
+         x2 2 x3 .....
+z(3) 1
+           +1
+ +1 ..... +1
+Layer 1 Layer 2 Layer D-2 Layer D-1 Layer D
++1
++1
+
+ Neural Network Notations
+ The term w(l) denotes the weight applied to an i, j
+activation a(l) and added to z(l+1). ji
+    z(d ) a(d ) 11
+w(d ) 1,1
+w(d ) 1,2
+z(d +1) a(d +1) 11
+Layer d+1
+  a(l) denotes activation of unit i in layer l i
+for l = 1, we use a(1) = x ii
+f (..) is the activation function such as a sigmoid
+  z(d ) a(d ) 22
+  z(d+1) =w(d)a(d) +w(d)a(d) +w(d)a(d) +b(d)
+1 111 122 133
+1
+  Layer d
+a(d+1) =f(z(d+1)) 11
+
+ Neural Network Details
+  w(1) z(2) a(2) 1,1 11
+w (1) 2,1
+z(2) a(2) x2 22
+ForLayers1and2
+     x1
+  z(2) =w(1)x +w(1)x +w(1)x +b(1) 2 211 222 233 2
+a(2) = f(z(2)) 22
+z(2) =w(1)x +w(1)x +w(1)x +b(1) 3 311 322 333 3
+a(2) = f(z(2)) 33
+     w (1) 1,3
+  x3
+z(2) a(2) 33
+  b3(1) +1
+Layer 1
+Layer 2
+ 
+ Neural Network Details
+   w(1) z(2) a(2) 1,1 11
+w (1) 2,1
+z(2) a(2) x2 22
+ z(3) =w(2)a(2) +w(2)a(2) +w(2)a(2) +b(2) ) 1 111 122 133 1
+    x1
+            w(1) 1,3
+z(3) 1
+Layer 3
+b(2)
+  x3
+z(2) a(2) 33
+  b3(1) +1
+Layer 1
++1
+  Layer 2
+h =a(3)=f(z(3)) W,b1 1
+ h (x) W,b
+
+ Multi-Layer Perceptron Training
+• Deeper layers seem to allow perceptrons to deal with more complex problems, but how do you train the deep network?
+• Recall the perceptron learning rule?
+w(nextstep) = w(current) +h(y - y)x
+ iiˆi
+• What do you do for hidden layers? No y values are available for training on hidden
+layers!
+• In 1986, David Rumelhart, Geoffrey Hinton and Ronald Williams introduced the backpropagation training algorithm based on finding weights to minimize the cost function using Gradient Descent.
+• This requires using a different activation function than the step function, since its gradient is mostly zero (flat).
+q(nextstep) =q-hÑqJ(q) where h is the learning rate
+
+ Activation Functions
+• Stepfunctionhaszeroderivativeeverywhereexceptatz=0
+• Thiswouldmakeitdifficulttoperformgradientdescentinback
+propagation
+• Rumelhart,et.alchangedtheactivationfunctionfromstepfunctionto
+ sigmoid function (logistic function) • Recall
+• SigmoidFunctionProperties:
+• Itsderivativeexistseverywhere!
+ as z®¥,s(z)®1 as z ® -¥, s (z) ® 0
+s (0) = 1 2
+  g'(z)= d 1 = 1 (e-z) dz 1+e-z 2
+  =
+g '(¥) = 0
+1+e
+( -z)
+1æ1ö
+ç1- ÷ = g(z)(1- g(z))
+( -z)ç ( -z)÷ 1+e è 1+e ø
+  g '(-¥) = 0
+g '(0) = 1 4
+ 
+ Activation Functions
+• Hyperbolic tangent function (Tanh) • Continuous,differentiable
+• Range -1 to +1
+Tanh
+g(z) = tanh(z) = ez -e-z ez +e-z
+• HyperbolictangentProperties:
+• Thederivativeexistseverywhere
+ as z ® ¥, g(z) ®1
+as z ® -¥, g(z) ® -1
+g(0) = 0
+  g'(z)= d æez -e-z ö=1-(tanh(z))2 dzçez +e-z ÷
+ èø =1-æez -e-z ö2
+çez +e-z ÷ èø
+ g '(¥) = 0 g '(-¥) = 0 g '(0) = 1
+ 
+ Activation Functions
+• Rectified Linear Unit (ReLU)
+• Continuous,differentiableexceptatz=0
+• Fasttocompute
+• Derivative constant at z >> 0èalleviates vanishinggradientproblemindeepnetwork
+a(z) = max(0, z) • ReLUProperties:
+• Itsgradientexistseverywhere except at z=0
+for z £ 0, a(z) = z for z < 0, a(z) = 0
+forz>0, a'(z)=z forz<0, a'(z)=0
+   
+ Activation Functions
+• Activation functions compared: all nonlinear
+ • Why do we need nonlinear functions?
+• Multilayered resulted nonlinear decision boundaries
+• With linear activation, multilayer can be collapsed into a single layer
+
+ Why Nonlinear Activation Functions?
+• Consider linear activation function z(2) =W(1)x+b(1)
+x1
+x2 a(3)
+     x1
+x2 z(2)
+x3 z(2) 3
++1
+a(2) =g(2)(z(2))
+Forlinearactivaton g(2)(z(2))=z(2)
+z(2) 1
+     2
+z(3) =W(2)a(2) +b(2) a(3) =g(3)(z(3))=z(3)
+Equivalent x 3
++1
+A deep network with linear activation is equivalent to a single layer network!
+ z(3) 1
+    Sincea(2) =z(2) =W(1)x+b(1)
+z(3) =W(2)a(2) +b(2) =W(2) W(1)x+b(1) +b(2)
+a(3) = z(3) =W(2) W(1)x+b(1) +b(2) ()
+=W W x+W b +b =Wx+b
+(2) (1) (2) (1) (2)
+()
+  +1
+
+   Intuition about deep representation
+Intuition about deep representation
+       Low Level Features
+                                       􏰀 Image: Pixel Edge
+Texture Motif Part Word-group Clause Sentence
+Object Story
+􏰀 Text: Character
+Word
+Mid Level Features
+High Level Features
+Output (e.g. outdoor, indoor)
+ Trainable Classifier
+    Intelligent Information & Signal Processing Lab.
+School of EE, Korea University
+46
+ 
+   Intuition about deep representation
+Intuition about deep representation
+       Low Level Features
+                                       􏰀 Image: Pixel Edge
+Texture Motif Part Word-group Clause Sentence
+Object Story
+􏰀 Text: Character
+Word
+Mid Level Features
+High Level Features
+Output (e.g. outdoor, indoor)
+ Trainable Classifier
+    Intelligent Information & Signal Processing Lab.
+School of EE, Korea University
+46
+ 
+ Multi-Layer Perceptron
+• Deeper and deeper layers for more complex problems and for higher performance
+   Isitacar or not?
+ Binary Classification
+
+ Multi-Layer Perceptron
+• Multiclass Classification by MLP by adding another output node at the last layer
+• Binary Classification by MLP
+x (2) z(2) x1 z(2)
+        1z1 1 1
+   Car Car z(2) =2 z(2) z(3)
+       x2z(2)+2 x21 2
+   z(3)
+1 (2) (#) x3 z(2) (#)
+      x3 z(2) 3
++1
+z3 𝑧! 3 𝑧!
+   +1 +1 +1
+Motorcycle
+  +1
+
+ Multi-Layer Perceptron
+• Multiclass Classification by MLP
+  Each of these are binary classificaiton
+   h1(wTa(i)+b1) h2(wTa (i)+ b2)
+h3(wTa (i)+ b3) h4(wTa (i)+ b4)
+Car
+  Pedestrain
+  Truck
+  Motorcycle
+ 
+ Multiclass Classification by MLP
+• For a multiclass classification, the output is a vector with the dimension matching to the number of the classification categories
+       é0.86ù é0.06ù é0.35ù é0.15ù ê0.34ú ê0.79ú ê0.29ú ê0.36ú
+ êúêúêúêú ê0.56ú ê0.14ú ê0.92ú ê0.28ú
+  ê0.02ú ê0.57ú ê0.45ú ê0.65ú ëûëûëûëû
+    
+ Single layer MLP and Naïve Bayes
+• Consider a single layer for multiclass classification
+x1 a1 x2 a2 x3 a3 x4 a4
++1
+z=wx+wx+wx+wx+b 11223344
+           
+Naïve Bayes Classifier
+• Consider a naïve bayes classifier for classifying cars with 4- dimensional input features (x1, x2, x3, x4)
+  P(car x , x , x , x ) = p(x 1234
+1
+car) p(x2
+car) p(x3
+car) p(x4
+car) P(car)
+      p(x , x , x , x ) 1234
+ x1 x2 x3
+x4 +1
+Assuming equal priors, removing evidence term, and taking log likelihood
+log (P (car x , x , x , x )) 1234
+=constant +logP(x car)+logP(x car)+logP(x car)+logP(x car)+logP(car) 1234
+= constant +log P (x car )+ log P (x   car )+ log P (x   car )+ log P (x   car ) 1234
+              
+ Single layer Neural Net and Naïve Bayes
+    x1 a1 x2 a2
+x3 a3 x4 a4
++1
+• A single layer multiclass perceptron
+z=wx+wx+wx+wx+b 11223344
+h1(wTx(i)+b)
+x1 a1 x2 a2
+x3 a3 x4 a4
++1
+• A multiclass naïve Bayes classifier
+      P(car x , x , x , x ) = p(x 1234
+1
+car) p(x2
+car) p(x3
+car) p(x4
+car) P(car)
+      p(x , x , x , x ) 1234
+   Assuming equal priors, removing evidence term, and taking log likelihood
+log (P (car x , x , x , x )) 1234
+=constant +logP(x car)+logP(x car)+logP(x car)+logP(x car)+logP(car) 1234
+= constant +log P (x car )+ log P (x   car )+ log P (x   car )+ log P (x   car ) 1234
+      
+ Multiclass Classification by MLP
+                 Ideal
+  • Can we turn the output to probabilities?
+ê0.02ú ê0.57ú ê0.45ú ê0.65ú ëûëûëûëû
+é0.86ù é0.06ù é0.35ù é0.15ù ê0.34ú ê0.79ú ê0.29ú ê0.36ú
+êúêúêúêú ê0.56ú ê0.14ú ê0.92ú ê0.28ú
+Actual
+
+ Softmax Regression
+• Generalizing logistic regression for multiple classes: Multinomial Logistic Regression
+• For each class k, the softmax regression model computes a score zk(d)(x) for each class k.
+         • Thus, for k classes, you need k classifiers: zk(d)
+• Softmax score for class k:
+• Softmax function then estimates the probability of each class from the scores.
+z(d) =w(d-1)a(d-1) +w(d-1)a(d-1) +w(d-1)a(d-1) +b(d-1) k k,1 1 k,2 2 k,3 3 k
+Softmax score computed from the last layer prior to the output
+
+ Softmax Regression
+ • Score for class k is computed by a softmax function as
+exp(z(d)(x)) k
+p =s(z(x)) =
+ˆk
+K
+åexp(z(d ) (x))
+Exp function ensures that all the values are positive to conform to probability
+ k
+j=1
+j
+ where K is the number of classes
+z(x) is a vector containing the scores of each class for the instance x s (z(x))k is the estimated probability that x belongs to class k given
+the scores of each class for that instance
+
+ Softmax Regression
+é0.86ù é0.06ù é0.35ù é0.15ù ê0.34ú ê0.79ú ê0.29ú ê0.36ú
+• Consider an example output as follows:
+• Thus, : z1(d)(x)=0.86, z2(d)(x)=0.34, z3(d)(x)=0.56 , z4(d)(x)=0.02
+pˆ1 =
+exp(0.86)
+exp(0.86) + exp(0.34) + exp(0.56) + exp(0.02)
+= 2.36
+2.36 + 1.40 + 1.75 + 1.02
+= 2.36 = 0.36 6.53
+( ( )) exp(z(d)(x)) pˆk=szx= k
+kK
+åexp(z(d) (x))
+j j=1
+êúêúêúêú ê0.56ú ê0.14ú ê0.92ú ê0.28ú
+ê0.02ú ê0.57ú ê0.45ú ê0.65ú ëûëûëûëû
+    pˆ2 =0.21 pˆ3 =0.27 pˆ4 =0.16
+𝑝̂!+ 𝑝̂" + 𝑝̂# + 𝑝̂$ =1
+• Thus,
+Softmax scores are turned into probabilities
+
+ Softmax Regression
+• Prediction by Softmax
+y=argmaxs z x =argmaxz x =argmax q(k) x
+(T)
+• Note that the prediction returns the value of k that maximizes the
+(()) () ()
+ˆkk kkk
+estimated probability s (s(x)) k
+• Softmax classifier predicts only one class at a time: use only for mutually exclusive classes
+
+ Softmax Regression
+• How do you compute a cost function for softmax classifier?
+• Use Cross entropy loss : measures how well the predicted class probabilities
+match with the target classes
+• Cross entropy between two probability distributions p and q:
+H(p,q)=-åx p(x)logq(x)
+• Since we are computing a cost function, minimizing it is the objective.
+• Consider a single example case of binary cross entropy loss • Note that H is always > 0 since log[q(x)]<0 as q(x)<1
+• Forp(x)=1andq(x)=1,H(p,q)=0
+• Forp(x)=0andq(x)=0,H(p,q)=0
+• Forp(x)=1andq(x)=0,H(p,q) ®¥ as log(0)®-¥
+• Thus only when p(x)= q(x) , cross entropy loss is minimized
+
+ Softmax Regression
+• Cross Entropy Loss for multiclass classifier 1mK
+ y1
+y2
+y3
+p1
+p2
+p3
+1
+0
+0
+0.76
+0.22
+0.02
+0
+0
+1
+0.02
+0.11
+0.87
+1
+0
+0
+0.95
+0.01
+0.04
+0
+1
+0
+0.02
+0.53
+0.45
+  J(Q)=- ååy(i)log(pˆ(i))
+  mi=1 k=1
+where y(i) is the target probability that
+kk
+    k
+the ith instance belongs to class k.
+ • For binary classification, the above equation degenerates to the logistic regression cost function shown earlier. Thus K=2.
+• Consider loss for one instance: m=1
+1mK K
+J(Q) = - ååy(i) log(pˆ(i) )= -åy(i) log(pˆ(i) )
+kk
+mi=1 k=1 k=1
+kk
+
+ Softmax Regression
+ J(Q)=-y log(pˆ )-y log(pˆ ) 1122
+but in binary, pˆ = 1- pˆ and y =1- y 2121
+let y = y and pˆ = pˆ 11
+then J(Q) = -ylog pˆ -(1- y)log(1- pˆ)
+• Recall maximum log likelihood of logistic regression
+logL(w,b)=
+å i=1
+y(i) logh w,b
+w,b
+m
+(x(i))+(1-y(i))log 1-h (x(i)) ()
+• For a single instance with one data point: m = 1
+• 𝑙 𝑤,𝑏 =𝑦 " 𝑙𝑜𝑔h#,%(𝑥⃗ " )+(1−𝑦 " )𝑙𝑜𝑔(1−h#,%(𝑥⃗ " ))
+ 
+ Softmax Regression
+• Continue calculating the gradient if sigmoid
+• Similarly for b
+• For multiclass, the gradient vector for the cost function becomes
+¶w¶ (w,b)=(y-hw,b(x))xj j
+¶ (w,b)=(y-hw,b(x)) ¶b
+ Ñ J(Q)= pˆ(i) -y(i) x(i) ()
+q(k)kk
+
+ Back Propagation
+What caused?
+ 
+ Learning Algorithm: Backpropagation
+Pictures below illustrate how signal is propagating through the network, Symbols w(xm)n represent weights of connections between network input xm and neuron n in input layer. Symbols yn represents output signal of neuron n.
+ 
+ Learning Algorithm: Backpropagation
+ 
+ Learning Algorithm: Backpropagation
+ 
+ Learning Algorithm: Backpropagation
+Propagation of signals through the hidden layer. Symbols wmn represent weights of connections between output of neuron m and input of neuron n in the next layer.
+ 
+ Learning Algorithm: Backpropagation
+ 
+ Learning Algorithm: Backpropagation
+ 
+ Learning Algorithm:
+Backpropagation
+Propagation of signals through the output layer.
+ 
+ Learning Algorithm: Backpropagation
+In the next algorithm step the output signal of the network y is compared with the desired output value (the target), which is found in training data set. The difference is called error signal d of output layer neuron
+ 
+ Learning Algorithm: Backpropagation
+The idea is to propagate error signal d (computed in single teaching step) back to all neurons, which output signals were input for discussed neuron.
+ 
+ Learning Algorithm: Backpropagation
+The idea is to propagate error signal d (computed in single teaching step) back to all neurons, which output signals were input for discussed neuron.
+ 
+ Learning Algorithm: Backpropagation
+ 
+ Learning Algorithm: Backpropagation
+When the error signal for each neuron is computed, the weights coefficients of each neuron input node may be modified.
+ 
+Multi-Layer Perceptron and Back-propagation
+ w(1)
+1,1 z(2)
+•
+Consideraneuralnetworkwithtwo outputs
+   x
+1 w(1) 1
+(2) a2(2)
+a3(2) b1(2)
+a
+1
+  x 2
+w(1) 1,3
+x3
++
+1
+Layer L1
+z(2) 2
+z(2) 3
+•
+Cost function J(wi,j, bi ) used to optimize weightswi,jandbi bytakingpartial derivatives
+2,1
+    Z1(3) a1(3) y1
+       b3(1)
+Layer L2
+Z2(3) a2(3) y2 L a y e r L 3
+w(l) :=w(l) -a ¶ J(w,b)
+  i, j i, j
+¶w(l) i, j
+bl :=bl -a ¶ J(w,b)
+ ii
+¶b(l) i
+  +1
+𝑧" =𝜔$𝑎$ +𝜔$𝑎$ +𝜔$𝑎$ +𝑏$ ! !,! ! !,$ $ !," " !
+ ()( )
+a(3) =h = f z(3) = f w(2)a(2) +w(2)a(2) +w(2)a(2) +b(2)
+1 1 1 1,11 1,22 1,33 1
+ J(w,b;x,y)=1h (x)-y2
+    2
+w,b
+
+Multi-Layer Perceptron and Back-propagation
+• The goal is to minimize J(w,b) as a function of w and b.
+• J(w,b) is not convex, thus the gradient descent process might get
+stuck on local minima. Usually, however, gradient descent works.
+• Initialization of w and b important as in any optimization problem.
+• Initialize the parameters randomly, non-zeros.
+• Updating w and b by gradient descent
+• Important to be able to calculate gradient of activation function
+ w(l) :=w(l) -a ¶ J(w,b)
+  i, j i, j
+¶w(l) i, j
+b(l) :=b(l) -a ¶ J(w,b)
+ ii
+¶b(l) i
+where a is the learning rate
+ 
+ Notational Convention in Back-propagation
+ z(l) denotes the total weighted sum of inputs i
+to unit i in layer l including the bias term Thus, z(2) =ån w(1)x +b(1)
+i
+j=1
+ij j i
+so that a(l) = f (z(l) ) ii
+  Recall that a(1) = x which denotes the values from the input layer. Without the subcript index,
+it is implied both a(1)and x are vectors. Similarly, we can further write compactly as
+z(l+1) =w(l)a(l) +b(l) a(l+1) = f(z(l+1))
+ z(2) =w(1)x+b(1) a(2) = f(z(2))
+z(3) =w(2)a(2) +b(2)
+h (x)=a(3) = f(z(3)) W,b
+Courtesy of A. Ng’s CS294A Lecture Notes
+
+Partial Derivatives and Chain Rule
+ a(2)
+a(3)
+ L e t q ( l ) = w ( l ) +, b ( l ) ( & ) 𝐿𝑒𝑡 𝜃(&) = 𝑚𝑎𝑡𝑟𝑖𝑥 𝑜𝑓𝑤
+( & ) (
+i, j i
+a(4) =h (x)= f(z(4))= f q(3)a(3)
+w,b
+= f q(3)g z(3) = f q(3)g(q(2)a(2))
+(())( )
+(,)
+𝑎𝑛𝑑 𝑏
+= f q(3)g q(2) p z(2) = f q(3)g q(2) p q(1)a(1)
+( ( ( ))) ( ( ( )))
+=f q(3)gq(2)pq(1)x
+( ( ( )))
+()
+   a(1)
+a(4)
+From Cambridge Mathematics
+ Layer 1
+Layer 2
+Layer 4 Layer 3
+ J(w,b;x,y)=1h (x)-y2
+     w,b
+• Takingpartialderivativesofacomplexfunction
+• Usingthechainrulefromcalculus
+d éf(g(x))ù=f¢(g(x))g¢(x) dx ë û
+2
+Taken from: Why are Russian Dolls so Full of Themselves? | by Sofia Boulamrach | Medium
+  • Using the chain rule is fine and good, but it can be very messy and time consuming.
+• Let’s consider a scheme based on the chain rule but more approachable in getting the partial derivatives
+• Back Propagation
+
+ Multi-Layer Perceptron and Back-propagation
+• For a fixed set of training data { (1) (1) (2) (2) (m) (m) } (x ,y ),(x ,y ),......,(x ,y )
+• Define a loss function for a single sample • For m examples
+ J(w,b;x,y)=1h (x)-y2
+    2
+w,b
+ é1 m ù J (w , b ) = ê 2 å J (w , b; x ( i ) , y ( i ) ) ú
+ë i=1 û é1 m æ1 öù
+=êm 2 h (x(i))-y(i) ú åç w,b 2÷
+ë i=1è         øû
+• Let sigmoid be used for activation
+• For classification, y=0 or 1 data labels.
+
+Multi-Layer Perceptron and Back-propagation
+1. Forward pass: Starting from the input layer, the algorithm computes the output of all the neurons in each layer for every instance in the batch until the output of the last layer (prediction value) is computed.
+2. All intermediate results are preserved for the backward pass.
+3. The network’s output error (loss function) computed.
+4. Chain rule (calculus) applied to analytically compute how much each output connection contributed to the error.
+5. The algorithm then measures how much of these error contributions came from each connection in the layer below, again using the chain rule—and so on until the algorithm reaches the input layer.
+6. The reverse pass efficiently measures the error gradient across all the connection weights in the network by propagating the error gradient backward through the network (hence the name of the algorithm).
+7. Finally, the algorithm performs a Gradient Descent step to tweak all the connection weights in the network, using the error gradients it just computed.
+ 
+Multi-Layer Perceptron and Back-propagation
+1. Forward pass: Starting from the input layer, the algorithm computes the output of all the neurons in each layer for every instance in the batch until the output of the last layer (prediction value) is computed.
+2. All intermediate results are preserved for the backward pass.
+3. The network’s output error (loss function) computed.
+4. Chain rule (calculus) applied to analytically compute how much each output connection contributed to the error.
+5. The algorithm then measures how much of these error contributions came from each connection in the layer below, again using the chain rule—and so on until the algorithm reaches the input layer.
+6. The reverse pass efficiently measures the error gradient across all the connection weights in the network by propagating the error gradient backward through the network (hence the name of the algorithm).
+7. Finally, the algorithm performs a Gradient Descent step to tweak all the connection weights in the network, using the error gradients it just computed.
+ 
+Multi-Layer Perceptron and Back-propagation
+1. Forward pass: Starting from the input layer, the algorithm computes the output of all the neurons in each layer for every instance in the batch until the output of the last layer (prediction value) is computed.
+2. All intermediate results are preserved for the backward pass.
+3. The network’s output error (loss function) computed.
+4. Chain rule (calculus) applied to analytically compute how much each output connection contributed to the error.
+5. The algorithm then measures how much of these error contributions came from each connection in the layer below, again using the chain rule—and so on until the algorithm reaches the input layer.
+6. The reverse pass efficiently measures the error gradient across all the connection weights in the network by propagating the error gradient backward through the network (hence the name of the algorithm).
+7. Finally, the algorithm performs a Gradient Descent step to tweak all the connection weights in the network, using the error gradients it just computed.
+ 
+Multi-Layer Perceptron and Back-propagation
+1. Forward pass: Starting from the input layer, the algorithm computes the output of all the neurons in each layer for every instance in the batch until the output of the last layer (prediction value) is computed.
+2. All intermediate results are preserved for the backward pass.
+3. The network’s output error (loss function) computed.
+4. Chain rule (calculus) applied to analytically compute how much each output connection contributed to the error.
+5. The algorithm then measures how much of these error contributions came from each connection in the layer below, again using the chain rule—and so on until the algorithm reaches the input layer.
+6. The reverse pass efficiently measures the error gradient across all the connection weights in the network by propagating the error gradient backward through the network (hence the name of the algorithm).
+7. Finally, the algorithm performs a Gradient Descent step to tweak all the connection weights in the network, using the error gradients it just computed.
+ 
+Multi-Layer Perceptron and Back-propagation
+1. Forward pass: Starting from the input layer, the algorithm computes the output of all the neurons in each layer for every instance in the batch until the output of the last layer (prediction value) is computed.
+2. All intermediate results are preserved for the backward pass.
+3. The network’s output error (loss function) computed.
+4. Chain rule (calculus) applied to analytically compute how much each output connection contributed to the error.
+5. The algorithm then measures how much of these error contributions came from each connection in the layer below, again using the chain rule—and so on until the algorithm reaches the input layer.
+6. The reverse pass efficiently measures the error gradient across all the connection weights in the network by propagating the error gradient backward through the network (hence the name of the algorithm).
+7. Finally, the algorithm performs a Gradient Descent step to tweak all the connection weights in the network, using the error gradients it just computed.
+ 
+Multi-Layer Perceptron and Back-propagation
+1. Forward pass: Starting from the input layer, the algorithm computes the output of all the neurons in each layer for every instance in the batch until the output of the last layer (prediction value) is computed.
+2. All intermediate results are preserved for the backward pass.
+3. The network’s output error (loss function) computed.
+4. Chain rule (calculus) applied to analytically compute how much each output connection contributed to the error.
+5. The algorithm then measures how much of these error contributions came from each connection in the layer below, again using the chain rule—and so on until the algorithm reaches the input layer.
+6. The reverse pass efficiently measures the error gradient across all the connection weights in the network by propagating the error gradient backward through the network (hence the name of the algorithm).
+7. Finally, the algorithm performs a Gradient Descent step to tweak all the connection weights in the network, using the error gradients it just computed.
+ 
+ Multi-Layer Perceptron and Back-propagation
+• Let’s compute the forward pass of a network with one hidden layer.
+z(2) =w(1)x +w(1)x +w(1)x +b(1) 1 11 1 12 2 13 3 1
+éa(1)ù   ê 1 ú
+ w(1) 1,3
+w(2) 1,3
+éz(2)ù éxù  ê1ú1
+w(1) ù w(1)
+(1) z(2)a(2) w(2) w 11 1,1
+z(2) =w(1)x +w(1)x +w(1)x +b(1)
+x=a(1)=êa(1)ú
+   1,1
+x (3) 2
+   1
+x2
+x 3
++1 b3(1) Layer L1
+21 1 22 2 23 3 2
+w1 33113223333 ë3û
+z(2) a (2) 2
+2
+Z (3) a1 z(2) =w(1)x +w(1)x +w(1)x +b(1) êa(1)ú
+(2) 
+
+ 1,2 2
+z(2) =w(1)x =w(1)a(1) 
+ z(2)=z(2) x=êxú ê2úê2ú
+w(1) = w(1) w(1)
+éw(1) w(1)
+ê11 12 13ú
+  z(2)a (2)
+33 (3)
+
+ê21 22 23ú êw(1) w(1) w(1) ú ë31 32 33û
+  b1(2)
+Z2(3) a2 Layer L3
+êz(2)ú êxú ë3ûë3û
+  +1
+Layer L
+éz(2) ù éw(1) w(1) ê1úê111213ú1ê1ú
+2
+ë3 û ë31 32 33ûë3û ë3 û
+w(1) ùéx ù éb(1) ù êz(2)ú =êw(1) w(1) w(1)úêx ú+êb(1)ú
+ê2úê21 22 23úê2úê2ú z(2) w(1) w(1) w(1) êx ú b(1)
+
+ Multi-Layer Perceptron and Back-propagation
+• Continue the forward pass
+éù éa(2)ù s(z1 )
+w
+(1)
+1
+z(2) a2(2) 2
+1,1
+()
+(2)
+ z(2)a w(2)
+a(2) =êa(2)ú= s(z(2)) ê2úê2ú
+1(2)
+1,1 ë3û
+ê1úêú êú
+a(2) (2)
+ë 3 û ês z ú
+      x1 x2
+x3 +1
+w(2) 1,2
+Z1(3) a1(3)
+Continue to the final layer
+z(3) =w(2)a(2) +w(2)a(2) +w(2)a(2) +b(2) 1 111 122 133 1
+z(3) =w(2)a(2) +w(2)a(2) +w(2)a(2) +b(2)
+  w(1) (2) 2 21 1 1,3 w 
+22 2
+23 3 2
+  b
+b1(2)
+(1) 3
+ éz(3) ù z(3)
+z(2)a (2) 33
+1,3 z(3) =w(2)a(2) 
+  Z (3) a2(3) 2
+Layer L3
+éw(2) w(2)
+(3) 1 (2) 11 12 13
+w(2) ù wherez =ê ú w =ê ú
+ ë 2 û
+w(2) w(2) w(2)
+ Layer L1
+êz(3) ú
+w(2)
+22 23ûêa(2)ú ë2 û
++1
+Layer L2
+ë 21 22 éa(2) ù
+23 û
+éz(3) ù 1
+éw(2) = 11
+w(2) 12
+w(2) ùê 1 ú éb(2) ù 13 a(2) + 1
+êw(2) ë2 û ë21
+w(2) ú ê 2 ú êb(2) ú ë3û
+
+ Multi-Layer Perceptron and Back-propagation
+• Loss function J w(1)
+z(2) a1(2) 1
+w(2) 1,1
+    1,1
+    x1 x
+x3 +1
+Z1(3) a1(3)
+2 1é22ù
+w(2) 1,2
+w(2) 1,3
+z(2)a (2) 3 3
+b3(1) b1(2) +1
+Layer L2
+å i=1
+y1
+1C 2
+ (2) a (2) z2 2
+J =
+(a(3) - y ) 2 i i
+ w(1) 1,3
+=a-y+a-y 2ë1122û
+ê((3) ) ((3) )ú
+     (3) y Z2(3) a2 2
+Layer L3
+  Layer L1
+
+ Multi-Layer Perceptron and Back-propagation
+• Loss Function
+1é (3) 2 (3) 2ù
+J=êsz-y+sz-yú (())(())
+= +
+=
+2ë1122û
+s w(2)a(2) +w(2)a(2) +w(2)a(2) +b(2) 1é (
+) ù2 - y
+2ë111 122 133 1 1û
+s w(2)a(2) +w(2)a(2) +w(2)a(2) +b(2) - y 1é( ) ù2 2ë211 222 233 2 2û
+s w s z +w s z +w s z +b -y 1é(() () ())ù2 2 11 1 12 2 13 3 1 1
+ë (2) (2) (2) (2) (2) (2) (2) û
++ swsz +wsz +wsz +b -y 1é(() () ())ù2 2 21 1 22 2 23 3 2 2
+ë (2) (2) (2) (2) (2) (2) (2) û
+
+ Multi-Layer Perceptron and Back-propagation
+𝑧!($)
+1é
+2ë11 1111221331
+    (()
+J= sw(2)sw(1)x+w(1)x+w(1)x+b(1)
++w s w x +w x +w x +b ()
+( 2 ) (1) (1) (1) (1)
+12 211 222 233 2
+ +
+(()
+(2) (1) (1) (1) (1) (2)
+( ))]2
++wswx+wx+wx+b +b -y
+13 311 322 333 3 1
+1
+1é
+2ë21 1111221331
+s w(2)s w(1)x +w(1)x +w(1)x +b(1)
++w s w x +w x +w x +b ()
+( 2 ) (1) (1) (1) (1)
+From Cambridge Mathematics
+ 22 211 222 233 2
+(2) (1) (1) (1) (1) (2)
+( ))]2
++wswx+wx+wx+b +b -y 23 311 322 333 3 2 2
+
+ Multi-Layer Perceptron and Back-propagation
+• Partial derivative
+¶J ¶w(2)
+of loss function J 12
+1C å
+ 2 (a(3) - y )
+J =
+1é 2 2ù
+ w(1) 1,1
+x 1
+x2
+x 3
++1
+Layer L1
+z(2) a1(2) 1
+z(2) a2(2) 2
+w(2) 1,3
+z(2)a (2) 3 3
+b1(2)
+w(2) 1,1
+2 i=1
+Z a1(3) y = ê(a(3)-y)+(a(3)-y)ú
+ii
+       1(3)1 2ë1122û
+   w(1) 1,3
+= í ê(a(3)-y)+(a(3)-y)úý ¶w(2) î2ë 1 1 2 2 ûþ
+b3(1)
+(3) y Z2(3) a2
+2
+w(2) 1,2
+¶J ¶ì1é 2 2ùü
+  ¶w(2)
+12 12
+      LayerL
+3
+¶w(2)î2ë2 2 ûþ 12
+But
+ +1
+Layer L2
+¶ ì1é 2ùü
+í ê(a(3) -y )úý=0
+ 
+ Multi-Layer Perceptron and Back-propagation
+   w(1) 1,1
+(2)
+12
+Za1(3) y =(a(3)-y)¶a(3) ¶z(3)
+z(2) a1 1
+w(2)
+¶w(2) 1,1 12
+= í ê(a(3)-y)úý ¶w(2) î2ë 1 1 ûþ
+Remaining term
+¶J ¶ì1é 2ùü
+       x 1
+x2
+x3 +1
+z(2) a2(2) 2
+1(3) 1 1111 ¶z(3) ¶w(2)
+1 12 Consider the second term
+     ¶a(3) ¶s (z(3) ) w(1) w(2) 1=1
+1,3 1,3 z(2)a (2)
+¶z(3) ¶z(3) 11
+Recallderivativeofsigmoid
+g¢=g(1-g) andg(z(3))=a(3) 11
+Thus
+¶s (z(3) )
+       L a y e r L 1
++1
+L a y e r L 2
+1 = f ¢ ( z ( 3 ) ) = a ( 3 ) (1 - a ( 3 ) )
+b3(1)
+b1(2)
+3 3
+(3) y Z2(3) a2 2
+Layer L3
+w(2) 1,2
+   ¶z(3) 1
+111
+
+ Multi-Layer Perceptron and Back-propagation
+Remaining term
+¶J ¶ì1é 2ùü
+  w(1) 1,1
+x1
+x2 x3
++1
+Layer L1
+ëû ¶a ¶z
+z(2)a(2) w(2) 1 1 1,1
+z(2) a2(2) 2
+w(2) 1,3
+z(2)a (2) 3 3
+=   í ê(a(3)-y)úý ¶w(2) ¶w(2)î2 1 1 þ
+   12 12
+     Z1(3)a1(3)
+y1
+=(a(3)-y) (3) (3) 11
+    w(1) 1,3
+1 1 ¶z(3) ¶w(2) 1 12
+ ()()
+=a(3)-y a(3) 1-a(3) a(2)
+11112
+     b3(1)
+b1(2)
+(3) y Z2(3) a2 2
+Layer L3
+  +1
+Layer L2
+w(2) 1,2
+
+ Multi-Layer Perceptron and Back-propagation
+ z(2)a w(2)
+¶J = ¶J ¶a(3) ¶z(3) 11
+(2)
+¶w ¶a ¶z ¶w 12 1 1 12
+    (1) w1,1
+1
+(2) (3) (3) (2)
+1
+1,1
+w(2) Z1(3)a1(3) y1 = ¶J ¶z(3) =d(3) ¶z(3)
+       x1
+x2 x3
+(2) z2a2
+1,2 11 ¶z(3) ¶w(2) 1 ¶w(2)
+112 12
+where
+d(3)o 1
+     w(1) 1,3
+(2)
+w(2) 1,3
+  z(2)
+3 a3(2)
+y2
+¶J ¶z(3)
+1
+    Z (3) a2(3) +1 3 b1(2) 2
+b(1)
+= ¶J ¶a(3) =(a(3) -y)f¢(z(3)) 1
+¶a(3) ¶z(3) 1 1 1 11
+  +1
+Layer L2
+Layer L3
+  Layer L1
+
+ Multi-Layer Perceptron and Back-propagation
+ w(1) 1,1
+x 1
+x2 x3
++1
+Layer L1
+z(2) a1(2) 1
+z(2) a2(2) 2
+w(2) 1,3
+(2)
+z3 a3(2)
+w(2) 1,1
+(3)
+w(2) Z1(3)a1 y1
+The partial derivative
+¶J =d(3) ¶z(3) =d(3)a(2)
+         1,2
+¶w(2) 12
+1 1 12 ¶w(2)
+12
+  w(1) 1,3
+Similarly, define
+¶J
+  d(3) o 2
+    b3(1)
+Z2(3) a2(3) Layer L3
+y2
+(3) 2
+b1(2)
+¶z
+= ¶J ¶a(3) =(a(3) -y )f¢(z(3))
+    +1
+Layer L2
+2
+¶a(3) ¶z(3) 2 2 2
+22
+
+ Multi-Layer Perceptron and Back-propagation
+w(1) 1,1
+z(2)a1(2) 1
+z(2) a2(2) 2
+w(2) 1,3
+z(2)a (2) 3 3
+w(2) 1,1
+w(2) 1,2
+¶J ¶J ¶a(N) = i
+=(a(N) -y)a(N)(1-a(N)) iiii
+When the outermost layer is N
+           x 1
+(3) Z1(3) a1
+y1
+¶z(N) ¶a(N) ¶z(N)
+i
+and d(N) o
+i i
+  x 2
+w(1) 1,3
+x3 +1
+Layer L1
+¶J
+ i ¶z(N) i
+ Additionally
+¶J =(a(N) -y)a(N)(1-a(N))a(N-1) = ¶J a(N-1)
+  ¶w(N-1) i i i i, j
+=d(N)a(N-1) ij
+i j
+¶z(N) j i
+     b3(1)
+(3) y Z2(3) a2
+Layer L3
+2
+b1(2)
+  +1
+Layer L2
+ Note that these are only applicable at a layer just under the outermost layer N!
+
+ Multi-Layer Perceptron and Back-propagation
+• Similarly for bi(3)
+¶J¶ì1é 2 2ùü
+= í ê(a(3)-y)+(a(3)-y)úý ¶b(2) î2ë 1 1 2 2 ûþ
+   (2) (2)
+w(1) za1w(2)
+1,1
+z(2) a2(2) 2
+w(1) (2) i i ¶b(2) i
+1,3 w i ii
+1 1,1
+¶ ì1é 2ùü = í ê(a(3)-y)úý
+¶b(2) ii
+       x1
+x2 x3
+Z(3)a1(3)
+1 1 ¶b(2)î2ëiiûþ
+y
+  i
+= (a(3) - y )¶a(3) = (a(3) - y )¶a(3) ¶z(3) iii
+     1,3
+i ¶z(3) ¶b(2)
+  z(2) (2) 3a3
+=(a(3) -y)f¢(z(3))=d(3) (3) y i i i i
+   +1 b3(1) Layer L1
+b1(2)
+Z2(3) a2 2 Layer L3
+  For a general case of outerlayer N
+= ¶J =(a(N)-y)f¢(z(N))=d(N)
+ ¶b(N-1) i
+iiii
+ +1
+Layer L2
+w(2) 1,2
+
+ Multi-Layer Perceptron and Back-propagation
+• For an output node, the difference between the network’s activation and the true target value (ai(N) - yi) can be directly measured.
+ •δi(N)canbeusednowto
+computethepartialderivative i ¶z(N) i i i i
+Sinced(N) = ¶J i
+   for weights on layer N-1
+=(a(N) -y)a(N)(1-a(N)) ¶J ¶J ¶z(N) ¶z(N)
+   ¶w(N-1) i,j
+i
+i ¶w(N-1)
+¶J
+¶b(N-1) i
+¶z(N) ¶w(N-1) i i,j
+=d(N) i
+= i =d(N)
+(#%&) ! i,j!
+(#) 𝛿𝑎
+  
+ Multi-Layer Perceptron and Back-propagation
+• Consider a weight w(1) in layer 1 2,1
+ w(1) z(2) a1(2) (2) 1,1 1 w
+1é22ù
+   w (1) 2,1
+1,1 (2)
+ê(a(3) -y ) +(a(3) -y )ú 2ë1 1 2 2û
+¶a(3) + (a(3) - y ) 2
+function
+      x1 x2
+w (1) 1,3
+w y1 1,2
+J =
+= (a(3) - y ) 1
+Z1(3) a1(3)
+  z(2) a2(2) 2
+¶J ¶w(1)
+¶a(3) 1 1 ¶w(1)
+    w(2) 1,3
+z(2)a (2) 3 3
+b3(1) +1
+2 2 ¶w(1) 21 21 21
+   x3 +1
+(3) ¶a(3) ¶z(3) (3) ¶a(3) ¶z(3) =(a -y) 1 1 +(a -y) 2 2
+       b1(2)
+y
+2
+1 1 ¶z(3) ¶w(1) 2 2 ¶z(3) ¶w(1) 1 21 2 21
+Z2(3) a2(3)
+ 12 =(a(3) -y)f¢(z(3))¶z(3) +(a(3) -y )f¢(z(3))¶z(3)
+   Layer L1
+Layer L2
+• Note the influence of w (1) to the loss
+2,1
+ 1 1 1 ¶w(1) 2 2 2 ¶w(1)
+LayerL 21 21 3
+
+ Multi-Layer Perceptron and Back-propagation
+¶z(3) = ¶ éw(2)a(2) +w(2)a(2) +w(2)a(2) +b(2) ù
+1 ¶w(1)
+¶w(1)ë11 1 12 2 21
+13 3 1 û ¶a(2) ¶z(2)
+=w(2) 2
+12 ¶z(2) ¶w(1)
+   w(1) 1,1
+z(2) a1(2) 1
+w(2) 1,1
+w(2) 1,2
+21
+=
+=w(2) f¢(z(2))x
+¶ ¶a(2) éw(2)a(2) ù =w(2) 2
+      x1
+x2
+¶w(1) ë 12 2 û 12 ¶w(1) 12 2 1
+2 21 21221
+      w (1) 2,1
+Z1(3) a1(3)
+ z(2) a2(2) 2
+ w(1) 1,3
+x 3
++1
+Layer L1
+w(2) 1,3
+z(2) (2) 3a3
+b1(2)
+Similarly
+¶z(3) ¶ 2 =
+éw(2)a(2) +w(2)a(2) +w(2)a(2) +b(2) ù
+   (1) (1)ë21 1 ¶w21 ¶w21
+22 2
+23 3 2 û ¶a(2) ¶z(2)
+    b3(1)
+¶a(2) 2
+Z2(3) a2(3)
+ +1
+Layer L2
+2
+LayerL3
+¶
+¶w(1) ë 22 2 û 22 ¶w(1)
+=w(2) f¢(z(2))x 22 2 1
+ =
+=w(2) 2
+22 ¶z(2) ¶w(1)
+éw(2)a(2) ù =w(2)
+21 21221
+    
+ Multi-Layer Perceptron and Back-propagation
+ w(1) 1,1
+x1 x2
+w(1) 1,3
+x3 +1
+Z1(3)a1(3) y1 w(2)
+1,3
+(3) a (3) y2 Z2 2
+(3) (3) (2) (2)
+¶J =(a -y)f¢(z )w f¢(z )x
++(a(3) - y ) f ¢(z(3) )w(2) f ¢(z(2) )x 2 2 2 22 2 1
+=d(3)w(2) f¢(z(2) )x +d(3)w(2) f¢(z(2) )x 1 12 2 1 2 22 2 1
+z(2) 1
+z(2) a2(2) 2
+z(2)a (2) 33
+b3(1)
++1 Layer L2
+a (2)
+1 w(2)
+1,1
+w(2) 1,2
+Putting them together
+        w (1) 2,1
+  ¶w
+(1) 21
+1 1 1 12 2 1
+      b1(2)
+  Layer L1
+Layer L3
+( )()
+= d(3)w(2) +d(3)w(2) f¢ z(2) x
+1 12 2 22 2 1
+
+ Multi-Layer Perceptron and Back-propagation
+From the previous derivation
+¶J ¶w (1)
+(
+)¢( )
+= d(3)w(2) +d(3)w(2) f z(2) x
+1 12 2 22 2 1 Can be shown similarly
+¶J (
+= d (3)w(2) +d (3)w(2)
+ 21
+   x1 w(2) 1,2
+z(2) a2(2) 2
+Z1(3) a1(3)
+ w (1) 2,1
+   f ¶b(1) 1 12 2 22 2
+z(2) )¢( )
+   w(2) 2,2
+2
+Notice the flow of information from upper layer to the lower layer
+ b(1) 2
+  Z 2(3) (3)a
+Let d (2) = d (3)w(2) +d (3)w(2) f z(2)
+( )¢( )
+2
+2 1 12 2 22 2
++1 å
+=2 d(3)w(2)f¢(z(2))
+j j2 2 j=1
+LayerL1 LayerL2 LayerL Thus ¶J =d(2)x , ¶J =d(2) 3 ¶w (1) 2 1 ¶b(1) 2
+  21 2
+
+ Multi-Layer Perceptron and Back-propagation
+• Thegradientdescentupdaterule can be applied now
+ w(1) :=w(1) -a ¶J =w(1) -ad(2)x 21 21 ¶w(1) 21 21
+21
+ b(1) :=b(1) -ad(2) 222
+   x1
+w(2) Z1(3) a1(3) 1,2
+    z(2) a2(2) 2
+  +1
+w (1) 2,1
+w(2) 2,2
+2
+j=1
+d ( 2 ) = å2 d ( 3 ) w ( 2 ) f ¢ ( z ( 2 ) )
+æ Sl+1 ö
+d(l) =çåd(l+1)w(l)÷f¢(z(l))
+i è j jiø i j=1
+Where Sl+1 = Number of nodes on layer l +1
+j j2 2 More generally
+ b(1) 2
+  Layer L1
+Layer L2
+Layer L3
+Z2(3) a2(3)
+
+ Multi-Layer Perceptron and Back-propagation
+     x1
+More generally z(2) a2(2)
+2
+¶J =d(l)a(l-1) , ¶J =d(l) ¶w(l-1) i j ¶b(l-1) i
+ij i
+  +1
+w (1) 2,1
+w(2) 2,2
+Where Sl+1 = Number of nodes on layer l +1
+w(2) 1,2
+Z1(3) a1(3)
+æ Sl+1 ö
+di(l) =çåd(l+1)w(l) f¢(z(l))
+  j ji÷i èj=1 ø
+   b(1) 2
+  Layer L1
+Layer L2
+Layer L3
+Z2(3) a2(3)
+
+ Multi-Layer Perceptron and Back-propagation
+ w(1) 1,1
+• Let’s train starting the outer layer at N=3 z(2) a1(2) w(2)
+1 1,1
+    ¶J
+¶z(3) i
+=d(3) =(a(3) -y)a(3)(1-a(3)) iiiii
+     x1
+x2 x3
+w(2) 1,2
+ w (1) 2,1
+¶J =d(3)a(2), ¶J =d(3) ¶w(2) i j ¶b(2) i
+i, j i
+    w(1) 1,3
+w(2) 1,3
+z(2)a (2) 33
+b1(2) +1
+Layer 2
+  ¶J ¶w(2)
+i, j ¶J
+¶b(2) i
+=d(3)a(2) =(a(3) -y)a(3)(1-a(3))a(2) ijiiiij
+  =(a(3) -y)a(3)(1-a(3)) iiii
+ b3(1) +1
+z(2) a2(2) 2
+Z1(3) a1(3)
+    Z2(3) a2(3)
+  Layer 1
+Layer 3
+
+ Multi-Layer Perceptron and Back-propagation
+• Training the outer layer at N=3
+¶J ¶w(2)
+11
+¶J =d(3)a(2) =(a(3) -y)a(3)(1-a(3))a(2)
+¶w(2) 1 2 1 1 1 1 2 12
+= d (3)a(2) = (a(3) - y )a(3) (1- a(3) )a(2) 1111111
+  (1) w1,1
+z(2) a1(2) 1
+w(2) 1,1
+w(2) 1,2
+        x1
+¶J ¶w(2)
+13
+¶J ¶w(2)
+21
+¶J ¶w(2)
+= d (3)a(2) = (a(3) - y )a(3) (1- a(3) )a(2) 1311113
+ w (1) 2,1
+Z1(3) a1(3)
+  z(2) a2(2) 2
+ x 2
+w(1) 1,3
+x3
+(1) +1 b3
+Layer 1
+w(2) 1,3
+=d(3)a(2) =(a(3) -y )a(3)(1-a(3))a(2) 2122221
+=d(3)a(2) =(a(3) -y )a(3)(1-a(3))a(2) 2222222
+=d(3)a(2) =(a(3) -y )a(3)(1-a(3))a(2) 2322223
+=(a(3) -y)a(3)(1-a(3)) 1111
+1
+ ¶J ¶w(2)
+    z(2)a (2)
+33 22
+  +1
+Layer 2
+Layer 3
+b1(2)
+23
+¶J ¶b(2)
+Z2(3) a2(3)
+    ¶J =(a(3) -y )a(3)(1-a(3))
+ ¶b(2) 2
+2222
+
+ Multi-Layer Perceptron and Back-propagation
+• Training the inner layer at 2 w(1) z(2) a1(2) w(2)
+¶J =d(l)a(l-1) , ¶J =d(l) ¶w(l-1) i j ¶b(l-1) i
+ij i
+æ Sl+1 ö
+d(l) =çåd(l+1)w(l)÷f¢(z(l))
+   1,1 1 1,1
+       x ijjii
+ 1
+x2 x3
+w(2) 1,2
+è j=1 ø
+Where Sl+1 = Number of nodes on layer l +1
+w (1) 2,1
+z(2) a2(2) 2
+Z1(3) a1(3)
+  w(1) 1,3
+w(2) 1,3
+z(2)
+3 a3(2)
+b1(2)
+l = 2, Sl +1 = Nodes at layer (l + 1 = 3) : 2 æ2 ö
+d(2) =çåd(3)w(2)÷f¢(z(2)) i è j ji ø i
+     b3(1) +1
+j=1
+d(2) =d(3)w(2) f¢(z(2) )+d(3)w(2) f¢(z(2) )
+Z2(3) a2(3)
+  LayerL1
++1
+LayerL2
+Layer L3
+1 1 11 1 2 21 1
+d(2) =d(3)w(2) f¢(z(2) )+d(3)w(2) f¢(z(2) ) 2 1 12 2 2 22 2
+d(2) =d(3)w(2) f¢(z(2) )+d(3)w(2) f¢(z(2) ) 3 1 13 3 2 23 3
+
+ Multi-Layer Perceptron and Back-propagation
+• Training the inner layer at 1
+¶J =d(2)a(1) , ¶J =d(2)
+   w(1) 1,1
+x1 x2
+w(1) 1,3
+1
+1,1 w(2)
+z(2)a1(2) w(2)
+¶w (1) ij
+i j ¶b(1) i i
+    = d(2)a(1) , ¶J = d(2)a(1)
+¶J
+¶w(1) 11 ¶w(1) 21 ¶w(1) 31
+= d(2)a(1) , ¶J
+1,2 11 21 31
+    w (1) 2,1
+Z1(3) a1(3)
+    z(2) a2(2) 2
+       x3 +1
+w(2) 1,3
+¶J = d(2)a(1) , ¶J = d(2)a(1) , ¶J = d(2)a(1) ¶w(1) 12 ¶w(1) 22 ¶w(1) 32
+12 22 32
+¶J =d(2)a(1) , ¶J =d(2)a(1) , ¶J =d(2)a(1) ¶w(1) 13 ¶w(1) 23 ¶w(1) 33
+13 23 33 ¶J =d(2), ¶J =d(2), ¶J =d(2)
+LayerL3 ¶b(1) 1 ¶b(1) 2 ¶b(1) 3 123
+z(2)a (2) 33
+  Z2(3) a2(3)
+   b3(1)
+b1(2)
+     Layer L1
++1
+Layer L2
+
+Multi-Layer Perceptron and Back-propagation
+ • Update weights from backpropagation
+æ Sl+1 ö
+d(l) =çåd(l+1)w(l)÷f¢(z(l))
+i è j jiø i j=1
+Where Sl+1 = Number of nodes on layer l +1
+w(l) :=w(l) -a ¶ J(w,b)
+  i, j i, j
+¶w(l) i, j
+b(l) :=b(l) -a ¶ J(w,b)
+ ii
+¶b(l) i
+ Since d (l+1) = i
+¶J
+¶w(l) i, j
+¶J ¶z(l+1)
+ i
+¶J ¶z(l+1)
+¶z(l+1) = i =d(l+1) i
+    ¶z(l+1) ¶w(l) i ¶w(l) i i, j i, j
+ w(l) :=w(l) -a(a(l)d(l+1)) i,j i,j ji
+b(l) :=b(l) -ad(l+1) iii
+where a = learning rate
+
+Multi-Layer Perceptron and Back-propagation
+• Partial derivatives of the loss function J(w, b) for a single instance (x, y):
+ ¶ ¶w(l)
+¶ J(w,b;x(i),y(i)) ¶b(l)
+J(w,b;x(i),y(i)) and
+• As such, we can compute batch gradients as
+J (w,b; x(k ) , y(k ) ) J (w,b; x(k ) , y(k ) )
+  i, j
+i
+¶1m¶ J (w,b) = å
+  ¶w(l) m k=1 ¶w(l) i, j i, j
+¶ 1å¶ J (w,b) = m
+  ¶b(l) m k=1 ¶b(l) ii
+
+ Developing an MLP with one hiddern layer for a classification task
+• Asinthepreviousderivation,
+N=3, l1 is the input layer and
+l isthehiddenlayer. 2
+• InputxhasPdimensions
+• Hidden layer l2 has Q nodes.
+• The output layer N has R nodes.
+• Perform a feedforward pass,
+computing the activations for
+layersl andN. 2
+z(2) =w(1)x +w(1)x +w(1)x +.......+w(1)x +b(1) 1 11 1 12 2 13 3 1P P 1
+z(2) =w(1)x +w(1)x +w(1)x +.......+w(1)x +b(1) 2 211 222 233 2PP 2
+z(2) =w(1)x +w(1)x +w(1)x +.......+w(1)x +b(1) 3 311 322 333 3PP 3
+.........
+z(2) =w(1) x +w(1) x +w(1) x +.......+w(1) x +b(1)
+Q M11 M22 M33 
+QPP Q
+
+ z(2) =w(1)x+b(1) 
+éw(1) w(1) ê1ú ê11 12
+w(1)ù
+1Pú 1
+éù s(z(2))
+éz(2)ù
+(2) (1)(1) (1)êú(2)ê(2)ú
+éx ù
+êúê úêúêúê ú
+. .
+êz2 ú êw21 w22 . . w2Pú êx2ú êa2 ú s(z2 )
+z(2) =ê . ú w(1) =ê . . . . . ú x=ê.ú a(2) =ê . ú=ê . ú ê.úê.....úê.úê.úê.ú
+êúê úêúêúêú
+z(2) w(1) . . . w(1) x
+a(2) ê (2) ú ëQû ëQ1 QPûëPû ëQûs(z)
+éa(2)ù ê1úê1ú
+ëQû
+
+ Developing an MLP with one hiddern layer for a classification task
+ z(3) =w(2)a(2) +w(2)a(2) +..+w(2)a(2) +b(2) 1111122 13Q1
+z(3) =w(2)a(2) +w(2)a(2) +..+w(2)a(2) +b(2) 2211222 23Q2
+. .
+z(3) =w(2)a(2) +w(2)a(2) +..+w(2)a(2) +b(2) RR11R22 R3QR
+• Continue the forward pass calculation to the output layer
+• Keep all the activation values for later backpropagation calculations
+
+
+z(3) =w(2)a(2) +b(2) 
+(3) éù
+éz1 ù êú
+(3) s (z(3) ) éw(2) w(2) . . w(2)ù éa ù ê 1 ú
+ê1112 1Qú 1
+(2) (2) (2) êúê ú z(3) w w ..w a(3) s(z(3))
+ ê2úéz(3)ù ê21 22 2Qú  ê2úê 2 ú êúêúêú
+z(3)= . ê1 ú w(2)= . . . . . a(3)= . =ê . ú êúz(3) ê ú êú
+ê.úë2ûê.....ú ê.úê.ú (3) ê ú êúêú
+êz ú w(2) w(2) . . w(2) a(3) ê (3) ú
+ëRû ëR1 R2 RQû ëRû s(z) ëRû
+
+ Developing an MLP with one hiddern layer for a classification task
+• For each output unit i in layer L3 (the output layer), set d(N) =(a(N) -y)a(N)(1-a(N))
+d(3) =(a(3) -y)a(3)(1-a(3)) iiiii
+• For the hidden layer l2 , set
+Note S3 is the number of nodes at layer N(=3)
+iiiii Since N =3
+åS3 ¢()åS3 ()
+d(2) = d(3)w(2) f z(2) = d(3)w(2)a(2) 1-a(2)
+1
+j j1 1
+j=1 j=1
+jj11 1
+d (2) = 2
+åS3
+d (3)w(2)a(2) 1- a(2) ()
+jj22 2 j=1
+As noted earlier, you need the activation values for backpropagation
+
+ Developing an MLP with one hiddern layer for a classification task
+• Update the weights • For layer l2
+¶J
+¶w(2) i, j
+=d(3)a(2) =(a(3) -y)a(3)(1-a(3))a(2) ijiiiij
+  • For layer l1
+¶J =d(2)a(1) , ¶J =d(2) ¶w (1) i j ¶b(1) i
+ij i
+¶J
+¶b(2) i
+=d(3) =(a(3) -y)a(3)(1-a(3)) iiiii
+   d (2) = i
+S3 å
+d (3)w(2)a(2) 1- a(2) ()
+jjii i j=1
+   
+ Developing an MLP with one hiddern layer for a classification task
+• Project 1
+• MNIST digit handwritten dataset
+  from sklearn.datasets import fetch_openml mnist = fetch_openml('mnist_784', version=1) mnist.keys()
+#%%
+import numpy as np
+X, y = mnist["data"], mnist["target"] y = y.astype(np.uint8)
+X_train, X_test, y_train, y_test = X[:60000], X[60000:], y[:60000], y[60000:]
+
+ Developing an MLP with one hiddern layer for a classification task
+• 70,000 images of 28 x 28 pixels
+• Each image labeled as 0 - 9
+• Develop an ANN classifier for MNIST dataset with one hidden layer
+• Input dimension = 28 x 28 = 784
+• Output dimension = 10
+• Thus,P=784,Q=?,R=10
+• Thus the output has to be sent to a softmax activation to classify 10 different digit classes.
+• Recommend using stochastic gradient descent instead of batch gradient
+ 
+ Project 1 Specifics
+• Use the MNIST data samples for training and testing. The python code posted on the blackboard will let you download MNIST. Develop the classifier code to run on Google Colab (https://colab.research.google.com/notebooks/intro.ipynb#recent=true ) so that you don’t have to worry about setting up your machine correctly.
+• Develop a code Python using the code provided as the starting point to design a neural network to perform 10 digit classification.
+• Experiment with 3 different hidden units and see the performance differences.
+• Summarize the results and report them. Include the code you ran in the report.
+ 
+ Project Specifics
+• Submit (upload your files to the Blackboard) your code by uploading the original python file (*.py) after changing the extension to “*.py.txt”
+• Submit the project report via the Blackboard
+• Use L2 norm as the loss function. Also use 10 dimensional vector as the output for the
+digit classification.
+• Key Elements to be included in the report (I will be grading the report based on these elements).
+• Describeyournetworkdesignandhyperparameters • Number of layers
+• Number of nodes in each layer • Activation functions used
+• Learning rate
+• Describetheforwardpassofyourcode
+• Describethebackpropagationofyourcode
+• Includelearningcurves:bothtrainingandvalidationlosses
+• Describethevalidationprocessused
+• Describethecriteriayouusedtoterminatethetraining(whenandwhy). • Predicttheperformanceofthecodeonanunseendataset.
+• Sourcecodetobealsoincludedasapartofthereport.
+
+ Project Specifics
+• To get the full credit of the project, I should be able to run your code on Google Colab. So, please verify that it runs.
+• Fully describe what you have done in the code. Include comments on the code so that I can understand what you did.
+• Do NOT use any of Keras, TensorFlow library classifiers. I would like you to build a neural network classifier from the grounds up. You may use other functions within python or ScikitLearn, but your core code should be done by python including forward pass and backpropagation.
